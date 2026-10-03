@@ -20,6 +20,10 @@ export interface Review {
 export interface Product {
   id: string;
   name: string;
+  /** Short first-person blurb shown on swipe cards. */
+  bio: string;
+  /** Product photo URL; falls back to an illustrated packshot. */
+  image?: string;
   brand: string;
   price: number;
   size: string;

@@ -49,6 +49,39 @@ export function ProductThumb({ product, size = 'md' }: { product: Product; size?
   );
 }
 
+const PACK_SHAPE: Record<Category, 'bag' | 'bottle' | 'tub' | 'box'> = {
+  snacks: 'bag',
+  dips: 'tub',
+  dairy: 'tub',
+  drinks: 'bottle',
+  bakery: 'box',
+  fresh: 'box',
+  meat: 'box',
+  partyware: 'box',
+};
+
+/** Large product visual: the real photo when we have one, otherwise an illustrated pack. */
+export function Packshot({ product }: { product: Product }) {
+  const tone = CATEGORY_TONE[product.category];
+  if (product.image) {
+    return (
+      <div className={`packshot tone-${tone}`}>
+        <img src={product.image} alt={product.name} draggable={false} />
+      </div>
+    );
+  }
+  const Icon = CATEGORY_ICON[product.category];
+  return (
+    <div className={`packshot tone-${tone}`} aria-hidden>
+      <div className={`pack pack-${PACK_SHAPE[product.category]}`}>
+        <span className="pack-brand">{product.brand}</span>
+        <Icon className="pack-icon" strokeWidth={1.75} />
+        <span className="pack-size">{product.size}</span>
+      </div>
+    </div>
+  );
+}
+
 export function Stars({ rating, count }: { rating: number; count?: number }) {
   return (
     <span className="rating" aria-label={`${rating.toFixed(1)} out of 5 stars`}>

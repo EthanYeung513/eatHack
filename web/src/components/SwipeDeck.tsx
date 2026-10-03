@@ -2,7 +2,7 @@ import { Check, Heart, RotateCcw, X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react';
 import { formatPrice, useBasket } from '../state/basket';
 import type { Product, SwipeResult } from '../types';
-import { ProductThumb, Stars } from './ProductBits';
+import { Packshot, ProductThumb, Stars } from './ProductBits';
 
 type Direction = 'left' | 'right';
 
@@ -244,25 +244,52 @@ export function SwipeDeck({
   );
 }
 
+const GREAT_FOR: Record<string, string> = {
+  party: 'Parties',
+  bbq: 'BBQs',
+  movie: 'Movie nights',
+  breakfast: 'Brunch',
+  dessert: 'Sweet tooth',
+  snacks: 'Snacking',
+  dips: 'Dipping',
+  sparkling: 'Celebrations',
+};
+
 function SwipeCardBody({ product }: { product: Product }) {
-  const review = product.reviews[0];
+  const greatFor = product.tags.map((t) => GREAT_FOR[t]).filter(Boolean).slice(0, 3);
   return (
     <>
       <div className="swipe-media">
-        <ProductThumb product={product} size="lg" />
+        <Packshot product={product} />
         {product.badge && <span className="badge-pill">{product.badge}</span>}
+        <span className="swipe-price">{formatPrice(product.price)}</span>
       </div>
       <div className="swipe-body">
-        <div className="swipe-row">
-          <span className="muted small">{product.brand}</span>
-          <span className="muted small">{product.size}</span>
+        <div>
+          <h3>{product.name}</h3>
+          <div className="swipe-meta">
+            <span className="muted small">
+              {product.brand} · {product.size}
+            </span>
+            <Stars rating={product.rating} count={product.reviewCount} />
+          </div>
         </div>
-        <h3>{product.name}</h3>
-        <div className="swipe-row">
-          <Stars rating={product.rating} count={product.reviewCount} />
-          <span className="price price-lg">{formatPrice(product.price)}</span>
-        </div>
-        {review && <p className="swipe-quote">“{review.text}”</p>}
+        <p className="swipe-bio">{product.bio}</p>
+        {(greatFor.length > 0 || product.dietary.length > 0) && (
+          <div className="swipe-tags">
+            <span className="swipe-tags-label">Great for</span>
+            {greatFor.map((g) => (
+              <span key={g} className="chip chip-outline">
+                {g}
+              </span>
+            ))}
+            {product.dietary.map((d) => (
+              <span key={d} className="chip chip-pos">
+                {d}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

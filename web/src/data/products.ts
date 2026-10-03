@@ -14,6 +14,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p01',
     name: 'Sea Salt & Cider Vinegar Hand-Cooked Crisps',
+    bio: 'Hand-cooked in small batches with a sharp cider-vinegar bite. I’m loud, crunchy and first to disappear at any party.',
     brand: 'Hearthfield',
     price: 2.25,
     size: '150g',
@@ -35,6 +36,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p02',
     name: 'Sweet Chilli Tortilla Chips',
+    bio: 'Sturdy enough for the heaviest dip, with a sweet chilli kick. Happiest next to a bowl of salsa.',
     brand: 'Casa Verde',
     price: 1.95,
     size: '200g',
@@ -55,6 +57,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p03',
     name: 'Classic Houmous',
+    bio: 'Silky, tahini-rich and properly lemony. Low maintenance, goes with everything, gets on with everyone.',
     brand: 'Olive Grove',
     price: 1.6,
     size: '200g',
@@ -77,6 +80,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p04',
     name: 'Caramelised Onion Houmous',
+    bio: 'Classic houmous with a sweet streak of caramelised onion. A little different, in a good way.',
     brand: 'Olive Grove',
     price: 1.75,
     size: '200g',
@@ -97,6 +101,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p05',
     name: 'Fresh Tomato & Coriander Salsa',
+    bio: 'Chunky tomatoes, fresh coriander and a gentle heat. I bring the colour to any spread.',
     brand: 'Casa Verde',
     price: 2.1,
     size: '230g',
@@ -117,6 +122,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p06',
     name: 'Mini Pork Sausage Rolls ×24',
+    bio: 'Two dozen flaky, golden bites with a seasoned pork filling. Twenty minutes in the oven and I’m party-ready.',
     brand: "Butcher's Row",
     price: 4.5,
     size: '480g',
@@ -138,6 +144,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p07',
     name: 'Vegetable Spring Rolls ×20',
+    bio: 'Crispy, oven-baked and plant-based, with a sweet chilli dip on the side. Easy to share.',
     brand: 'Golden Lantern',
     price: 3.75,
     size: '400g',
@@ -158,6 +165,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p08',
     name: 'Prosecco DOC Extra Dry',
+    bio: 'Fresh, fruity and fine-bubbled Italian fizz. Reliable at birthdays, brilliant in a spritz.',
     brand: 'Villa Corte',
     price: 9.5,
     size: '75cl',
@@ -180,6 +188,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p09',
     name: 'Prosecco Rosé DOC Brut',
+    bio: 'Dry, crisp and blush pink, with red berry notes. I look as good on the table as I taste.',
     brand: 'Bella Riva',
     price: 11,
     size: '75cl',
@@ -200,6 +209,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p10',
     name: 'Crémant de Loire Brut',
+    bio: 'Made the traditional way in the Loire. Toasty and elegant, champagne energy without the price tag.',
     brand: 'Maison Laurent',
     price: 13.5,
     size: '75cl',
@@ -220,6 +230,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p11',
     name: 'Sparkling Elderflower Pressé',
+    bio: 'Sparkling, floral and refreshing, with zero alcohol. Your designated drivers will thank you.',
     brand: 'Meadowsweet',
     price: 2.75,
     size: '750ml',
@@ -241,6 +252,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p12',
     name: 'Session Pale Ale 4 × 330ml',
+    bio: 'Light, citrusy and easy-going. Built for sunny gardens and second rounds.',
     brand: 'North Quay Brewing',
     price: 6,
     size: '4 × 330ml',
@@ -261,6 +273,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p13',
     name: 'Compostable Party Cups ×24',
+    bio: 'Sturdy cups that won’t buckle mid-toast, and compostable afterwards. Practical, not boring.',
     brand: 'Brightside',
     price: 3,
     size: '24 pack',
@@ -281,6 +294,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p14',
     name: 'Celebration Balloons ×20 Mixed',
+    bio: 'Twenty balloons in muted, grown-up colours. Instant party, minimal effort.',
     brand: 'Brightside',
     price: 3.5,
     size: '20 pack',
@@ -301,6 +315,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p15',
     name: 'Chocolate Fudge Celebration Cake',
+    bio: 'Rich chocolate sponge layered with fudge icing, serves 16. Looks homemade, nobody needs to know.',
     brand: 'Rosewood Bakery',
     price: 12,
     size: 'Serves 16',
@@ -323,6 +338,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p16',
     name: 'Mini Chocolate Brownies ×12',
+    bio: 'Twelve fudgy little brownies with a gooey middle. Dangerously easy to keep reaching for.',
     brand: 'Rosewood Bakery',
     price: 3.25,
     size: '12 pack',
@@ -343,6 +359,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p17',
     name: 'Sweet & Salty Popcorn',
+    bio: 'Light, airy and perfectly sweet-salty. Made for the sofa and a good film.',
     brand: 'Pop Theory',
     price: 1.5,
     size: '90g',
@@ -363,6 +380,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p18',
     name: 'Milk Chocolate Coated Pretzels',
+    bio: 'Crunchy salted pretzels in smooth milk chocolate. Sweet, salty and hard to put down.',
     brand: 'Cocoa & Co',
     price: 2.4,
     size: '150g',
@@ -383,6 +401,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p19',
     name: 'British Cheese Selection Board',
+    bio: 'Four British cheeses, ready to plate. Add crackers and you’ve got a board.',
     brand: 'Valley Dairy',
     price: 6.5,
     size: '400g',
@@ -403,6 +422,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p20',
     name: 'Rosemary Sourdough Crackers',
+    bio: 'Crisp sourdough crackers with rosemary. The supporting act every cheese deserves.',
     brand: 'Stonemill',
     price: 2,
     size: '150g',
@@ -423,6 +443,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p21',
     name: 'Aberdeen Angus Quarter Pounders ×4',
+    bio: 'Juicy Aberdeen Angus quarter pounders that hold together on the grill. Burger night, sorted.',
     brand: "Butcher's Row",
     price: 4.75,
     size: '454g',
@@ -443,6 +464,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p22',
     name: 'Halloumi Grilling Cheese',
+    bio: 'Squeaky, salty and made for the grill. The veggie guest’s favourite at any BBQ.',
     brand: 'Valley Dairy',
     price: 2.85,
     size: '250g',
@@ -463,6 +485,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p23',
     name: 'Sweetcorn Cobs ×4',
+    bio: 'Four sweet, juicy cobs. Grill, butter, salt, repeat.',
     brand: 'Fieldgate',
     price: 1.8,
     size: '4 pack',
@@ -483,6 +506,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p24',
     name: 'Brioche Burger Buns ×6',
+    bio: 'Soft, glossy brioche that toasts beautifully and doesn’t fall apart under pressure.',
     brand: 'Rosewood Bakery',
     price: 1.65,
     size: '6 pack',
@@ -503,6 +527,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p25',
     name: 'Free Range Large Eggs ×12',
+    bio: 'Free-range with deep orange yolks. Poached, scrambled or fried, I’m up early for you.',
     brand: 'Fieldgate',
     price: 3.1,
     size: '12 pack',
@@ -523,6 +548,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p26',
     name: 'Honey & Almond Granola',
+    bio: 'Big crunchy clusters with honey and toasted almonds. Great with yoghurt and a slow morning.',
     brand: 'Stonemill',
     price: 3.5,
     size: '500g',
@@ -543,6 +569,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p27',
     name: 'Greek Style Natural Yoghurt',
+    bio: 'Thick, tangy and creamy. Breakfast bowls, dips or dessert, I do it all.',
     brand: 'Valley Dairy',
     price: 1.95,
     size: '500g',
@@ -563,6 +590,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p28',
     name: 'Scottish Smoked Salmon',
+    bio: 'Delicately smoked Scottish salmon, thinly sliced. Brunch just got serious.',
     brand: 'Harbour & Hearth',
     price: 5.25,
     size: '200g',
@@ -583,6 +611,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p29',
     name: 'Freshly Squeezed Orange Juice',
+    bio: 'Freshly squeezed, never from concentrate, bits and all. Sunshine in a bottle.',
     brand: 'Meadowsweet',
     price: 2.6,
     size: '1L',
@@ -603,6 +632,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'p30',
     name: 'All Butter Croissants ×4',
+    bio: 'Flaky, buttery and golden. Five minutes in the oven and it’s a bakery morning.',
     brand: 'Rosewood Bakery',
     price: 1.9,
     size: '4 pack',
