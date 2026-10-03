@@ -7,10 +7,14 @@ import { useBasket } from './state/basket';
 import { useChat } from './state/useChat';
 
 export default function App() {
-  const { messages, thinking, send, completeSwipe, setView: setMessageView, reset } = useChat();
+  const { messages, thinking, partyGuests, send, completeSwipe, setView: setMessageView, reset } = useChat();
   const { clear } = useBasket();
   const [view, setView] = useState<'shop' | 'checkout'>('shop');
   const [sheetOpen, setSheetOpen] = useState(false);
+  // The checkout recommendation is shown once per party.
+  const [recoSeen, setRecoSeen] = useState(false);
+
+  useEffect(() => setRecoSeen(false), [partyGuests]);
 
   useEffect(() => {
     if (!sheetOpen) return;
@@ -22,44 +26,54 @@ export default function App() {
   const checkout = () => {
     setSheetOpen(false);
     setView('checkout');
+    window.scrollTo({ top: 0 });
   };
 
-  if (view === 'checkout') {
-    return (
-      <OcadoCheckout
-        onExit={(orderPlaced) => {
-          if (orderPlaced) clear();
-          setView('shop');
-        }}
-      />
-    );
-  }
-
   return (
-    <div className="app">
-      <Header onNewChat={reset} onOpenBasket={() => setSheetOpen(true)} canReset={messages.length > 0} />
-      <div className="app-body">
-        <ChatView
-          messages={messages}
-          thinking={thinking}
-          onSend={send}
-          onSwipeComplete={completeSwipe}
-          onViewChange={setMessageView}
+    <>
+      {view === 'checkout' && (
+        <OcadoCheckout
+          partyGuests={recoSeen ? null : partyGuests}
+          onRecoDone={() => setRecoSeen(true)}
+          onExit={(orderPlaced) => {
+            if (orderPlaced) clear();
+            setView('shop');
+          }}
         />
-        <aside className="basket-aside">
-          <BasketPanel onCheckout={checkout} />
-        </aside>
-      </div>
-
-      {sheetOpen && (
-        <div className="sheet-backdrop" onClick={() => setSheetOpen(false)}>
-          <div className="sheet" role="dialog" aria-modal="true" aria-label="Basket" onClick={(e) => e.stopPropagation()}>
-            <span className="sheet-grip" />
-            <BasketPanel onCheckout={checkout} onClose={() => setSheetOpen(false)} />
-          </div>
-        </div>
       )}
 
-    </div>
+      {/* Stays mounted during checkout so swipe decks keep their state. */}
+      <div className="app" hidden={view === 'checkout'}>
+        <Header onNewChat={reset} onOpenBasket={() => setSheetOpen(true)} canReset={messages.length > 0} />
+        <div className="app-body">
+          <ChatView
+            messages={messages}
+            thinking={thinking}
+            onSend={send}
+            onSwipeComplete={completeSwipe}
+            onViewChange={setMessageView}
+            onCheckout={checkout}
+          />
+          <aside className="basket-aside">
+            <BasketPanel onCheckout={checkout} />
+          </aside>
+        </div>
+
+        {sheetOpen && (
+          <div className="sheet-backdrop" onClick={() => setSheetOpen(false)}>
+            <div
+              className="sheet"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Basket"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span className="sheet-grip" />
+              <BasketPanel onCheckout={checkout} onClose={() => setSheetOpen(false)} />
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

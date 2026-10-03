@@ -5,6 +5,7 @@ import {
   Layers,
   Lightbulb,
   MessageSquareQuote,
+  PartyPopper,
   ShoppingBasket,
   Soup,
   Sparkles,
@@ -16,10 +17,11 @@ import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 
 import type { AgentMode, ChatMessage, ProductView, SwipeResult } from '../types';
 import { ReviewsBlock } from './ReviewsBlock';
 import { SwipeDeck } from './SwipeDeck';
+import { WrapUpCard } from './WrapUpCard';
 
 const STARTER_CARDS = [
-  { icon: Ghost, title: 'Halloween party', prompt: 'Throwing a Halloween party for 12' },
-  { icon: Wine, title: 'Compare rosé', prompt: 'Which rosé is best?' },
+  { icon: PartyPopper, title: 'Host a party', prompt: 'Host a party for 12' },
+  { icon: Wine, title: 'Compare gin', prompt: 'Which gin is best?' },
   { icon: Soup, title: 'Easy dinners', prompt: 'Easy dinners for one this week' },
   { icon: Tag, title: 'Deals right now', prompt: "What's on offer right now?" },
 ];
@@ -30,12 +32,14 @@ export function ChatView({
   onSend,
   onSwipeComplete,
   onViewChange,
+  onCheckout,
 }: {
   messages: ChatMessage[];
   thinking: string | null;
   onSend: (text: string) => void;
   onSwipeComplete: (messageId: string, result: SwipeResult) => void;
   onViewChange: (messageId: string, view: ProductView) => void;
+  onCheckout: () => void;
 }) {
   const endRef = useRef<HTMLDivElement>(null);
   const lastId = messages[messages.length - 1]?.id;
@@ -61,6 +65,7 @@ export function ChatView({
                 keyboardActive={m.id === latestDeckId}
                 onSwipeComplete={(result) => onSwipeComplete(m.id, result)}
                 onViewChange={(view) => onViewChange(m.id, view)}
+                onCheckout={onCheckout}
               />
             ))
           )}
@@ -127,6 +132,7 @@ function Message({
   onSuggestion,
   onSwipeComplete,
   onViewChange,
+  onCheckout,
 }: {
   message: ChatMessage;
   isLast: boolean;
@@ -134,8 +140,11 @@ function Message({
   onSuggestion: (text: string) => void;
   onSwipeComplete: (result: SwipeResult) => void;
   onViewChange: (view: ProductView) => void;
+  onCheckout: () => void;
 }) {
   const hasProducts = (message.mode === 'swipe' || message.mode === 'reviews') && !!message.products?.length;
+  // Party decks are steps in a guided flow, so they stay as swipe decks.
+  const isPartyDeck = !!message.deck && message.deck.kind !== 'standard';
   const view = message.view ?? message.mode;
 
   if (message.role === 'user') {
@@ -152,7 +161,7 @@ function Message({
       <div className="msg-body">
         <p>{message.text}</p>
 
-        {hasProducts && (
+        {hasProducts && !isPartyDeck && (
           <ViewToggle value={view} suggested={message.mode as ProductView} onChange={onViewChange} />
         )}
         {/* Both stay mounted so swipe progress survives toggling views. */}
@@ -161,12 +170,14 @@ function Message({
             <SwipeDeck
               title={message.deckTitle ?? 'Top matches'}
               products={message.products!}
+              config={message.deck}
               keyboardActive={keyboardActive && view === 'swipe'}
               onComplete={onSwipeComplete}
             />
           </div>
         )}
         {hasProducts && view === 'reviews' && <ReviewsBlock products={message.products!} />}
+        {message.wrapUp && <WrapUpCard wrapUp={message.wrapUp} onCheckout={onCheckout} />}
 
         {message.rationale && view === message.mode && (
           <p className="rationale">

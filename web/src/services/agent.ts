@@ -1,5 +1,5 @@
 import { PRODUCTS } from '../data/products';
-import type { AgentMode, Dietary, Product, SwipeResult } from '../types';
+import type { AgentMode, DeckConfig, Dietary, Product, SwipeResult, WrapUp } from '../types';
 
 // Client-side stand-in for the agent. The real version will live behind a
 // Supabase edge function; keep this module's exported shape when swapping it out.
@@ -11,7 +11,9 @@ export interface AgentReply {
   rationale?: string;
   suggestions?: string[];
   deckTitle?: string;
+  deck?: DeckConfig;
   topicId?: string;
+  wrapUp?: WrapUp;
 }
 
 export const THINKING_STAGES = [
@@ -34,6 +36,8 @@ const TOPICS: Topic[] = [
   { id: 'rose', re: /\b(ros[eé]|blush)(?![a-z])/i, tag: 'rose', title: 'Rosé' },
   { id: 'red', re: /\b(red wines?|reds?|malbec|chianti|merlot|rioja|primitivo)\b/i, tag: 'red', title: 'Red wine' },
   { id: 'white', re: /\b(white wines?|whites?|sauvignon|pinot|chablis|sancerre|chardonnay)\b/i, tag: 'white', title: 'White wine' },
+  { id: 'cocktail', re: /\b(cocktails?|spritz|mojito|margarita|martini|g&t|gin and tonic)\b/i, tag: 'cocktail', title: 'Cocktails' },
+  { id: 'spirits', re: /\b(spirits?|gin|vodka|rum|whisky|whiskey|tequila)\b/i, tag: 'spirits', title: 'Spirits' },
   { id: 'beer', re: /\b(beers?|ales?|lager)\b/i, tag: 'beer', title: 'Beer' },
   { id: 'wine', re: /\b(wines?|vino)\b/i, tag: 'wine', title: 'Wine' },
   { id: 'milk', re: /\b(milk|milkshakes?|dairy)\b/i, tag: 'milk', title: 'Milk & milkshakes' },
@@ -59,29 +63,29 @@ const DIETARY: [RegExp, Dietary][] = [
   [/\bgluten[- ]?free\b/i, 'gluten-free'],
 ];
 
-const WINE_FOLLOW_UPS = ['Which red wine is best?', 'Best white wine under £10', 'Sweets for a party'];
+const WINE_FOLLOW_UPS = ['Which red wine is best?', 'Which beer is best?', 'Sweets for a party'];
 
 const FOLLOW_UPS: Record<string, string[]> = {
-  party: ['Which rosé is best?', 'Sparkling wine for a toast', "What's on offer?"],
-  halloween: ['Spooky sweets for trick or treaters', 'Halloween treats for my dog', 'Which red wine is best?'],
+  party: ['Which gin is best?', 'Which chocolate is best?', "What's on offer?"],
+  halloween: ['Spooky sweets for trick or treaters', 'Which crisps are best?', 'Which red wine is best?'],
   dinner: ['Which soup is best?', 'Wine to go with dinner', "What's on offer?"],
   breakfast: ['Which milk is best?', 'Best porridge oats?', 'Easy dinners for one'],
   sparkling: WINE_FOLLOW_UPS,
   rose: WINE_FOLLOW_UPS,
-  red: ['Best white wine under £10', 'Which rosé is best?', 'Easy dinners for one'],
-  white: ['Which red wine is best?', 'Sparkling wine for a toast', 'Easy dinners for one'],
+  red: ['Which beer is best?', 'Which gin is best?', 'Easy dinners for one'],
+  white: ['Which red wine is best?', 'Which chocolate is best?', 'Easy dinners for one'],
   beer: ['Throwing a Halloween party', 'Sweets for a party', "What's on offer?"],
   wine: WINE_FOLLOW_UPS,
   milk: ['Best porridge oats?', 'Easy dinners for one', "What's on offer?"],
   sweets: ['Throwing a Halloween party', 'Which red wine is best?', "What's on offer?"],
-  drinks: ['Sweets for a party', 'Which rosé is best?', "What's on offer?"],
+  drinks: ['Sweets for a party', 'Which gin is best?', "What's on offer?"],
   pets: ['Throwing a Halloween party', 'Spooky sweets for trick or treaters', "What's on offer?"],
   deals: ['Which wine is best?', 'Easy dinners for one', 'Throwing a Halloween party'],
 };
 
 const STARTERS = [
-  'Throwing a Halloween party for 12',
-  'Which rosé is best?',
+  'Host a party for 12',
+  'Which gin is best?',
   'Easy dinners for one this week',
   "What's on offer right now?",
 ];
@@ -132,14 +136,19 @@ function nameMatches(input: string) {
   });
 }
 
+/** Walks through thinking stages with a short delay each, so replies don't feel instant. */
+export async function simulateThinking(onStage?: (stage: string) => void, stages: readonly string[] = THINKING_STAGES) {
+  for (const stage of stages) {
+    onStage?.(stage);
+    await sleep(450 + Math.random() * 350);
+  }
+}
+
 export async function askAgent(
   input: string,
   onStage?: (stage: string) => void,
 ): Promise<AgentReply> {
-  for (const stage of THINKING_STAGES) {
-    onStage?.(stage);
-    await sleep(450 + Math.random() * 350);
-  }
+  await simulateThinking(onStage);
   return decide(input);
 }
 
@@ -151,7 +160,9 @@ function decide(input: string): AgentReply {
     const topic = matched[0];
     // "Which soup is best?" is about soup, not every easy dinner.
     const byName = nameMatches(input);
-    const useNames = byName.length > 0 && (!topic || topic.occasion);
+    // Broad topics ("sweets & snacks") lose to a specific product word ("crisps").
+    const broad = !topic || topic.occasion || ['sweets', 'drinks', 'deals'].includes(topic.id);
+    const useNames = byName.length > 0 && broad;
     const pool = useNames ? byName : topic ? PRODUCTS.filter((p) => p.tags.includes(topic.tag)) : [];
     const products = applyFilters(pool, input)
       .filter((p) => p.reviewCount > 0)

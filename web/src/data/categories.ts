@@ -1,4 +1,17 @@
-import { Candy, Croissant, Ghost, PawPrint, Salad, Sparkles, Wine, CupSoda, type LucideIcon } from 'lucide-react';
+import {
+  Baby,
+  Candy,
+  Croissant,
+  CupSoda,
+  Home,
+  PartyPopper,
+  PawPrint,
+  Salad,
+  Sparkles,
+  SprayCan,
+  Wine,
+  type LucideIcon,
+} from 'lucide-react';
 import type { Category } from '../types';
 
 // High-level, aisle-style groupings used to organise the basket.
@@ -12,17 +25,21 @@ export interface Aisle {
 
 export const AISLES: Aisle[] = [
   { id: 'fresh', label: 'Fresh & chilled', icon: Salad, tone: 'lime' },
-  { id: 'cupboard', label: 'Bakery & cupboard', icon: Croissant, tone: 'pink' },
-  { id: 'snacks', label: 'Sweets & snacks', icon: Candy, tone: 'butter' },
+  { id: 'cupboard', label: 'Bakery & cupboard', icon: Croissant, tone: 'butter' },
+  { id: 'snacks', label: 'Sweets & snacks', icon: Candy, tone: 'pink' },
   { id: 'drinks', label: 'Drinks', icon: CupSoda, tone: 'sky' },
-  { id: 'wine', label: 'Beer & wine', icon: Wine, tone: 'lavender' },
-  { id: 'halloween', label: 'Halloween & party', icon: Ghost, tone: 'pink' },
+  { id: 'wine', label: 'Beer, wine & spirits', icon: Wine, tone: 'lavender' },
+  { id: 'party', label: 'Party & occasions', icon: PartyPopper, tone: 'pink' },
+  { id: 'baby', label: 'Baby & kids', icon: Baby, tone: 'sky' },
   { id: 'pets', label: 'Pets', icon: PawPrint, tone: 'lime' },
-  { id: 'household', label: 'Household & beauty', icon: Sparkles, tone: 'sky' },
+  { id: 'household', label: 'Household', icon: SprayCan, tone: 'lime' },
+  { id: 'beauty', label: 'Health & beauty', icon: Sparkles, tone: 'lavender' },
+  { id: 'home', label: 'Home', icon: Home, tone: 'butter' },
 ];
 
 export const AISLE_FOR_CATEGORY: Record<Category, string> = {
   fresh: 'fresh',
+  meat: 'fresh',
   dairy: 'fresh',
   meals: 'fresh',
   bakery: 'cupboard',
@@ -30,7 +47,10 @@ export const AISLE_FOR_CATEGORY: Record<Category, string> = {
   snacks: 'snacks',
   drinks: 'drinks',
   wine: 'wine',
-  partyware: 'halloween',
+  partyware: 'party',
+  baby: 'baby',
   pets: 'pets',
   household: 'household',
+  beauty: 'beauty',
+  home: 'home',
 };

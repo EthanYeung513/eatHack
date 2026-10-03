@@ -1,17 +1,24 @@
 export type Category =
+  | 'fresh'
+  | 'meat'
+  | 'dairy'
+  | 'bakery'
+  | 'cupboard'
+  | 'meals'
   | 'snacks'
   | 'drinks'
   | 'wine'
-  | 'bakery'
-  | 'fresh'
-  | 'dairy'
-  | 'meals'
-  | 'cupboard'
-  | 'pets'
+  | 'baby'
   | 'household'
+  | 'beauty'
+  | 'pets'
+  | 'home'
   | 'partyware';
 
-export type Dietary = 'vegan' | 'vegetarian' | 'gluten-free';
+export type Dietary = 'vegan' | 'vegetarian' | 'gluten-free' | 'organic' | 'lactose-free';
+
+/** What a product is for at a party; drives the party planner's decks and goal. */
+export type PartyRole = 'savoury' | 'nibbles' | 'sweet' | 'soft' | 'alcohol' | 'fresh' | 'tableware';
 
 export interface Review {
   author: string;
@@ -55,15 +62,61 @@ export interface Product {
   wasPrice?: number;
   /** Product page on ocado.com. */
   url?: string;
+  partyRole?: PartyRole;
+  /** Nutrition claim used as a nudge, e.g. "High in protein". */
+  nutrition?: string;
+  /** Brand we partner with; gets a video-review nudge. */
+  partner?: boolean;
+  /** Not from the Ocado export (e.g. placeholder tableware). */
+  placeholder?: boolean;
 }
 
 export type AgentMode = 'text' | 'swipe' | 'reviews';
 
 export type ProductView = Exclude<AgentMode, 'text'>;
 
+export type NudgeType = 'offer' | 'nutrition' | 'partner' | 'none';
+
+export type Direction = 'left' | 'right';
+
+export interface SwipeLogEntry {
+  product: Product;
+  dir: Direction;
+  /** Time from the card appearing to the decision. */
+  ms: number;
+  nudge?: NudgeType;
+}
+
+/** Why a deck ended: ran out, hit its checkpoint, the shopper slowed down, or tapped Done. */
+export type DeckEndReason = 'complete' | 'checkpoint' | 'slowdown' | 'manual';
+
 export interface SwipeResult {
   added: Product[];
   skipped: Product[];
+  log: SwipeLogEntry[];
+  reason: DeckEndReason;
+}
+
+export interface DeckConfig {
+  kind: 'standard' | 'discovery' | 'targeted';
+  /** End the deck after this many swipes. */
+  stopAfter?: number;
+  nudges?: Record<string, NudgeType>;
+  detectSlowdown?: boolean;
+}
+
+export interface NudgeStat {
+  type: Exclude<NudgeType, 'none'> | 'none';
+  shown: number;
+  accepted: number;
+}
+
+export interface WrapUp {
+  guests: number;
+  /** Roles the shopper said yes to, most liked first. */
+  likedRoles: PartyRole[];
+  nudgeStats: NudgeStat[];
+  reason: DeckEndReason;
 }
 
 export interface ChatMessage {
@@ -77,6 +130,8 @@ export interface ChatMessage {
   rationale?: string;
   suggestions?: string[];
   deckTitle?: string;
+  deck?: DeckConfig;
   topicId?: string;
   swipeResult?: SwipeResult;
+  wrapUp?: WrapUp;
 }
