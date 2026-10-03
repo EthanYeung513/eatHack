@@ -12,9 +12,9 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
-import type { AgentMode, ChatMessage, Product, ProductView } from '../types';
-import { ProductThumb } from './ProductBits';
+import type { AgentMode, ChatMessage, ProductView, SwipeResult } from '../types';
 import { ReviewsBlock } from './ReviewsBlock';
+import { SwipeDeck } from './SwipeDeck';
 
 const STARTER_CARDS = [
   { icon: CakeSlice, title: 'Hosting a party', prompt: 'Hosting a party for 12 on Saturday' },
@@ -27,17 +27,18 @@ export function ChatView({
   messages,
   thinking,
   onSend,
-  onOpenDeck,
+  onSwipeComplete,
   onViewChange,
 }: {
   messages: ChatMessage[];
   thinking: string | null;
   onSend: (text: string) => void;
-  onOpenDeck: (message: ChatMessage) => void;
+  onSwipeComplete: (messageId: string, result: SwipeResult) => void;
   onViewChange: (messageId: string, view: ProductView) => void;
 }) {
   const endRef = useRef<HTMLDivElement>(null);
   const lastId = messages[messages.length - 1]?.id;
+  const latestDeckId = [...messages].reverse().find((m) => m.mode === 'swipe' || m.mode === 'reviews')?.id;
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' });
@@ -56,7 +57,8 @@ export function ChatView({
                 message={m}
                 isLast={m.id === lastId && thinking === null}
                 onSuggestion={onSend}
-                onOpenDeck={() => onOpenDeck(m)}
+                keyboardActive={m.id === latestDeckId}
+                onSwipeComplete={(result) => onSwipeComplete(m.id, result)}
                 onViewChange={(view) => onViewChange(m.id, view)}
               />
             ))
@@ -120,14 +122,16 @@ function Welcome({ onPick }: { onPick: (text: string) => void }) {
 function Message({
   message,
   isLast,
+  keyboardActive,
   onSuggestion,
-  onOpenDeck,
+  onSwipeComplete,
   onViewChange,
 }: {
   message: ChatMessage;
   isLast: boolean;
+  keyboardActive: boolean;
   onSuggestion: (text: string) => void;
-  onOpenDeck: () => void;
+  onSwipeComplete: (result: SwipeResult) => void;
   onViewChange: (view: ProductView) => void;
 }) {
   const hasProducts = (message.mode === 'swipe' || message.mode === 'reviews') && !!message.products?.length;
@@ -150,8 +154,16 @@ function Message({
         {hasProducts && (
           <ViewToggle value={view} suggested={message.mode as ProductView} onChange={onViewChange} />
         )}
-        {hasProducts && view === 'swipe' && (
-          <SwipeLauncher message={message} products={message.products!} onOpen={onOpenDeck} />
+        {/* Both stay mounted so swipe progress survives toggling views. */}
+        {hasProducts && (
+          <div hidden={view !== 'swipe'}>
+            <SwipeDeck
+              title={message.deckTitle ?? 'Top matches'}
+              products={message.products!}
+              keyboardActive={keyboardActive && view === 'swipe'}
+              onComplete={onSwipeComplete}
+            />
+          </div>
         )}
         {hasProducts && view === 'reviews' && <ReviewsBlock products={message.products!} />}
 
@@ -206,41 +218,6 @@ function ViewToggle({
           {id === suggested && <span className="view-toggle-tag">Suggested</span>}
         </button>
       ))}
-    </div>
-  );
-}
-
-function SwipeLauncher({
-  message,
-  products,
-  onOpen,
-}: {
-  message: ChatMessage;
-  products: Product[];
-  onOpen: () => void;
-}) {
-  const result = message.swipeResult;
-  return (
-    <div className="launcher">
-      <div className="launcher-stack" aria-hidden>
-        {products.slice(0, 3).map((p, i) => (
-          <div key={p.id} className="launcher-card" style={{ transform: `rotate(${(i - 1) * 7}deg)`, zIndex: 3 - i }}>
-            <ProductThumb product={p} size="sm" />
-          </div>
-        ))}
-      </div>
-      <div className="launcher-text">
-        <strong>{message.deckTitle ?? 'Top matches'}</strong>
-        <span className="muted small">
-          {result
-            ? `${result.added.length} added · ${result.added.length + result.skipped.length} of ${products.length} reviewed`
-            : `${products.length} products · swipe to add`}
-        </span>
-      </div>
-      <button type="button" className={`btn ${result ? 'btn-ghost' : 'btn-primary'} btn-sm`} onClick={onOpen}>
-        <Layers size={15} />
-        {result ? 'Swipe again' : 'Start swiping'}
-      </button>
     </div>
   );
 }

@@ -1,19 +1,16 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BasketPanel } from './components/BasketPanel';
 import { ChatView } from './components/Chat';
 import { Header } from './components/Header';
 import { OcadoCheckout } from './components/OcadoCheckout';
-import { SwipeDeck } from './components/SwipeDeck';
 import { useBasket } from './state/basket';
 import { useChat } from './state/useChat';
-import type { ChatMessage, SwipeResult } from './types';
 
 export default function App() {
   const { messages, thinking, send, completeSwipe, setView: setMessageView, reset } = useChat();
   const { clear } = useBasket();
   const [view, setView] = useState<'shop' | 'checkout'>('shop');
   const [sheetOpen, setSheetOpen] = useState(false);
-  const [deck, setDeck] = useState<ChatMessage | null>(null);
 
   useEffect(() => {
     if (!sheetOpen) return;
@@ -21,14 +18,6 @@ export default function App() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [sheetOpen]);
-
-  const closeDeck = useCallback(
-    (result: SwipeResult) => {
-      if (deck && result.added.length + result.skipped.length > 0) completeSwipe(deck.id, result);
-      setDeck(null);
-    },
-    [deck, completeSwipe],
-  );
 
   const checkout = () => {
     setSheetOpen(false);
@@ -54,7 +43,7 @@ export default function App() {
           messages={messages}
           thinking={thinking}
           onSend={send}
-          onOpenDeck={setDeck}
+          onSwipeComplete={completeSwipe}
           onViewChange={setMessageView}
         />
         <aside className="basket-aside">
@@ -71,9 +60,6 @@ export default function App() {
         </div>
       )}
 
-      {deck?.products && (
-        <SwipeDeck title={deck.deckTitle ?? 'Picks'} products={deck.products} onClose={closeDeck} />
-      )}
     </div>
   );
 }
