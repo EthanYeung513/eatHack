@@ -10,6 +10,7 @@ export const SET_SIZE = 5;
 export const FAMILIES: [string, RegExp][] = [
   ['hot drinks', /hot chocolate|drinking chocolate|latte powder|chai|espresso|ground coffee|instant coffee|coffee beans|\bbeans\b.*illy|illy\b|tea ?bags/i],
   ['iced coffee', /latte|iced coffee/i],
+  ['functional drinks', /\boom\b|nootropic|adaptogen|\bcbd\b/i],
   ['cocktails', /cocktail can|spritz|martini|margarita|mojito|daiquiri|& tonic|gin & diet/i],
   ['fizz', /prosecco|cremant|champagne|cava|cuvee|asti|classique/i],
   ['spirits', /\b(gin|vodka|rum|whisky|tequila|liqueur)\b/i],
@@ -19,7 +20,7 @@ export const FAMILIES: [string, RegExp][] = [
   ['juice', /juice|smoothie|j2o|squash|robinsons|fruit creations/i],
   ['water & mixers', /water|tonic|kombucha|cordial|elderflower|soda/i],
   ['dips', /\bdip\b|houmous|hummus|salsa|guacamole/i],
-  ['crisps', /crisps|pringles|tortilla|doritos|snack a jacks|love corn|popcorn/i],
+  ['crisps', /crisps|pringles|tortilla|doritos|snack a jacks|love corn|popcorn|thins/i],
   ['nuts', /pistachio|cashew|peanuts|walnut|almonds|\bnuts\b|bombay mix/i],
   ['olives', /olive/i],
   ['cheese', /cheese|cheddar|brie|halloumi|feta|mozzarella|babybel|cheestrings|parmigiano/i],

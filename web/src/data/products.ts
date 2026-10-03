@@ -3,8 +3,50 @@ import data from './ocado-products.json';
 import { withPlaceholderCopy, type RawProduct } from './placeholderCopy';
 
 // Products added by hand (not in the Ocado export). `featured` puts them first
-// in relevant swipe decks. Rating and price are placeholders until we have real data.
+// in relevant swipe decks, in this order. Rating and price are placeholders until we have real data.
 const MANUAL: RawProduct[] = [
+  {
+    id: 'oom-balance-12-pack',
+    name: 'OOM Balance Sparkling Peach, Blood Orange & Hops (12 Pack)',
+    bio: 'Lightly sparkling peach, blood orange and hops functional drink, with Chaga, nootropics, vitamins and adaptogens.',
+    brand: 'OOM',
+    price: 22.0,
+    size: '12 x 250ml',
+    unitPrice: '£0.73/100ml',
+    category: 'drinks',
+    tags: ['drinks', 'party', 'new'],
+    dietary: [],
+    rating: 4.6,
+    reviewCount: 31,
+    image: '/products/oom-balance-12-pack.jpg',
+    badge: 'New',
+    partyRole: 'soft',
+    nutrition: 'Nootropics, vitamins & adaptogens',
+    partner: true,
+    featured: true,
+  },
+  {
+    id: 'well-and-truly-cheddar-gouda-thins',
+    name: 'Well & Truly Rich Cheddar & Gouda Thins with a Hint of Jalapeño',
+    bio:
+      'Indulge in the bold, savoury flavour of these rich cheddar and Gouda thins, perfectly balanced with a subtle kick of jalapeño. ' +
+      'Light, crispy and packed with cheesy goodness from mature cheddar and creamy Gouda. Enjoy them on their own, share with friends or pair with your favourite dip.',
+    brand: 'Well & Truly',
+    price: 2.0,
+    size: '70g',
+    unitPrice: '£2.86/100g',
+    category: 'snacks',
+    tags: ['snacks', 'party', 'new'],
+    dietary: ['vegetarian', 'gluten-free'],
+    rating: 4.4,
+    reviewCount: 18,
+    image: '/products/well-and-truly-cheddar-gouda-thins.jpg',
+    badge: 'New',
+    partyRole: 'savoury',
+    nutrition: 'Source of protein · 30% less fat',
+    partner: true,
+    featured: true,
+  },
   {
     id: 'flow-salted-caramel-latte',
     name: 'Flow Mushroom Salted Caramel Iced Latte',
@@ -20,7 +62,7 @@ const MANUAL: RawProduct[] = [
     dietary: ['vegan', 'gluten-free'],
     rating: 4.5,
     reviewCount: 24,
-    image: '/products/flow-salted-caramel-latte.png',
+    image: '/products/flow-salted-caramel-latte.jpg',
     badge: 'New',
     partyRole: 'soft',
     nutrition: 'B vitamins · just 63 kcal',

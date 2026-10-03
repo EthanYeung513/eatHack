@@ -489,7 +489,8 @@ export function PickCards({ picks }: { picks: ShelfPick[] }) {
 // ---------- Receipt ----------
 
 function Receipt({ onContinue }: { onContinue: () => void }) {
-  const { lines, count, subtotal, setQty } = useBasket();
+  const { lines, count, subtotal, setQty, flash } = useBasket();
+  const flashSaving = flash?.saving ?? 0;
   const savings = lines.reduce(
     (s, l) => s + (l.product.wasPrice ? (l.product.wasPrice - l.product.price) * l.qty : 0),
     0,
@@ -532,8 +533,14 @@ function Receipt({ onContinue }: { onContinue: () => void }) {
       <dl>
         <div>
           <dt>Items ({count})</dt>
-          <dd>{formatPrice(subtotal + savings)}</dd>
+          <dd>{formatPrice(subtotal + savings + flashSaving)}</dd>
         </div>
+        {flashSaving > 0 && (
+          <div className="save">
+            <dt>Special offer</dt>
+            <dd>−{formatPrice(flashSaving)}</dd>
+          </div>
+        )}
         {savings > 0 && (
           <div className="save">
             <dt>Offer savings</dt>

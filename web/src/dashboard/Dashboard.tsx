@@ -16,11 +16,12 @@ import {
   type Period,
   type ProductMetrics,
 } from './metrics';
+import { Experiments } from './Experiments';
 import './dashboard.css';
 
 const NUDGE: Record<NudgeType, { label: string; icon: typeof Tag }> = {
   offer: { label: 'Deal', icon: Tag },
-  partner: { label: 'Partner video', icon: Handshake },
+  partner: { label: 'Social proof video', icon: Handshake },
   nutrition: { label: 'Nutrition', icon: Dumbbell },
   none: { label: 'No nudge (control)', icon: Minus },
 };
@@ -142,6 +143,8 @@ export function Dashboard() {
           <Kpi label="Picked by agent" value={num(total.picked)} note={`${pct(ratio(total.picked, total.delivered))} of nudges`} />
           <Kpi label="Successful buys" value={num(total.bought)} note={`${pct(ratio(total.bought, total.picked), 1)} of agent picks`} />
         </section>
+
+        <Experiments productIds={new Set(rows.map((r) => r.product.id))} period={period} />
 
         <Card title="Your range on Shelf" subtitle="Every product this brand sells through Ocado, with how each one performed.">
           <ProductRange rows={rows} />

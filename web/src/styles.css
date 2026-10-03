@@ -295,6 +295,19 @@ kbd {
   align-items: center;
 }
 
+.brand-link {
+  display: inline-flex;
+  flex-shrink: 0;
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.15s;
+}
+
+.brand-link:hover {
+  transform: scale(1.04);
+}
+
 .brand-name {
   display: inline-block;
   padding: 3px 14px 4px;
@@ -311,8 +324,10 @@ kbd {
 
 .retailer-pill {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
   height: 32px;
   padding: 0 13px;
   border-radius: 999px;
@@ -405,6 +420,12 @@ kbd {
   }
 
   .basket-btn {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .retailer-pill {
     display: none;
   }
 }
@@ -3055,11 +3076,40 @@ kbd {
   overflow: hidden;
 }
 
+.swipe-video {
+  cursor: pointer;
+}
+
 .swipe-video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   pointer-events: none;
+}
+
+/* Tap target hint: the whole video opens the full review. */
+.swipe-video-play {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  padding-left: 3px;
+  border-radius: 50%;
+  border: 2px solid var(--charcoal);
+  background: var(--lime);
+  color: var(--charcoal);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+  transition: transform 0.15s;
+}
+
+.swipe-video:hover .swipe-video-play {
+  transform: scale(1.08);
 }
 
 .swipe-video::after {
@@ -3363,4 +3413,164 @@ kbd {
 
 .deck-next strong {
   color: var(--lime);
+}
+
+/* Loss-aversion flash offer on the Ocado trolley */
+.flash {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 14px 16px 18px;
+  border-radius: 14px;
+  border: 2px solid var(--oc-primary);
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(75, 31, 111, 0.15);
+  overflow: hidden;
+  animation: rise 0.3s ease both;
+}
+
+.flash .thumb {
+  flex-shrink: 0;
+}
+
+.flash-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.flash-body strong {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 16px;
+  color: var(--oc-primary);
+}
+
+.flash-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  align-self: flex-start;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: var(--oc-lime);
+  color: #23300a;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.flash-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 34px;
+  height: 26px;
+  padding: 0 6px;
+  border-radius: 8px;
+  background: var(--oc-primary);
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.flash-product {
+  font-size: 13px;
+  color: #4a4453;
+}
+
+.flash-product s {
+  color: #8b8396;
+}
+
+.flash-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.flash-actions .oc-btn {
+  width: auto;
+  white-space: nowrap;
+}
+
+.flash-close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: #f3eef8;
+  color: var(--oc-primary);
+}
+
+.flash-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  background: #f3eef8;
+}
+
+.flash-bar i {
+  display: block;
+  height: 100%;
+  background: var(--oc-primary);
+  transform-origin: left;
+  animation: flash-countdown linear forwards;
+}
+
+@keyframes flash-countdown {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+
+.flash-taken {
+  border-color: #6c9e1f;
+}
+
+.flash-taken .flash-body strong {
+  color: #3d7a14;
+}
+
+.flash-expired,
+.flash-dismissed {
+  opacity: 0.7;
+}
+
+.oc-flash-line {
+  color: #3d7a14;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .flash {
+    flex-wrap: wrap;
+  }
+
+  .flash-actions {
+    width: 100%;
+  }
+
+  .flash-actions .oc-btn {
+    flex: 1;
+  }
+}
+
+.handoff-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }

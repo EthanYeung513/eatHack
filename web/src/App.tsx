@@ -12,6 +12,8 @@ export default function App() {
   const { clear } = useBasket();
   const [view, setView] = useState<'shop' | 'checkout'>('shop');
   const [sheetOpen, setSheetOpen] = useState(false);
+  // The checkout special offer shows once per session.
+  const [flashSeen, setFlashSeen] = useState(false);
 
   useEffect(() => {
     if (!sheetOpen) return;
@@ -19,6 +21,14 @@ export default function App() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [sheetOpen]);
+
+  // Home is the welcome screen: a fresh chat, the basket kept.
+  const goHome = () => {
+    reset();
+    setSheetOpen(false);
+    setView('shop');
+    window.scrollTo({ top: 0 });
+  };
 
   const checkout = () => {
     setSheetOpen(false);
@@ -32,16 +42,24 @@ export default function App() {
         <OcadoCheckout
           partyGuests={partyGuests}
           swipeHistory={swipeHistory}
+          showFlash={!flashSeen}
+          onFlashDone={() => setFlashSeen(true)}
           onExit={(orderPlaced) => {
             if (orderPlaced) clear();
             setView('shop');
           }}
+          onHome={goHome}
         />
       )}
 
       {/* Stays mounted during checkout so swipe decks keep their state. */}
       <div className="app" hidden={view === 'checkout'}>
-        <Header onNewChat={reset} onOpenBasket={() => setSheetOpen(true)} canReset={messages.length > 0} />
+        <Header
+          onHome={goHome}
+          onNewChat={reset}
+          onOpenBasket={() => setSheetOpen(true)}
+          canReset={messages.length > 0}
+        />
         <div className="app-body">
           <ChatView
             messages={messages}

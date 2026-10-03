@@ -16,6 +16,7 @@ import { OCADO_MINIMUM } from './BasketPanel';
 import { Logo } from './Header';
 import { shelfPicks } from '../services/partyUsage';
 import type { SwipeLogEntry } from '../types';
+import { FlashOffer } from './FlashOffer';
 import { PartyPreview, PickCards } from './PartyPreview';
 import { ProductThumb, QtyStepper } from './ProductBits';
 
@@ -69,15 +70,23 @@ function buildSlots(): { day: string; date: string; slots: Slot[] }[] {
 export function OcadoCheckout({
   partyGuests,
   swipeHistory,
+  showFlash,
+  onFlashDone,
+  onHome,
   onExit,
 }: {
   /** Set when the basket came from the party planner: the trolley becomes the party preview. */
   partyGuests?: number | null;
   /** Every swipe from the chat, used for the last-minute recommendations. */
   swipeHistory: SwipeLogEntry[];
+  /** Show the 10-second loss-aversion offer on the trolley (once per session). */
+  showFlash: boolean;
+  onFlashDone: () => void;
+  /** Leave checkout for the Shelf welcome screen. */
+  onHome: () => void;
   onExit: (orderPlaced: boolean) => void;
 }) {
-  const { lines, count, subtotal } = useBasket();
+  const { lines, count, subtotal, flash } = useBasket();
   // Snapshot on arrival so a card doesn't vanish once its product is added.
   const [picks] = useState(() => (partyGuests ? [] : shelfPicks(lines, null, swipeHistory)));
   const [step, setStep] = useState<Step>('trolley');
@@ -109,9 +118,22 @@ export function OcadoCheckout({
   return (
     <div className="shell">
       <div className="handoff-bar">
-        <button type="button" className="link-btn" onClick={() => onExit(step === 'confirmed')}>
-          <ArrowLeft size={15} /> Back to <Logo />
-        </button>
+        <div className="handoff-nav">
+          <button type="button" className="link-btn" onClick={() => onExit(step === 'confirmed')}>
+            <ArrowLeft size={15} /> Back
+          </button>
+          <a
+            href="/"
+            className="brand-link"
+            aria-label="Shelf home"
+            onClick={(e) => {
+              e.preventDefault();
+              onHome();
+            }}
+          >
+            <Logo />
+          </a>
+        </div>
         <span className="handoff-note">
           <Lock size={13} /> Basket handed off to Ocado
         </span>
@@ -132,6 +154,7 @@ export function OcadoCheckout({
       </header>
 
       <main className="oc-main">
+        {step === 'trolley' && showFlash && <FlashOffer onDone={onFlashDone} />}
         {step !== 'confirmed' && (
           <ol className="oc-steps">
             {STEPS.map((s, i) => (
@@ -307,8 +330,14 @@ export function OcadoCheckout({
               <dl>
                 <div>
                   <dt>Items ({count})</dt>
-                  <dd>{formatPrice(subtotal)}</dd>
+                  <dd>{formatPrice(subtotal + (flash?.saving ?? 0))}</dd>
                 </div>
+                {flash && (
+                  <div className="oc-flash-line">
+                    <dt>Special offer</dt>
+                    <dd>−{formatPrice(flash.saving)}</dd>
+                  </div>
+                )}
                 <div>
                   <dt>Delivery</dt>
                   <dd>{slot ? formatPrice(delivery) : '—'}</dd>

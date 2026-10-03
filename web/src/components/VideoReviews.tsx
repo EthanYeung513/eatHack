@@ -2,6 +2,7 @@ import { Pause, Play, Volume2, VolumeX, X } from 'lucide-react';
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 import { getVideoReviews } from '../data/videoReviews';
 import { formatPrice } from '../state/basket';
+import { logNudge } from '../state/nudgeLog';
 import type { Product } from '../types';
 import { AddToBasket, ProductThumb, Stars } from './ProductBits';
 
@@ -86,6 +87,12 @@ function VideoPlayer({ product, index: startIndex, onClose }: PlayerState & { on
   const [progress, setProgress] = useState(0);
   const [paused, setPaused] = useState(false);
   const [muted, setMuted] = useState(false);
+  const openedAt = useRef(performance.now());
+
+  // Social proof: record that the video was watched, and whether it led to an add.
+  useEffect(() => {
+    logNudge({ experiment: 'social-proof', productId: product.id, outcome: 'watched' });
+  }, [product.id]);
   // Landscape footage is letterboxed rather than cropped to the portrait frame.
   const [landscape, setLandscape] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
@@ -180,7 +187,12 @@ function VideoPlayer({ product, index: startIndex, onClose }: PlayerState & { on
               <strong>{video.author}</strong>
               <span>{video.handle}</span>
             </div>
-            <button type="button" className="player-icon" onClick={() => setMuted((m) => !m)} aria-label={muted ? 'Unmute' : 'Mute'}>
+            <button
+              type="button"
+              className="player-icon"
+              onClick={() => setMuted((m) => !m)}
+              aria-label={muted ? 'Unmute' : 'Mute'}
+            >
               {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
             </button>
             <button type="button" className="player-icon" onClick={onClose} aria-label="Close">
@@ -204,7 +216,17 @@ function VideoPlayer({ product, index: startIndex, onClose }: PlayerState & { on
               <span className="player-product-name">{product.name}</span>
               <span className="player-product-price">{formatPrice(product.price)}</span>
             </div>
-            <AddToBasket product={product} />
+            <AddToBasket
+              product={product}
+              onAdd={() =>
+                logNudge({
+                  experiment: 'social-proof',
+                  productId: product.id,
+                  outcome: 'converted',
+                  ms: Math.round(performance.now() - openedAt.current),
+                })
+              }
+            />
           </div>
         </div>
       </div>

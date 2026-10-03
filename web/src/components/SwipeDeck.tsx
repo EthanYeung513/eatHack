@@ -1,12 +1,13 @@
-import { Check, Dumbbell, Handshake, Heart, Layers, RotateCcw, Tag, X } from 'lucide-react';
+import { Check, Dumbbell, Handshake, Heart, Layers, Play, RotateCcw, Tag, X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react';
 import { getVideoReviews } from '../data/videoReviews';
 import { nextSet, SET_SIZE, type NextSet as NextSetResult } from '../services/narrowing';
 import { nudgeFor } from '../services/partyPlanner';
 import { formatPrice, useBasket } from '../state/basket';
+import { logNudge } from '../state/nudgeLog';
 import type { DeckConfig, DeckEndReason, Direction, NudgeType, Product, SwipeLogEntry, SwipeResult } from '../types';
 import { Packshot, ProductThumb, Stars } from './ProductBits';
-import { VideoPill } from './VideoReviews';
+import { useOpenVideoReviews, VideoPill } from './VideoReviews';
 
 type Decision = SwipeLogEntry;
 
@@ -151,6 +152,14 @@ export function SwipeDeck({
     (dir: Direction) => {
       if (exiting || !current || done || paused) return;
       const ms = performance.now() - shownAt.current;
+      if (nudgeOf(current) === 'partner') {
+        logNudge({
+          experiment: 'social-proof',
+          productId: current.id,
+          outcome: dir === 'right' ? 'converted' : 'skipped',
+          ms: Math.round(ms),
+        });
+      }
       setExiting(dir);
       if (dir === 'right') add(current.id);
       window.setTimeout(() => {
@@ -217,9 +226,14 @@ export function SwipeDeck({
     return () => window.removeEventListener('keydown', onKey);
   });
 
+  const openVideo = useOpenVideoReviews();
+  // Whether the press started on the card's video, so a tap there opens the full review.
+  const pressedVideo = useRef(false);
+
   const onPointerDown = (e: PointerEvent) => {
     if (exiting) return;
     origin.current = { x: e.clientX, y: e.clientY };
+    pressedVideo.current = !!(e.target as HTMLElement).closest('.swipe-video');
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
     setDrag({ x: 0, active: true });
   };
@@ -227,11 +241,21 @@ export function SwipeDeck({
     if (!origin.current) return;
     setDrag({ x: e.clientX - origin.current.x, active: true });
   };
-  const onPointerUp = () => {
+  const onPointerUp = (e: PointerEvent) => {
     if (!origin.current) return;
+    const moved = Math.hypot(e.clientX - origin.current.x, e.clientY - origin.current.y);
     origin.current = null;
     if (Math.abs(drag.x) > THRESHOLD) decide(drag.x > 0 ? 'right' : 'left');
-    else setDrag({ x: 0, active: false });
+    else {
+      setDrag({ x: 0, active: false });
+      // A tap (not a drag) on the video opens the full review.
+      if (pressedVideo.current && moved < 8 && current) openVideo(current);
+    }
+  };
+  // Scrolling past the card cancels the press: never counts as a swipe or a tap.
+  const onPointerCancel = () => {
+    origin.current = null;
+    setDrag({ x: 0, active: false });
   };
 
   const topTransform = exiting
@@ -363,7 +387,7 @@ export function SwipeDeck({
                     onPointerDown={isTop ? onPointerDown : undefined}
                     onPointerMove={isTop ? onPointerMove : undefined}
                     onPointerUp={isTop ? onPointerUp : undefined}
-                    onPointerCancel={isTop ? onPointerUp : undefined}
+                    onPointerCancel={isTop ? onPointerCancel : undefined}
                     aria-hidden={!isTop}
                   >
                     {isTop && (
@@ -424,8 +448,11 @@ function SwipeCardBody({ product, nudge, isTop }: { product: Product; nudge?: Nu
       <div className="swipe-media">
         {video ? (
           // Partner nudge: the shopper video plays right on the card.
-          <div className="swipe-video">
+          <div className="swipe-video" title="Tap to watch the full review">
             {isTop && <video src={video.src} poster={video.poster} autoPlay muted loop playsInline />}
+            <span className="swipe-video-play" aria-hidden>
+              <Play size={22} fill="currentColor" />
+            </span>
             <span className="swipe-video-label">
               {video.author} · {video.handle}
             </span>
@@ -515,8 +542,8 @@ function NudgeCallout({ product, nudge }: { product: Product; nudge: Exclude<Nud
         <Handshake size={16} />
       </span>
       <div>
-        <strong>Partner brand · {product.brand}</strong>
-        <span>Real shoppers on video. Tap the video button for the full review.</span>
+        <strong>Watch Humans · real shoppers on video</strong>
+        <span>{product.brand} is a partner brand. Tap the video button for the full review.</span>
       </div>
     </div>
   );

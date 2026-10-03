@@ -25,7 +25,7 @@ export const COMPANIES: Company[] = [
   { id: 'partners', label: 'All Shelf partner brands', match: (p) => !!p.partner },
 ];
 
-export const DEFAULT_COMPANY = 'Pip & Nut';
+export const DEFAULT_COMPANY = 'partners';
 
 export const brandProducts = (companyId: string) =>
   PRODUCTS.filter((p) => (COMPANIES.find((c) => c.id === companyId) ?? COMPANIES[0]).match(p));

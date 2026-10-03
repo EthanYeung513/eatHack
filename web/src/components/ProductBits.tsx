@@ -144,12 +144,19 @@ export function QtyStepper({ id, qty, compact }: { id: string; qty: number; comp
   );
 }
 
-export function AddToBasket({ product }: { product: Product }) {
+export function AddToBasket({ product, onAdd }: { product: Product; onAdd?: () => void }) {
   const { qtyOf, add } = useBasket();
   const qty = qtyOf(product.id);
   if (qty > 0) return <QtyStepper id={product.id} qty={qty} />;
   return (
-    <button type="button" className="btn btn-primary btn-sm" onClick={() => add(product.id)}>
+    <button
+      type="button"
+      className="btn btn-primary btn-sm"
+      onClick={() => {
+        add(product.id);
+        onAdd?.();
+      }}
+    >
       <Plus size={15} /> Add
     </button>
   );

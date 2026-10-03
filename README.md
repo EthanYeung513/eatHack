@@ -20,6 +20,12 @@ The basket then hands off to an Ocado-style checkout shell (trolley → delivery
 
 An enterprise view for brands (e.g. https://eat-hack.vercel.app/dashboard): their launched products, how many behavioural nudges were delivered, how many the agent picked up, how many converted into a buy, and where agent decisions and human buys diverge. Metrics are placeholder data generated per product (`src/dashboard/metrics.ts`); the real version would aggregate the swipe logs.
 
+**Nudge experiments** (`src/dashboard/Experiments.tsx`): each behavioural nudge runs on one product and is compared with a control.
+- *Social proof*: a Watch Humans video on the Flow latte's swipe card.
+- *Loss aversion*: "The special offer for this product will go in 10s" on the Ocado trolley, for Well & Truly thins (the second card in the party's first deck).
+
+The "This shopper" panel reads real outcomes from the shopper app in the same browser (`src/state/nudgeLog.ts`, localStorage), so you can try a nudge and see your own response on the dashboard.
+
 ## Web app (`web/`)
 
 React + TypeScript + Vite. Frontend only: the catalogue is a one-off Ocado export bundled as JSON, and the agent runs on the client.

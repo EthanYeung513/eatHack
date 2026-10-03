@@ -36,7 +36,7 @@ export const ZONES: Record<ZoneId, string> = {
   sweet: 'sweet spot',
 };
 
-const SNACKY = /crisps|pringles|pistachio|walnut|nuts|olive|corn|dip|granola|protein mix|popcorn/i;
+const SNACKY = /crisps|pringles|pistachio|walnut|nuts|olive|corn|dip|granola|protein mix|popcorn|thins/i;
 
 export function groupOf(p: Product): GroupId | undefined {
   switch (p.partyRole) {

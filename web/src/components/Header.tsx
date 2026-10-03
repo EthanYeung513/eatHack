@@ -10,10 +10,13 @@ export function Logo() {
 }
 
 export function Header({
+  onHome,
   onNewChat,
   onOpenBasket,
   canReset,
 }: {
+  /** Back to the welcome screen. */
+  onHome: () => void;
   onNewChat: () => void;
   onOpenBasket: () => void;
   canReset: boolean;
@@ -21,7 +24,17 @@ export function Header({
   const { count, subtotal } = useBasket();
   return (
     <header className="topbar">
-      <Logo />
+      <a
+        href="/"
+        className="brand-link"
+        aria-label="Shelf home"
+        onClick={(e) => {
+          e.preventDefault();
+          onHome();
+        }}
+      >
+        <Logo />
+      </a>
       <span className="retailer-pill">
         <span className="retailer-dot" />
         Shopping at <strong>Ocado</strong>

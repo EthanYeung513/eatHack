@@ -24,7 +24,7 @@ export const ROLE_LABEL: Record<PartyRole, string> = {
 
 export const NUDGE_LABEL: Record<NudgeType, string> = {
   offer: 'Deals & offers',
-  partner: 'Shopper videos',
+  partner: 'Social proof (Watch Humans videos)',
   nutrition: 'Nutrition (protein & fibre)',
   none: 'No nudge',
 };
@@ -82,7 +82,10 @@ export function discoveryReply(guests: number): AgentReply {
     );
   }).filter(Boolean) as Product[];
   // ...and opens the deck.
-  const products = [...picks.filter((p) => p.featured), ...picks.filter((p) => !p.featured)];
+  const products = [
+    ...FEATURED.filter((p) => picks.includes(p)),
+    ...picks.filter((p) => !p.featured),
+  ];
 
   return {
     mode: 'swipe',
