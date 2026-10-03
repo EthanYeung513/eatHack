@@ -845,7 +845,6 @@ kbd {
   border-radius: var(--radius-sm);
   background: var(--tone, var(--lime));
   color: var(--charcoal);
-  box-shadow: inset 0 0 0 1.5px var(--charcoal);
 }
 
 .thumb-photo {
@@ -1849,8 +1848,7 @@ kbd {
   padding: 10px;
   border-radius: 22px;
   background: #fff;
-  border: 2.5px solid var(--charcoal);
-  box-shadow: 0 0 0 6px #fff, 0 16px 30px rgba(42, 46, 48, 0.2);
+  box-shadow: 0 16px 30px rgba(42, 46, 48, 0.2);
   transform: rotate(-4deg);
   pointer-events: none;
 }
@@ -3385,112 +3383,76 @@ kbd {
   color: var(--lime);
 }
 
-/* Loss-aversion flash offer on the Ocado trolley */
-.flash {
+/* Loss-aversion offer on one last-minute shelf pick */
+.flash-card .pp-card-body {
   position: relative;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-  padding: 14px 16px 18px;
-  border-radius: 14px;
-  border: 2px solid var(--oc-primary);
-  background: #fff;
-  box-shadow: 0 8px 24px rgba(75, 31, 111, 0.15);
   overflow: hidden;
-  animation: rise 0.3s ease both;
+  padding-bottom: 18px;
 }
 
-.flash .thumb {
-  flex-shrink: 0;
+.flash-card.flash-live .pp-card-body {
+  background: #fff3c4;
+  box-shadow: 3px 3px 0 var(--oc-primary);
+  border-color: var(--oc-primary);
+  animation: flash-pulse 1s ease-in-out infinite alternate;
 }
 
-.flash-body {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+@keyframes flash-pulse {
+  to {
+    box-shadow: 5px 5px 0 var(--oc-primary);
+  }
 }
 
-.flash-body strong {
+.flash-ribbon {
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
-  font-size: 16px;
-  color: var(--oc-primary);
-}
-
-.flash-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  align-self: flex-start;
-  padding: 1px 8px;
-  border-radius: 999px;
-  background: var(--oc-lime);
-  color: #23300a;
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.flash-count {
-  display: inline-grid;
-  place-items: center;
-  min-width: 34px;
-  height: 26px;
-  padding: 0 6px;
+  gap: 4px;
+  padding: 4px 8px;
   border-radius: 8px;
   background: var(--oc-primary);
   color: #fff;
+  font-size: 11.5px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.flash-ribbon b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  padding: 0 4px;
+  border-radius: 6px;
+  background: var(--oc-lime);
+  color: #23300a;
   font-variant-numeric: tabular-nums;
 }
 
-.flash-product {
-  font-size: 13px;
-  color: #4a4453;
+.flash-taken .flash-ribbon {
+  background: #3d7a14;
 }
 
-.flash-product s {
-  color: #8b8396;
+.flash-expired .flash-ribbon {
+  background: #8b8396;
 }
 
-.flash-actions {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-shrink: 0;
+.pp-card-price s {
+  margin-left: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(42, 46, 48, 0.55);
 }
 
-.flash-actions .oc-btn {
-  width: auto;
-  white-space: nowrap;
-}
-
-.flash-close {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border: 0;
-  border-radius: 50%;
-  background: #f3eef8;
-  color: var(--oc-primary);
-}
-
-.flash-bar {
+.flash-card-bar {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   height: 5px;
-  background: #f3eef8;
+  background: rgba(75, 31, 111, 0.15);
 }
 
-.flash-bar i {
+.flash-card-bar i {
   display: block;
   height: 100%;
   background: var(--oc-primary);
@@ -3505,19 +3467,6 @@ kbd {
   to {
     transform: scaleX(0);
   }
-}
-
-.flash-taken {
-  border-color: #6c9e1f;
-}
-
-.flash-taken .flash-body strong {
-  color: #3d7a14;
-}
-
-.flash-expired,
-.flash-dismissed {
-  opacity: 0.7;
 }
 
 .oc-flash-line {

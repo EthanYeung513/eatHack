@@ -16,7 +16,6 @@ import { OCADO_MINIMUM } from './BasketPanel';
 import { Logo } from './Header';
 import { shelfPicks } from '../services/partyUsage';
 import type { SwipeLogEntry } from '../types';
-import { FlashOffer } from './FlashOffer';
 import { PartyPreview, PickCards } from './PartyPreview';
 import { ProductThumb, QtyStepper } from './ProductBits';
 
@@ -79,7 +78,7 @@ export function OcadoCheckout({
   partyGuests?: number | null;
   /** Every swipe from the chat, used for the last-minute recommendations. */
   swipeHistory: SwipeLogEntry[];
-  /** Show the 10-second loss-aversion offer on the trolley (once per session). */
+  /** Run the 10-second loss-aversion offer on one last-minute pick (once per session). */
   showFlash: boolean;
   onFlashDone: () => void;
   /** Leave checkout for the Shelf welcome screen. */
@@ -87,6 +86,9 @@ export function OcadoCheckout({
   onExit: (orderPlaced: boolean) => void;
 }) {
   const { lines, count, subtotal, flash } = useBasket();
+  // Decided when checkout opens, so the offer card stays put after it finishes.
+  const [flashOn] = useState(showFlash);
+  const flashProps = flashOn ? { onDone: onFlashDone } : undefined;
   // Snapshot on arrival so a card doesn't vanish once its product is added.
   const [picks] = useState(() => (partyGuests ? [] : shelfPicks(lines, null, swipeHistory)));
   const [step, setStep] = useState<Step>('trolley');
@@ -154,7 +156,6 @@ export function OcadoCheckout({
       </header>
 
       <main className="oc-main">
-        {step === 'trolley' && showFlash && <FlashOffer onDone={onFlashDone} />}
         {step !== 'confirmed' && (
           <ol className="oc-steps">
             {STEPS.map((s, i) => (
@@ -193,7 +194,12 @@ export function OcadoCheckout({
             </button>
           </div>
         ) : step === 'trolley' && partyGuests ? (
-          <PartyPreview guests={partyGuests} history={swipeHistory} onContinue={() => setStep('slot')} />
+          <PartyPreview
+            guests={partyGuests}
+            history={swipeHistory}
+            flash={flashProps}
+            onContinue={() => setStep('slot')}
+          />
         ) : (
           <div className="oc-layout">
             <section className="oc-panel">
@@ -229,7 +235,7 @@ export function OcadoCheckout({
                     <section className="oc-picks">
                       <h3>Before you check out</h3>
                       <p className="muted small">Picked from your basket and what you swiped in Shelf.</p>
-                      <PickCards picks={picks} />
+                      <PickCards picks={picks} flash={flashProps} />
                     </section>
                   )}
                 </>

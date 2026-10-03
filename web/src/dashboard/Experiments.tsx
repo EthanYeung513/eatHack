@@ -1,8 +1,7 @@
 import { Clock, Hourglass, RotateCcw, User, Video } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { FLASH_PRODUCT_ID } from '../components/FlashOffer';
 import { ProductThumb } from '../components/ProductBits';
-import { PRODUCTS_BY_ID } from '../data/products';
+import { PRODUCTS, PRODUCTS_BY_ID } from '../data/products';
 import { VIDEO_PRODUCT_IDS } from '../data/videoReviews';
 import { clearNudgeEvents, readNudgeEvents, type NudgeEvent, type NudgeExperiment } from '../state/nudgeLog';
 import type { Period } from './metrics';
@@ -17,7 +16,7 @@ interface Experiment {
   how: string;
   /** The product shown on the card. */
   productId: string;
-  /** Every product the nudge runs on. */
+  /** Every product the nudge runs on; empty means it can run on any product. */
   productIds: string[];
   /** Per 30 days, before scaling to the selected period. */
   base: {
@@ -49,10 +48,10 @@ export const EXPERIMENTS: Experiment[] = [
   {
     id: 'loss-aversion',
     title: 'Loss aversion',
-    mechanism: '“The special offer for this product will go in 10s” at checkout',
-    how: 'A 10-second countdown on a 50p saving, shown once on the Ocado trolley.',
-    productId: FLASH_PRODUCT_ID,
-    productIds: [FLASH_PRODUCT_ID],
+    mechanism: '“The special offer for this product will go in 10s” on a last-minute shelf pick',
+    how: 'One last-minute pick at checkout gets ~20% off for 10 seconds, starting when the card comes into view. Shown once per session.',
+    productId: PRODUCTS.find((p) => /pringles prawn cocktail/i.test(p.name))?.id ?? PRODUCTS[0].id,
+    productIds: [],
     base: { shown: 1960, converted: 862, controlShown: 1840, controlConverted: 349, secs: 3.4, controlSecs: 7.9 },
     breakdown: (shown, converted) => [
       { label: 'Took the offer in time', value: converted },
@@ -89,7 +88,14 @@ function useSessionEvents() {
 
 export function Experiments({ productIds, period }: { productIds: Set<string>; period: Period }) {
   const { events, clear } = useSessionEvents();
-  const visible = EXPERIMENTS.filter((e) => e.productIds.some((id) => productIds.has(id)));
+  const runsOn = (e: Experiment, id: string) => e.productIds.length === 0 || e.productIds.includes(id);
+  // Experiments that can run on any product show the one this shopper actually got.
+  const visible = EXPERIMENTS.filter((e) => !e.productIds.length || e.productIds.some((id) => productIds.has(id))).map(
+    (e) => {
+      const last = [...events].reverse().find((x) => x.experiment === e.id && PRODUCTS_BY_ID[x.productId]);
+      return e.productIds.length || !last ? e : { ...e, productId: last.productId };
+    },
+  );
   if (!visible.length) return null;
 
   return (
@@ -114,7 +120,7 @@ export function Experiments({ productIds, period }: { productIds: Set<string>; p
             key={e.id}
             experiment={e}
             period={period}
-            events={events.filter((x) => x.experiment === e.id && e.productIds.includes(x.productId))}
+            events={events.filter((x) => x.experiment === e.id && runsOn(e, x.productId))}
           />
         ))}
       </div>

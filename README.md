@@ -21,8 +21,8 @@ The basket then hands off to an Ocado-style checkout shell (trolley → delivery
 An enterprise view for brands (e.g. https://eat-hack.vercel.app/dashboard): their launched products, how many behavioural nudges were delivered, how many the agent picked up, how many converted into a buy, and where agent decisions and human buys diverge. Metrics are placeholder data generated per product (`src/dashboard/metrics.ts`); the real version would aggregate the swipe logs.
 
 **Nudge experiments** (`src/dashboard/Experiments.tsx`): each behavioural nudge runs on one product and is compared with a control.
-- *Social proof*: a Watch Humans video on the Flow latte's swipe card.
-- *Loss aversion*: "The special offer for this product will go in 10s" on the Ocado trolley, for Well & Truly thins (the second card in the party's first deck).
+- *Social proof*: Watch Humans videos on the swipe cards for OOM, Well & Truly and Flow.
+- *Loss aversion*: one product on the checkout's last-minute shelf (the first pick not already in the trolley, £5 or under) gets ~20% off with "The special offer for this product will go in 10s". The countdown starts when the card is on screen; taking it in time applies the saving to the basket.
 
 The "This shopper" panel reads real outcomes from the shopper app in the same browser (`src/state/nudgeLog.ts`, localStorage), so you can try a nudge and see your own response on the dashboard.
 

@@ -1,4 +1,4 @@
-import { ArrowRight, Check, Minus, Plus } from 'lucide-react';
+import { ArrowRight, Check, Minus, Plus, Timer } from 'lucide-react';
 import { useState, type CSSProperties } from 'react';
 import { formatPrice, useBasket, type BasketLine } from '../state/basket';
 import {
@@ -16,6 +16,7 @@ import {
 } from '../services/partyUsage';
 import type { SwipeLogEntry } from '../types';
 import { OCADO_MINIMUM } from './BasketPanel';
+import { pickFlashTarget, useFlashOffer } from './FlashOffer';
 import { ProductThumb, Stars } from './ProductBits';
 import './partyPreview.css';
 
@@ -30,9 +31,12 @@ const STATUS_LABEL: Record<Coverage, string> = { sorted: 'sorted', light: 'a bit
 export function PartyPreview({
   guests: initialGuests,
   history,
+  flash,
   onContinue,
 }: {
   guests: number;
+  /** Loss-aversion offer on one shelf pick, when it hasn't run yet this session. */
+  flash?: FlashProps;
   /** Every swipe from the chat, so picks reflect what the shopper liked and skipped. */
   history: SwipeLogEntry[];
   onContinue: () => void;
@@ -77,7 +81,7 @@ export function PartyPreview({
           ))}
         </section>
 
-        <LastMinuteShelf lines={lines} guests={guests} history={history} />
+        <LastMinuteShelf lines={lines} guests={guests} history={history} flash={flash} />
 
         <p className="pp-note">
           Nothing goes in unless you tap. Products, photos, prices and offers come from the Ocado catalogue. Party maths
@@ -402,10 +406,12 @@ function LastMinuteShelf({
   lines,
   guests,
   history,
+  flash,
 }: {
   lines: BasketLine[];
   guests: number;
   history: SwipeLogEntry[];
+  flash?: FlashProps;
 }) {
   // Picks are computed against the trolley as it was, so a card doesn't vanish once it's added.
   const [picks] = useState(() => shelfPicks(lines, guests, history));
@@ -424,23 +430,52 @@ function LastMinuteShelf({
           </span>
         ))}
       </div>
-      <PickCards picks={picks} />
+      <PickCards picks={picks} flash={flash} />
     </section>
   );
 }
 
+/** Flash offer settings for a set of pick cards (once per session). */
+export interface FlashProps {
+  onDone: () => void;
+}
+
 /** Pick cards, shared by the party shelf and the standard trolley's "before you check out". */
-export function PickCards({ picks }: { picks: ShelfPick[] }) {
+export function PickCards({ picks, flash }: { picks: ShelfPick[]; flash?: FlashProps }) {
   const { add } = useBasket();
   const [added, setAdded] = useState<Set<string>>(new Set());
+  // Chosen once, so the offer doesn't hop to another card as the trolley changes.
+  const [target] = useState(() => (flash ? pickFlashTarget(picks) : undefined));
+  const offer = useFlashOffer(target, flash?.onDone);
+
   return (
     <div className="pp-cards">
       {picks.map((p) => {
         const done = added.has(p.product.id);
+        const isFlash = target?.id === p.product.id && offer.state !== 'waiting';
+        const live = isFlash && offer.state === 'live';
+        const took = isFlash && offer.state === 'taken';
+        const price = live || took ? p.product.price - offer.saving : p.product.price;
         return (
-          <article key={p.product.id} className="pp-card">
+          <article
+            key={p.product.id}
+            ref={target?.id === p.product.id ? offer.ref : undefined}
+            className={`pp-card${isFlash ? ` flash-card flash-${offer.state}` : ''}`}
+          >
             <span className="pp-card-reason">{p.reason}</span>
             <div className="pp-card-body">
+              {isFlash && (
+                <span className="flash-ribbon" role="status" aria-live="polite">
+                  <Timer size={13} />
+                  {live && (
+                    <>
+                      The special offer for this product will go in <b>{offer.left}s</b>
+                    </>
+                  )}
+                  {took && <>Special offer applied</>}
+                  {offer.state === 'expired' && <>The offer has gone</>}
+                </span>
+              )}
               <strong className="pp-card-name">{p.product.name}</strong>
               <span className="pp-card-meta">
                 {[p.product.brand, p.product.size].filter(Boolean).join(' · ')} · <Stars rating={p.product.rating} />
@@ -451,21 +486,27 @@ export function PickCards({ picks }: { picks: ShelfPick[] }) {
                   {p.group.label} {p.group.have} → {p.group.have + p.gain} {p.group.unit}
                 </span>
               )}
-              {p.tag && <span className={`pp-card-tag ${p.tag.kind}`}>{p.tag.text}</span>}
-              <span className="pp-card-price">{formatPrice(p.product.price)}</span>
+              {p.tag && !live && <span className={`pp-card-tag ${p.tag.kind}`}>{p.tag.text}</span>}
+              <span className="pp-card-price">
+                {formatPrice(price)}
+                {(live || took) && <s>{formatPrice(p.product.price)}</s>}
+              </span>
               <button
                 type="button"
                 className="pp-card-btn"
-                disabled={done}
+                disabled={done || took}
                 onClick={() => {
-                  add(p.product.id);
+                  if (live) offer.take();
+                  else add(p.product.id);
                   setAdded((s) => new Set(s).add(p.product.id));
                 }}
               >
-                {done ? (
+                {done || took ? (
                   <>
                     <Check size={14} /> Added
                   </>
+                ) : live ? (
+                  `Add for ${formatPrice(price)}`
                 ) : p.again ? (
                   p.group?.id === 'toast' ? (
                     'Add a 2nd bottle'
@@ -478,6 +519,11 @@ export function PickCards({ picks }: { picks: ShelfPick[] }) {
                   'Add to trolley'
                 )}
               </button>
+              {live && (
+                <span className="flash-card-bar" aria-hidden>
+                  <i style={{ animationDuration: `${offer.left}s` }} />
+                </span>
+              )}
             </div>
           </article>
         );
