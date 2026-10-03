@@ -11,10 +11,6 @@ export default function App() {
   const { clear } = useBasket();
   const [view, setView] = useState<'shop' | 'checkout'>('shop');
   const [sheetOpen, setSheetOpen] = useState(false);
-  // The checkout recommendation is shown once per party.
-  const [recoSeen, setRecoSeen] = useState(false);
-
-  useEffect(() => setRecoSeen(false), [partyGuests]);
 
   useEffect(() => {
     if (!sheetOpen) return;
@@ -33,8 +29,7 @@ export default function App() {
     <>
       {view === 'checkout' && (
         <OcadoCheckout
-          partyGuests={recoSeen ? null : partyGuests}
-          onRecoDone={() => setRecoSeen(true)}
+          partyGuests={partyGuests}
           onExit={(orderPlaced) => {
             if (orderPlaced) clear();
             setView('shop');

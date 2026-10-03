@@ -5,7 +5,6 @@ import {
   Leaf,
   Lock,
   MapPin,
-  PartyPopper,
   Search,
   ShieldCheck,
   ShoppingCart,
@@ -15,8 +14,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { formatPrice, useBasket } from '../state/basket';
 import { OCADO_MINIMUM } from './BasketPanel';
 import { Logo } from './Header';
-import { goalRecommendations } from '../services/partyPlanner';
-import { AddToBasket, ProductThumb, QtyStepper } from './ProductBits';
+import { PartyPreview } from './PartyPreview';
+import { ProductThumb, QtyStepper } from './ProductBits';
 
 // Mock of the retailer's checkout. Once integrated this hands off to Ocado itself.
 
@@ -67,22 +66,13 @@ function buildSlots(): { day: string; date: string; slots: Slot[] }[] {
 
 export function OcadoCheckout({
   partyGuests,
-  onRecoDone,
   onExit,
 }: {
-  /** Set when a party basket should get its one-time gap check; null once it's been shown. */
+  /** Set when the basket came from the party planner: the trolley becomes the party preview. */
   partyGuests?: number | null;
-  onRecoDone?: () => void;
   onExit: (orderPlaced: boolean) => void;
 }) {
   const { lines, count, subtotal } = useBasket();
-  // Snapshot on arrival so items don't vanish from the list as they're added.
-  const [recos] = useState(() => (partyGuests ? goalRecommendations(partyGuests, lines) : []));
-  const [recoOpen, setRecoOpen] = useState(recos.length > 0);
-  const closeReco = () => {
-    setRecoOpen(false);
-    onRecoDone?.();
-  };
   const [step, setStep] = useState<Step>('trolley');
   const [slotId, setSlotId] = useState<string | null>(null);
   const [placing, setPlacing] = useState(false);
@@ -159,7 +149,11 @@ export function OcadoCheckout({
               <div className="oc-confirm-slot">
                 <Truck size={18} />
                 <span>
-                  Arriving <strong>{slot.day}, {slot.date}</strong> between <strong>{slot.time}</strong>
+                  Arriving{' '}
+                  <strong>
+                    {slot.day}, {slot.date}
+                  </strong>{' '}
+                  between <strong>{slot.time}</strong>
                 </span>
               </div>
             )}
@@ -168,6 +162,8 @@ export function OcadoCheckout({
               Back to Shelf
             </button>
           </div>
+        ) : step === 'trolley' && partyGuests ? (
+          <PartyPreview guests={partyGuests} onContinue={() => setStep('slot')} />
         ) : (
           <div className="oc-layout">
             <section className="oc-panel">
@@ -180,47 +176,6 @@ export function OcadoCheckout({
                       {count} items were added from <strong>Shelf</strong>. Review them before choosing a slot.
                     </span>
                   </div>
-                  {recoOpen && partyGuests && (
-                    <section className="oc-reco" aria-label="Recommended for your party">
-                      <header>
-                        <span className="oc-reco-icon">
-                          <PartyPopper size={18} />
-                        </span>
-                        <div>
-                          <strong>Before you check out</strong>
-                          <span>
-                            Your party for {partyGuests} is still short on a few essentials. Recommended by Shelf.
-                          </span>
-                        </div>
-                      </header>
-                      <ul>
-                        {recos.map(({ item, product, missing }) => (
-                          <li key={product.id}>
-                            <ProductThumb product={product} size="sm" />
-                            <div>
-                              <span className="oc-reco-need">
-                                {item.label}: {missing} more needed
-                              </span>
-                              <span className="oc-line-name">{product.name}</span>
-                              <span className="muted small">
-                                {formatPrice(product.price)}
-                                {product.offer && <em> · {product.offer}</em>}
-                              </span>
-                            </div>
-                            <AddToBasket product={product} />
-                          </li>
-                        ))}
-                      </ul>
-                      <footer>
-                        <button type="button" className="link-btn" onClick={closeReco}>
-                          No thanks
-                        </button>
-                        <button type="button" className="oc-btn oc-btn-outline" onClick={closeReco}>
-                          Done
-                        </button>
-                      </footer>
-                    </section>
-                  )}
                   {lines.length === 0 ? (
                     <p className="muted">Your trolley is empty.</p>
                   ) : (
@@ -292,7 +247,9 @@ export function OcadoCheckout({
                       <strong>Delivery address</strong>
                       <span className="muted small">Flat 4, 12 Example Road, London, N1 2AB</span>
                     </div>
-                    <button type="button" className="link-btn">Change</button>
+                    <button type="button" className="link-btn">
+                      Change
+                    </button>
                   </div>
                   {slot && (
                     <div className="oc-detail">
@@ -314,7 +271,9 @@ export function OcadoCheckout({
                       <strong>Visa ending 4242</strong>
                       <span className="muted small">Expires 08/29</span>
                     </div>
-                    <button type="button" className="link-btn">Change</button>
+                    <button type="button" className="link-btn">
+                      Change
+                    </button>
                   </div>
                   <label className="oc-promo">
                     <span className="small">Voucher code</span>
@@ -355,15 +314,7 @@ export function OcadoCheckout({
                 </p>
               )}
               {step === 'trolley' && (
-                <button
-                  type="button"
-                  className="oc-btn"
-                  disabled={!lines.length}
-                  onClick={() => {
-                    if (recoOpen) closeReco();
-                    setStep('slot');
-                  }}
-                >
+                <button type="button" className="oc-btn" disabled={!lines.length} onClick={() => setStep('slot')}>
                   Choose delivery slot
                 </button>
               )}

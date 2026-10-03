@@ -18,7 +18,7 @@ import type { AgentReply } from './agent';
 //   3. targeted deck: specific products, each carrying one nudge (deal,
 //      nutrition, partner-brand video, or none as a control)
 //   4. wrap-up when the shopper slows down: goal progress + which nudges worked
-//   5. at checkout, a one-time recommendation for anything still missing
+//   5. at checkout, the trolley is regenerated as a party preview (see partyUsage)
 
 export const ROLE_LABEL: Record<PartyRole, string> = {
   savoury: 'savoury snacks',
@@ -235,17 +235,4 @@ export function goalProgress(guests: number, lines: BasketLine[]) {
       .reduce((n, l) => n + l.qty, 0);
     return { ...item, have, done: have >= item.target };
   });
-}
-
-/** Products to fill the gaps in the goal, one per missing area. */
-export function goalRecommendations(guests: number, lines: BasketLine[]) {
-  const inBasket = new Set(lines.map((l) => l.product.id));
-  return goalProgress(guests, lines)
-    .filter((item) => !item.done)
-    .map((item) => {
-      const candidates = item.roles.flatMap((r) => pool(r, inBasket));
-      const product = candidates.find((p) => p.offer) ?? candidates[0];
-      return product && { item, product, missing: item.target - item.have };
-    })
-    .filter(Boolean) as { item: GoalItem; product: Product; missing: number }[];
 }

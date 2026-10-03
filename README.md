@@ -13,7 +13,7 @@ The basket then hands off to an Ocado-style checkout shell (trolley → delivery
 2. **Discovery deck:** 5 broad cards (crisps, sweets, soft drinks, fizz, party food) to learn what this basket is for.
 3. **Targeted deck:** "That's a good start, you'll probably also need…", then specific products. Each card carries one nudge: a **deal**, a **nutrition** claim (high protein/fibre), a **partner brand** with its video review playing on the card, or **none** as a control. Every swipe is timed.
 4. **Wrap-up:** when swipes slow down (latest three take ~2× as long as the first three), the deck ends and the shopper sees goal progress, what they're looking for, and which nudges they responded to.
-5. **Checkout:** if the basket still misses the goal, a one-time recommendation appears inside the Ocado trolley.
+5. **Checkout, regenerated for the intent:** the Ocado trolley becomes "Saturday's party, laid out": the basket placed in an illustrated room (the bar, cheese board, by the sofa, sweet spot), how far each product goes for the guest count (e.g. a 75cl bottle = 6 glasses), what's "sorted" or "a bit light", and a last-minute shelf of picks that fill the gaps (impulse buys, partner brands and offers). Logic in `src/services/partyUsage.ts`.
 
 ## Brand dashboard (`/dashboard`)
 
