@@ -51,7 +51,8 @@ const TOPICS: Topic[] = [
   { id: 'party', re: /\b(party|parties|birthday|celebrat\w*|hosting|host|guests|gathering)\b/i, tag: 'party', title: 'Party picks', occasion: true },
 ];
 
-const MAX_DECK = 15;
+/** Products a chat deck can draw its sets from. */
+const MAX_POOL = 40;
 
 const REVIEW_INTENT =
   /\b(best|compare|comparison|vs|versus|which|worth|reviews?|top[- ]rated|better|rating|ratings|what do people think)\b/i;
@@ -203,7 +204,7 @@ function decide(input: string): AgentReply {
     const products = featuredFirst(
       applyFilters(PRODUCTS.filter(inDeck), input).sort((a, b) => relevance(b) - relevance(a)),
       (p) => inDeck(p) && applyFilters([p], input).length > 0,
-    ).slice(0, MAX_DECK);
+    ).slice(0, MAX_POOL);
     const topic = specific[0] ?? occasion!;
     const title =
       !specific.length && party && occasion && occasion !== party ? `${occasion.title} party` : topic.title;
@@ -219,7 +220,8 @@ function decide(input: string): AgentReply {
         topicId: occasion?.id ?? topic.id,
         deckTitle: title,
         products,
-        text: `${plan}I've lined up ${products.length} products from Ocado, 5 at a time, most popular first. Swipe right to add, left to skip.`,
+        deck: { kind: 'standard', narrow: { startStage: 0, maxSets: 3 } },
+        text: `${plan}I'll start with a wide range, 5 at a time, and narrow it down as you swipe. Swipe right to add, left to skip.`,
         rationale:
           "You're exploring a wide range, so quick yes/no decisions will get you to a basket faster than comparing lists.",
       };

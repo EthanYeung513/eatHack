@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { askAgent, simulateThinking, swipeFollowUp, type AgentReply } from '../services/agent';
 import {
   askGuests,
@@ -106,5 +106,8 @@ export function useChat() {
     setMessages([]);
   }, []);
 
-  return { messages, thinking, partyGuests, send, completeSwipe, setView, reset };
+  // Every finished swipe deck in the conversation, oldest first.
+  const swipeHistory = useMemo(() => messages.flatMap((m) => m.swipeResult?.log ?? []), [messages]);
+
+  return { messages, thinking, partyGuests, swipeHistory, send, completeSwipe, setView, reset };
 }

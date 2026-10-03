@@ -1,15 +1,7 @@
 import { FEATURED, PRODUCTS } from '../data/products';
 import { getVideoReviews } from '../data/videoReviews';
 import type { BasketLine } from '../state/basket';
-import type {
-  DeckEndReason,
-  NudgeStat,
-  NudgeType,
-  PartyRole,
-  Product,
-  SwipeLogEntry,
-  SwipeResult,
-} from '../types';
+import type { DeckEndReason, NudgeStat, NudgeType, PartyRole, Product, SwipeLogEntry, SwipeResult } from '../types';
 import type { AgentReply } from './agent';
 
 // "Host a party" journey:
@@ -85,7 +77,9 @@ export function discoveryReply(guests: number): AgentReply {
     const featured = FEATURED.find((p) => p.partyRole === role);
     if (featured) return featured;
     const items = pool(role).filter((p) => p.reviewCount > 0);
-    return items.find((p) => archetype.test(p.name) && p.image) ?? items.find((p) => archetype.test(p.name)) ?? items[0];
+    return (
+      items.find((p) => archetype.test(p.name) && p.image) ?? items.find((p) => archetype.test(p.name)) ?? items[0]
+    );
   }).filter(Boolean) as Product[];
   // ...and opens the deck.
   const products = [...picks.filter((p) => p.featured), ...picks.filter((p) => !p.featured)];
@@ -94,9 +88,14 @@ export function discoveryReply(guests: number): AgentReply {
     mode: 'swipe',
     deckTitle: 'Your party, your way',
     products,
-    deck: { kind: 'discovery', stopAfter: products.length },
+    deck: {
+      kind: 'discovery',
+      stopAfter: products.length,
+      nudges: Object.fromEntries(products.filter((p) => p.featured).map((p) => [p.id, nudgeFor(p)])),
+    },
     text: `A party for ${guests}, love it. Let’s get a feel for what you’re after first: swipe through these ${products.length} and I’ll tailor everything else.`,
-    rationale: 'A quick mix across snacks, party food and drinks tells me what this basket is for before I get specific.',
+    rationale:
+      'A quick mix across snacks, party food and drinks tells me what this basket is for before I get specific.',
   };
 }
 
@@ -119,53 +118,17 @@ function likedRoles(log: SwipeLogEntry[]): PartyRole[] {
   return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([role]) => role);
 }
 
-// Interleaved so the shopper sees each nudge type spread through the deck.
-const NUDGE_PATTERN: NudgeType[] = ['offer', 'partner', 'none', 'nutrition', 'offer', 'none', 'partner', 'nutrition', 'offer', 'none', 'offer', 'partner'];
-
 export function targetedReply(guests: number, discovery: SwipeLogEntry[]): AgentReply {
   const liked = likedRoles(discovery);
   const shown = new Set(discovery.map((e) => e.product.id));
 
   const essentials: PartyRole[] = ['savoury', 'nibbles', 'sweet', 'soft'];
   const hasDrinks = liked.includes('soft') || liked.includes('alcohol');
-  const alsoNeed = essentials.filter(
-    (r) => !liked.includes(r) && (r !== 'soft' || !hasDrinks) && r !== 'sweet',
-  );
-  const roles = liked.length ? [...new Set([...liked, ...alsoNeed])] : essentials;
-  // Savoury snacks are where most nudgeable products live, so always include them.
-  if (!roles.includes('savoury')) roles.push('savoury');
+  const alsoNeed = essentials.filter((r) => !liked.includes(r) && (r !== 'soft' || !hasDrinks) && r !== 'sweet');
 
-  const pools = new Map(roles.map((r) => [r, pool(r, shown)]));
-  const used = new Set<string>();
-  const perRole = new Map<PartyRole, number>();
-  const products: Product[] = [];
-  const nudges: Record<string, NudgeType> = {};
-  let cursor = 0;
-
-  // Keep the deck varied: no more than three cards from one area.
-  const roleFull = (role: PartyRole) => (perRole.get(role) ?? 0) >= 3;
-
-  const take = (want: NudgeType | null) => {
-    for (let i = 0; i < roles.length; i++) {
-      const role = roles[(cursor + i) % roles.length];
-      if (roleFull(role)) continue;
-      const found = pools.get(role)!.find((p) => !used.has(p.id) && (want === null || nudgeFor(p) === want));
-      if (found) {
-        cursor = (cursor + i + 1) % roles.length;
-        return found;
-      }
-    }
-    return undefined;
-  };
-
-  for (const want of NUDGE_PATTERN) {
-    const p = take(want) ?? take(null);
-    if (!p) break;
-    used.add(p.id);
-    perRole.set(p.partyRole!, (perRole.get(p.partyRole!) ?? 0) + 1);
-    products.push(p);
-    nudges[p.id] = nudgeFor(p);
-  }
+  // Every party product is in play; the deck narrows it set by set from the swipes.
+  const roles: PartyRole[] = ['savoury', 'nibbles', 'sweet', 'soft', 'alcohol', 'fresh'];
+  const products = roles.flatMap((r) => pool(r, shown));
 
   const intro = liked.length
     ? `Wow, that’s a good start! You’re clearly into ${sentenceList(liked.map((r) => ROLE_LABEL[r]))}.`
@@ -178,8 +141,13 @@ export function targetedReply(guests: number, discovery: SwipeLogEntry[]): Agent
     mode: 'swipe',
     deckTitle: 'Picked for your party',
     products,
-    deck: { kind: 'targeted', nudges, detectSlowdown: true },
-    text: `${intro}${need} Here are some specific picks. I’ve flagged the best deals, the healthier options and a few brands shoppers rave about.`,
+    deck: {
+      kind: 'targeted',
+      detectSlowdown: true,
+      // Starts at "narrowing": the discovery deck was the wide set.
+      narrow: { startStage: 1, maxSets: 3, seed: discovery, areas: alsoNeed },
+    },
+    text: `${intro}${need} Here are some more specific picks, and they’ll get more specific with every set as I learn what you like. I’ve flagged the best deals, the healthier options and partner brands.`,
     rationale: 'Now I know what this basket is for, I can get specific about products rather than categories.',
   };
 }
@@ -209,7 +177,7 @@ export function wrapUpReply(guests: number, discovery: SwipeLogEntry[], targeted
     wrapUp: {
       guests,
       likedRoles: likedRoles([...discovery, ...targeted.log]),
-      nudgeStats: nudgeStats(targeted.log),
+      nudgeStats: nudgeStats([...discovery.filter((e) => e.nudge), ...targeted.log]),
       reason: targeted.reason,
     },
   };

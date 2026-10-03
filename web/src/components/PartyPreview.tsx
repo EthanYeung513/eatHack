@@ -11,8 +11,10 @@ import {
   GROUPS,
   type Coverage,
   type GroupCoverage,
+  type ShelfPick,
   type ZoneId,
 } from '../services/partyUsage';
+import type { SwipeLogEntry } from '../types';
 import { OCADO_MINIMUM } from './BasketPanel';
 import { ProductThumb, Stars } from './ProductBits';
 import './partyPreview.css';
@@ -25,7 +27,16 @@ const BAG_CHARGE = 0.4;
 
 const STATUS_LABEL: Record<Coverage, string> = { sorted: 'sorted', light: 'a bit light', missing: 'missing' };
 
-export function PartyPreview({ guests: initialGuests, onContinue }: { guests: number; onContinue: () => void }) {
+export function PartyPreview({
+  guests: initialGuests,
+  history,
+  onContinue,
+}: {
+  guests: number;
+  /** Every swipe from the chat, so picks reflect what the shopper liked and skipped. */
+  history: SwipeLogEntry[];
+  onContinue: () => void;
+}) {
   const { lines } = useBasket();
   const [guests, setGuests] = useState(initialGuests);
   const [zone, setZone] = useState<ZoneId | null>(null);
@@ -66,7 +77,7 @@ export function PartyPreview({ guests: initialGuests, onContinue }: { guests: nu
           ))}
         </section>
 
-        <LastMinuteShelf lines={lines} guests={guests} />
+        <LastMinuteShelf lines={lines} guests={guests} history={history} />
 
         <p className="pp-note">
           Nothing goes in unless you tap. Products, photos, prices and offers come from the Ocado catalogue. Party maths
@@ -387,11 +398,17 @@ function CoverageTile({ group, guests }: { group: GroupCoverage; guests: number 
 
 // ---------- Last-minute shelf ----------
 
-function LastMinuteShelf({ lines, guests }: { lines: BasketLine[]; guests: number }) {
-  const { add } = useBasket();
-  const [added, setAdded] = useState<Set<string>>(new Set());
+function LastMinuteShelf({
+  lines,
+  guests,
+  history,
+}: {
+  lines: BasketLine[];
+  guests: number;
+  history: SwipeLogEntry[];
+}) {
   // Picks are computed against the trolley as it was, so a card doesn't vanish once it's added.
-  const [picks] = useState(() => shelfPicks(lines, guests));
+  const [picks] = useState(() => shelfPicks(lines, guests, history));
   if (!picks.length) return null;
 
   return (
@@ -407,52 +424,65 @@ function LastMinuteShelf({ lines, guests }: { lines: BasketLine[]; guests: numbe
           </span>
         ))}
       </div>
-      <div className="pp-cards">
-        {picks.map((p) => {
-          const done = added.has(p.product.id);
-          return (
-            <article key={p.product.id} className="pp-card">
-              <span className="pp-card-reason">{p.reason}</span>
-              <div className="pp-card-body">
-                <strong className="pp-card-name">{p.product.name}</strong>
-                <span className="pp-card-meta">
-                  {[p.product.brand, p.product.size].filter(Boolean).join(' · ')} · <Stars rating={p.product.rating} />
-                </span>
-                {p.again && <span className="pp-card-meta">already in your trolley</span>}
+      <PickCards picks={picks} />
+    </section>
+  );
+}
+
+/** Pick cards, shared by the party shelf and the standard trolley's "before you check out". */
+export function PickCards({ picks }: { picks: ShelfPick[] }) {
+  const { add } = useBasket();
+  const [added, setAdded] = useState<Set<string>>(new Set());
+  return (
+    <div className="pp-cards">
+      {picks.map((p) => {
+        const done = added.has(p.product.id);
+        return (
+          <article key={p.product.id} className="pp-card">
+            <span className="pp-card-reason">{p.reason}</span>
+            <div className="pp-card-body">
+              <strong className="pp-card-name">{p.product.name}</strong>
+              <span className="pp-card-meta">
+                {[p.product.brand, p.product.size].filter(Boolean).join(' · ')} · <Stars rating={p.product.rating} />
+              </span>
+              {p.again && <span className="pp-card-meta">already in your trolley</span>}
+              {p.group && (
                 <span className="pp-card-gain">
                   {p.group.label} {p.group.have} → {p.group.have + p.gain} {p.group.unit}
                 </span>
-                {p.tag && <span className={`pp-card-tag ${p.tag.kind}`}>{p.tag.text}</span>}
-                <span className="pp-card-price">{formatPrice(p.product.price)}</span>
-                <button
-                  type="button"
-                  className="pp-card-btn"
-                  disabled={done}
-                  onClick={() => {
-                    add(p.product.id);
-                    setAdded((s) => new Set(s).add(p.product.id));
-                  }}
-                >
-                  {done ? (
-                    <>
-                      <Check size={14} /> On the table
-                    </>
-                  ) : p.again ? (
-                    p.group.id === 'toast' ? (
-                      'Add a 2nd bottle'
-                    ) : (
-                      'Add another'
-                    )
+              )}
+              {p.tag && <span className={`pp-card-tag ${p.tag.kind}`}>{p.tag.text}</span>}
+              <span className="pp-card-price">{formatPrice(p.product.price)}</span>
+              <button
+                type="button"
+                className="pp-card-btn"
+                disabled={done}
+                onClick={() => {
+                  add(p.product.id);
+                  setAdded((s) => new Set(s).add(p.product.id));
+                }}
+              >
+                {done ? (
+                  <>
+                    <Check size={14} /> Added
+                  </>
+                ) : p.again ? (
+                  p.group?.id === 'toast' ? (
+                    'Add a 2nd bottle'
                   ) : (
-                    'Put it on the table'
-                  )}
-                </button>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-    </section>
+                    'Add another'
+                  )
+                ) : p.group ? (
+                  'Put it on the table'
+                ) : (
+                  'Add to trolley'
+                )}
+              </button>
+            </div>
+          </article>
+        );
+      })}
+    </div>
   );
 }
 

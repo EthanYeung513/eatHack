@@ -42,7 +42,11 @@ export function VideoStrip({ product }: { product: Product }) {
             onClick={() => open(product, i)}
             aria-label={`Play video review by ${v.author}`}
           >
-            <video src={`${v.src}#t=1`} muted playsInline preload="metadata" tabIndex={-1} />
+            {v.poster ? (
+              <img src={v.poster} alt="" />
+            ) : (
+              <video src={`${v.src}#t=1`} muted playsInline preload="metadata" tabIndex={-1} />
+            )}
             <span className="video-tile-play">
               <Play size={14} fill="currentColor" />
             </span>
@@ -82,6 +86,8 @@ function VideoPlayer({ product, index: startIndex, onClose }: PlayerState & { on
   const [progress, setProgress] = useState(0);
   const [paused, setPaused] = useState(false);
   const [muted, setMuted] = useState(false);
+  // Landscape footage is letterboxed rather than cropped to the portrait frame.
+  const [landscape, setLandscape] = useState(false);
   const ref = useRef<HTMLVideoElement>(null);
   const video = videos[index];
 
@@ -138,8 +144,10 @@ function VideoPlayer({ product, index: startIndex, onClose }: PlayerState & { on
         <video
           key={video.id}
           ref={ref}
-          className="player-video"
+          className={`player-video${landscape ? ' landscape' : ''}`}
           src={video.src}
+          poster={video.poster}
+          onLoadedMetadata={(e) => setLandscape(e.currentTarget.videoWidth > e.currentTarget.videoHeight)}
           autoPlay
           playsInline
           muted={muted}

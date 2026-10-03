@@ -35,6 +35,8 @@ export interface VideoReview {
   caption: string;
   src: string;
   duration: string;
+  /** Still frame shown before the video loads. */
+  poster?: string;
 }
 
 export interface Product {
@@ -105,6 +107,16 @@ export interface DeckConfig {
   stopAfter?: number;
   nudges?: Record<string, NudgeType>;
   detectSlowdown?: boolean;
+  /** Build each set from the swipes so far, starting wide and getting narrower. */
+  narrow?: {
+    /** 0 = wide, 1 = narrowing, 2+ = specific. */
+    startStage: number;
+    maxSets: number;
+    /** Earlier swipes to learn from (e.g. the party discovery deck). */
+    seed?: SwipeLogEntry[];
+    /** Areas to keep in the narrowing set even if not liked yet (e.g. "you'll also need party food"). */
+    areas?: string[];
+  };
 }
 
 export interface NudgeStat {

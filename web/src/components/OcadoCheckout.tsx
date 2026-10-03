@@ -14,7 +14,9 @@ import { useEffect, useMemo, useState } from 'react';
 import { formatPrice, useBasket } from '../state/basket';
 import { OCADO_MINIMUM } from './BasketPanel';
 import { Logo } from './Header';
-import { PartyPreview } from './PartyPreview';
+import { shelfPicks } from '../services/partyUsage';
+import type { SwipeLogEntry } from '../types';
+import { PartyPreview, PickCards } from './PartyPreview';
 import { ProductThumb, QtyStepper } from './ProductBits';
 
 // Mock of the retailer's checkout. Once integrated this hands off to Ocado itself.
@@ -66,13 +68,18 @@ function buildSlots(): { day: string; date: string; slots: Slot[] }[] {
 
 export function OcadoCheckout({
   partyGuests,
+  swipeHistory,
   onExit,
 }: {
   /** Set when the basket came from the party planner: the trolley becomes the party preview. */
   partyGuests?: number | null;
+  /** Every swipe from the chat, used for the last-minute recommendations. */
+  swipeHistory: SwipeLogEntry[];
   onExit: (orderPlaced: boolean) => void;
 }) {
   const { lines, count, subtotal } = useBasket();
+  // Snapshot on arrival so a card doesn't vanish once its product is added.
+  const [picks] = useState(() => (partyGuests ? [] : shelfPicks(lines, null, swipeHistory)));
   const [step, setStep] = useState<Step>('trolley');
   const [slotId, setSlotId] = useState<string | null>(null);
   const [placing, setPlacing] = useState(false);
@@ -163,7 +170,7 @@ export function OcadoCheckout({
             </button>
           </div>
         ) : step === 'trolley' && partyGuests ? (
-          <PartyPreview guests={partyGuests} onContinue={() => setStep('slot')} />
+          <PartyPreview guests={partyGuests} history={swipeHistory} onContinue={() => setStep('slot')} />
         ) : (
           <div className="oc-layout">
             <section className="oc-panel">
@@ -194,6 +201,13 @@ export function OcadoCheckout({
                         </li>
                       ))}
                     </ul>
+                  )}
+                  {picks.length > 0 && (
+                    <section className="oc-picks">
+                      <h3>Before you check out</h3>
+                      <p className="muted small">Picked from your basket and what you swiped in Shelf.</p>
+                      <PickCards picks={picks} />
+                    </section>
                   )}
                 </>
               )}

@@ -1,6 +1,7 @@
 import { PRODUCTS } from '../data/products';
 import type { BasketLine } from '../state/basket';
-import type { Product } from '../types';
+import type { Product, SwipeLogEntry } from '../types';
+import { familyOf, PAIRINGS, tasteFrom } from './narrowing';
 
 // Turns a party basket into "how it gets used": servings per product, coverage
 // per area against the guest count, and last-minute picks to fill the gaps.
@@ -137,7 +138,8 @@ export function coverage(lines: BasketLine[], guests: number): GroupCoverage[] {
 
 export interface ShelfPick {
   product: Product;
-  group: GroupCoverage;
+  /** The party area this fills, when there's a party goal. */
+  group?: GroupCoverage;
   reason: string;
   /** Already in the trolley: the action adds another of the same. */
   again: boolean;
@@ -152,58 +154,100 @@ const tagFor = (p: Product): ShelfPick['tag'] =>
       ? { kind: 'offer', text: `Ocado offer · ${p.offer}` }
       : undefined;
 
-/** Last-minute picks: top up what's light, plus a pairing for what's already there. */
-export function shelfPicks(lines: BasketLine[], guests: number, limit = 4): ShelfPick[] {
-  const groups = coverage(lines, guests);
+/**
+ * Last-minute picks at checkout, from three signals: what's in the basket, the goal
+ * of the basket (party guests, when there is one) and what the shopper swiped.
+ * Products they swiped left on are never suggested; families they liked rank higher;
+ * products they liked but later took out of the basket come back first.
+ */
+export function shelfPicks(
+  lines: BasketLine[],
+  guests: number | null,
+  history: SwipeLogEntry[] = [],
+  limit = 4,
+): ShelfPick[] {
+  const groups = guests ? coverage(lines, guests) : [];
   const inBasket = new Set(lines.map((l) => l.product.id));
+  const taste = tasteFrom(history);
+  const allowed = (p: Product) =>
+    !inBasket.has(p.id) && !taste.skipped.has(p.id) && p.reviewCount > 0 && !/granola/i.test(p.name);
+  const familyScore = (p: Product) => taste.family.get(familyOf(p)) ?? 0;
+  const groupFor = (p: Product) => groups.find((g) => g.id === groupOf(p));
+  const why = (p: Product, fallback: string) =>
+    taste.liked.has(p.id)
+      ? 'you liked this earlier'
+      : familyScore(p) > 0 && fallback.startsWith('more ')
+        ? `you liked ${familyOf(p)} earlier`
+        : fallback;
+
   const picks: ShelfPick[] = [];
-  const add = (pick: ShelfPick) => {
-    if (picks.length < limit && !picks.some((x) => x.product.id === pick.product.id)) picks.push(pick);
+  const add = (product: Product | undefined, reason: string, again = false) => {
+    if (!product || picks.length >= limit || picks.some((x) => x.product.id === product.id)) return;
+    picks.push({
+      product,
+      group: groupFor(product),
+      reason,
+      again,
+      gain: servings(product).units,
+      tag: tagFor(product),
+    });
   };
 
-  const gaps = groups
-    .filter((g) => g.status !== 'sorted')
-    .sort((a, b) => a.have / a.target - b.have / b.target);
+  // 1. Liked in a swipe deck, then taken back out of the basket.
+  for (const e of history) {
+    if (e.dir === 'right' && !inBasket.has(e.product.id)) add(e.product, 'you liked this earlier');
+  }
 
+  // 2. Party goal: fill the areas that are short, favouring what they've liked.
+  const gaps = groups.filter((g) => g.status !== 'sorted').sort((a, b) => a.have / a.target - b.have / b.target);
   for (const group of gaps) {
     // "Add a 2nd bottle": the simplest top-up is more of what they already chose.
     const existing = group.lines[0]?.product;
     if (existing && group.id === 'toast') {
-      add({ product: existing, group, reason: group.reason, again: true, gain: servings(existing).units, tag: tagFor(existing) });
+      add(existing, group.reason, true);
       continue;
     }
-    // Score by how much of the gap a product fills, with a boost for partner brands and offers,
-    // so a single 250ml bottle doesn't win a 22-drink gap just for being sponsored.
+    // How much of the gap a product fills, nudged by partner brands, offers, taste and
+    // price, so a single 250ml bottle doesn't win a 22-drink gap just for being
+    // sponsored and a £39 gin doesn't top up a party toast.
     const deficit = group.target - group.have;
     const score = (p: Product) =>
-      Math.min(servings(p).units, deficit) / deficit + (p.partner ? 0.3 : 0) + (p.offer ? 0.2 : 0);
-    const best = PRODUCTS.filter(
-      (p) => groupOf(p) === group.id && !inBasket.has(p.id) && p.reviewCount > 0 && !/granola/i.test(p.name),
-    ).sort(
-      (a, b) => score(b) - score(a),
-    )[0];
-    if (best) {
-      add({
-        product: best,
-        group,
-        reason: `${group.reason}${group.id === 'snacks' ? ` for ${guests}` : ''}`,
-        again: false,
-        gain: servings(best).units,
-        tag: tagFor(best),
-      });
-    }
+      Math.min(servings(p).units, deficit) / deficit +
+      (p.partner ? 0.3 : 0) +
+      (p.offer ? 0.2 : 0) +
+      Math.max(-0.5, Math.min(0.6, familyScore(p) * 0.15)) -
+      (p.price > 20 ? 0.6 : 0);
+    const best = PRODUCTS.filter((p) => groupOf(p) === group.id && allowed(p)).sort((a, b) => score(b) - score(a))[0];
+    if (best) add(best, why(best, `${group.reason}${group.id === 'snacks' ? ` for ${guests}` : ''}`));
   }
 
-  // A pairing nudge: crisps in the trolley but nothing to dip them in.
-  const hasCrisps = lines.some((l) => /crisps|pringles/i.test(l.product.name));
-  const dip = PRODUCTS.find((p) => /\bdip\b/i.test(p.name) && !inBasket.has(p.id));
-  const snacks = groups.find((g) => g.id === 'snacks')!;
-  if (hasCrisps && dip) add({ product: dip, group: snacks, reason: 'a dip for the crisps', again: false, gain: servings(dip).units, tag: tagFor(dip) });
+  // 3. Pairings for what's in the basket: a dip for the crisps, a mixer for the gin.
+  for (const l of lines) {
+    const pairing = PAIRINGS[familyOf(l.product)];
+    if (!pairing) continue;
+    const match = PRODUCTS.filter((p) => familyOf(p) === pairing.family && allowed(p)).sort(
+      (a, b) => familyScore(b) - familyScore(a),
+    )[0];
+    add(match, pairing.reason);
+  }
 
-  // Fill any remaining slots with offers in areas they already like.
-  for (const g of groups.filter((x) => x.lines.length)) {
-    const extra = PRODUCTS.find((p) => groupOf(p) === g.id && !inBasket.has(p.id) && p.offer && p.image);
-    if (extra) add({ product: extra, group: g, reason: `more for the ${ZONES[g.zone]}`, again: false, gain: servings(extra).units, tag: tagFor(extra) });
+  // 4. More from the families they liked, offers first.
+  const likedFamilies = [...taste.family.entries()]
+    .filter(([, v]) => v > 0)
+    .sort((a, b) => b[1] - a[1])
+    .map(([f]) => f);
+  for (const f of likedFamilies) {
+    const fam = PRODUCTS.filter((p) => familyOf(p) === f && allowed(p));
+    const p = fam.find((x) => x.offer) ?? fam[0];
+    if (p) add(p, why(p, `more ${f}, since you liked it`));
+  }
+
+  // 5. Offers in the areas already in the basket.
+  for (const l of lines) {
+    add(
+      PRODUCTS.find((p) => familyOf(p) === familyOf(l.product) && allowed(p) && p.offer && p.image),
+      `more ${familyOf(l.product)}, on offer`,
+    );
   }
   return picks;
 }

@@ -7,7 +7,8 @@ import { useBasket } from './state/basket';
 import { useChat } from './state/useChat';
 
 export default function App() {
-  const { messages, thinking, partyGuests, send, completeSwipe, setView: setMessageView, reset } = useChat();
+  const { messages, thinking, partyGuests, swipeHistory, send, completeSwipe, setView: setMessageView, reset } =
+    useChat();
   const { clear } = useBasket();
   const [view, setView] = useState<'shop' | 'checkout'>('shop');
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -30,6 +31,7 @@ export default function App() {
       {view === 'checkout' && (
         <OcadoCheckout
           partyGuests={partyGuests}
+          swipeHistory={swipeHistory}
           onExit={(orderPlaced) => {
             if (orderPlaced) clear();
             setView('shop');
