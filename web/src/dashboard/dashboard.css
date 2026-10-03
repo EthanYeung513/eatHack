@@ -952,3 +952,252 @@
 .dash-exp-verdict.bad {
   background: var(--surface-2);
 }
+
+/* Nudge lab: ranking, matrix, playbook */
+
+.swatch-lab {
+  background: var(--charcoal);
+}
+
+.lab-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .lab-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lab-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--lime);
+}
+
+.lab-headline strong {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.lab-headline em {
+  display: block;
+  font-style: normal;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.lab-headline .muted {
+  color: color-mix(in srgb, var(--charcoal) 75%, transparent);
+}
+
+.lab-ranking {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lab-ranking li {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr) 110px;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.lab-ranking-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.lab-ranking-track {
+  display: block;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--track);
+}
+
+.lab-ranking-track i {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: #2a78d6;
+  transition: width 0.4s ease;
+}
+
+.lab-ranking-value {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.lab-ranking-value em {
+  font-style: normal;
+  font-size: 11.5px;
+  color: var(--ink-2);
+}
+
+.lab-matrix-wrap {
+  overflow-x: auto;
+  margin: 0 -22px;
+  padding: 0 22px;
+}
+
+.lab-matrix {
+  border-collapse: separate;
+  border-spacing: 2px;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.lab-matrix th {
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.lab-col-head {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0 2px 6px;
+  font-size: 11px;
+  color: var(--ink-2);
+}
+
+.lab-product-col {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  min-width: 220px;
+  max-width: 260px;
+  background: var(--surface);
+  text-align: left !important;
+}
+
+.lab-product {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 8px;
+  font-weight: 600;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+.lab-product .thumb {
+  width: 32px;
+  height: 32px;
+}
+
+.lab-cell {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 58px;
+  height: 34px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.lab-cell.control {
+  background: var(--surface-2);
+  color: var(--ink-2);
+}
+
+.lab-cell.best {
+  box-shadow: 0 0 0 2px var(--charcoal);
+  font-weight: 800;
+}
+
+.lab-cell:focus-visible {
+  outline: 2px solid var(--charcoal);
+  outline-offset: 2px;
+}
+
+.lab-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+
+.lab-playbook {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.lab-playbook-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.lab-playbook-toggle .flip {
+  transform: rotate(180deg);
+}
+
+.lab-playbook-grid {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
+}
+
+.lab-playbook-grid li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  border-radius: 16px;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.lab-playbook-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.lab-playbook-grid p {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.lab-playbook-example {
+  align-self: flex-start;
+  padding: 3px 9px;
+  border-radius: 8px;
+  background: var(--lime);
+  font-size: 12px;
+  font-weight: 600;
+}

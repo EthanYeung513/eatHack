@@ -24,6 +24,8 @@ An enterprise view for brands (e.g. https://eat-hack.vercel.app/dashboard): thei
 - *Social proof*: Watch Humans videos on the swipe cards for OOM, Well & Truly and Flow.
 - *Loss aversion*: one product on the checkout's last-minute shelf (the first pick not already in the trolley, £5 or under) gets ~20% off with "The special offer for this product will go in 10s". The countdown starts when the card is on screen; taking it in time applies the saving to the basket.
 
+**Which nudge works best** (`src/dashboard/nudgeData.ts`, `NudgeLab.tsx`): nine behavioural nudges (social proof, loss aversion, scarcity, anchoring, price framing, health halo, authority, complements, novelty) against a no-nudge control, as a ranking across the brand's range and a product × nudge heatmap with each product's best nudge starred, plus a playbook of the research behind each one. These numbers are placeholders shaped by each product's attributes.
+
 The "This shopper" panel reads real outcomes from the shopper app in the same browser (`src/state/nudgeLog.ts`, localStorage), so you can try a nudge and see your own response on the dashboard.
 
 ## Web app (`web/`)

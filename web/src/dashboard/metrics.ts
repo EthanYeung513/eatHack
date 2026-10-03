@@ -102,7 +102,11 @@ export function productMetrics(companyId: string, period: Period): ProductMetric
       const base = BASE[type];
       const k = `${product.id}:${type}:${period}`;
       const delivered = Math.round(
-        (500 + rand(`${product.id}:${type}`) * 1500) * popularity * base.volume * PERIOD_SCALE[period] * (0.92 + rand(k) * 0.16),
+        (500 + rand(`${product.id}:${type}`) * 1500) *
+          popularity *
+          base.volume *
+          PERIOD_SCALE[period] *
+          (0.92 + rand(k) * 0.16),
       );
       const picked = Math.round(delivered * Math.min(0.95, base.pick * agentBias * (0.75 + rand(`${k}:p`) * 0.5)));
       const added = Math.round(picked * Math.min(0.9, base.add * humanBias * (0.7 + rand(`${k}:a`) * 0.6)));

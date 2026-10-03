@@ -17,6 +17,8 @@ import {
   type ProductMetrics,
 } from './metrics';
 import { Experiments } from './Experiments';
+import { NUDGE_ICON, NudgeLab, NudgePlaybook } from './NudgeLab';
+import { NUDGE_BY_ID, nudgeMatrix, type NudgeRow } from './nudgeData';
 import './dashboard.css';
 
 const NUDGE: Record<NudgeType, { label: string; icon: typeof Tag }> = {
@@ -85,6 +87,14 @@ export function Dashboard() {
   const company = COMPANIES.find((c) => c.id === companyId)!;
   const total = totals(rows);
   const nudges = byNudge(rows);
+  const lab = useMemo(
+    () =>
+      nudgeMatrix(
+        rows.map((r) => r.product),
+        period,
+      ),
+    [rows, period],
+  );
 
   return (
     <div className="dash">
@@ -138,16 +148,39 @@ export function Dashboard() {
         </div>
 
         <section className="dash-kpis">
-          <Kpi label="Products launched" value={num(rows.length)} note={`${rows.filter((r) => isNewLaunch(r.launched)).length} in the last 60 days`} />
+          <Kpi
+            label="Products launched"
+            value={num(rows.length)}
+            note={`${rows.filter((r) => isNewLaunch(r.launched)).length} in the last 60 days`}
+          />
           <Kpi label="Nudges delivered" value={num(total.delivered)} note="Shown to shoppers in chat" />
-          <Kpi label="Picked by agent" value={num(total.picked)} note={`${pct(ratio(total.picked, total.delivered))} of nudges`} />
-          <Kpi label="Successful buys" value={num(total.bought)} note={`${pct(ratio(total.bought, total.picked), 1)} of agent picks`} />
+          <Kpi
+            label="Picked by agent"
+            value={num(total.picked)}
+            note={`${pct(ratio(total.picked, total.delivered))} of nudges`}
+          />
+          <Kpi
+            label="Successful buys"
+            value={num(total.bought)}
+            note={`${pct(ratio(total.bought, total.picked), 1)} of agent picks`}
+          />
         </section>
 
         <Experiments productIds={new Set(rows.map((r) => r.product.id))} period={period} />
 
-        <Card title="Your range on Shelf" subtitle="Every product this brand sells through Ocado, with how each one performed.">
-          <ProductRange rows={rows} />
+        <Card
+          title="Which nudge works best for each product"
+          subtitle="Nine behavioural nudges, each tested against the same product shown without one. Use it to decide what to run on each launch."
+        >
+          <NudgeLab rows={lab} bind={bind} />
+          <NudgePlaybook />
+        </Card>
+
+        <Card
+          title="Your range on Shelf"
+          subtitle="Every product this brand sells through Ocado, with how each one performed."
+        >
+          <ProductRange rows={rows} lab={lab} />
         </Card>
 
         <div className="dash-grid">
@@ -166,7 +199,10 @@ export function Dashboard() {
           <AgentVsHuman rows={rows} bind={bind} />
         </Card>
 
-        <Card title="Launched products" subtitle="Click a column to sort. This table is also the accessible view of the charts above.">
+        <Card
+          title="Launched products"
+          subtitle="Click a column to sort. This table is also the accessible view of the charts above."
+        >
           <ProductTable rows={rows} />
         </Card>
       </main>
@@ -329,8 +365,12 @@ function AgentVsHuman({ rows, bind }: { rows: ProductMetrics[]; bind: Bind }) {
                 {...bind(
                   <>
                     <strong>{r.product.name}</strong>
-                    <span>Agent picks: {pct(r.agentShare, 1)} ({num(r.picked)})</span>
-                    <span>Shopper buys: {pct(r.humanShare, 1)} ({num(r.bought)})</span>
+                    <span>
+                      Agent picks: {pct(r.agentShare, 1)} ({num(r.picked)})
+                    </span>
+                    <span>
+                      Shopper buys: {pct(r.humanShare, 1)} ({num(r.bought)})
+                    </span>
                   </>,
                 )}
               >
@@ -354,12 +394,12 @@ function AgentVsHuman({ rows, bind }: { rows: ProductMetrics[]; bind: Bind }) {
 
 // ---------- Product range ----------
 
-function ProductRange({ rows }: { rows: ProductMetrics[] }) {
+function ProductRange({ rows, lab }: { rows: ProductMetrics[]; lab: NudgeRow[] }) {
   return (
     <ul className="dash-range">
       {rows.map((r) => {
-        const best = bestNudge(r);
-        const Icon = NUDGE[best].icon;
+        const best = lab.find((l) => l.product.id === r.product.id)?.best;
+        const Icon = best ? NUDGE_ICON[best.nudge] : Minus;
         return (
           <li key={r.product.id}>
             <span className="dash-range-img">
@@ -380,10 +420,10 @@ function ProductRange({ rows }: { rows: ProductMetrics[] }) {
               </span>
             </span>
             <span className="dash-best">
-              <span className={`swatch swatch-${best}`}>
+              <span className="swatch swatch-lab">
                 <Icon size={11} />
               </span>
-              Best: {NUDGE[best].label}
+              Best: {best ? NUDGE_BY_ID[best.nudge].name : 'not enough data'}
             </span>
           </li>
         );

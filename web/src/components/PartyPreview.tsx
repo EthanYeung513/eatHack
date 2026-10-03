@@ -311,8 +311,14 @@ function Room({
               ))}
               {zoneLines.length === 0 && <span className="pp-empty">empty</span>}
             </div>
-            <div className="pp-label" style={pos(...ZONE_LAYOUT[z].label)}>
+            <div className={`pp-label ${status}`} style={pos(...ZONE_LAYOUT[z].label)}>
               <ZoneSummary zone={z} groups={zoneGroups} status={status} />
+              {/* Done: a grey wash over the label with the tick on top, so the tick never sits on the text. */}
+              {status === 'sorted' && (
+                <span className="pp-label-done" aria-hidden>
+                  <Check strokeWidth={3} />
+                </span>
+              )}
             </div>
           </div>
         ))}

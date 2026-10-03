@@ -119,11 +119,47 @@
   aspect-ratio: 600 / 430;
 }
 
-.pp-room-stage svg {
+/* Only the room drawings fill the stage; icons inside labels keep their own size. */
+.pp-room-stage > svg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+/* A sorted zone: grey wash over the label, tick centred on top of it. */
+.pp-label.sorted::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: rgba(214, 211, 204, 0.82);
+}
+
+.pp-label-done {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.pp-label-done svg {
+  width: min(5cqw, 30px);
+  height: min(5cqw, 30px);
+  padding: min(0.8cqw, 5px);
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--charcoal);
+  box-shadow: 0 0 0 2px var(--charcoal);
+}
+
+/* Hovering a sorted zone lifts the wash so its numbers can be read again. */
+.pp-zone.active .pp-label.sorted::after,
+.pp-zone.active .pp-label-done {
+  opacity: 0;
+  transition: opacity 0.15s;
 }
 
 .pp-room-stage .iso-box polygon {
