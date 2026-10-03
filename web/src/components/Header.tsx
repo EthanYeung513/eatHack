@@ -4,12 +4,6 @@ import { formatPrice, useBasket } from '../state/basket';
 export function Logo() {
   return (
     <span className="brand">
-      <svg className="brand-mark" viewBox="0 0 28 28" aria-hidden>
-        <rect width="28" height="28" rx="8" fill="currentColor" />
-        <rect x="7" y="8" width="14" height="2.4" rx="1.2" fill="#fff" />
-        <rect x="7" y="12.8" width="10" height="2.4" rx="1.2" fill="#fff" opacity=".8" />
-        <rect x="7" y="17.6" width="12" height="2.4" rx="1.2" fill="#fff" opacity=".6" />
-      </svg>
       <span className="brand-name">Shelf</span>
     </span>
   );

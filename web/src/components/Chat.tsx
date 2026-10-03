@@ -1,4 +1,16 @@
-import { ArrowUp, Beer, CakeSlice, Layers, Lightbulb, MessageSquareQuote, Popcorn, Sparkles, Wine } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Beer,
+  CakeSlice,
+  Layers,
+  Lightbulb,
+  MessageSquareQuote,
+  Popcorn,
+  ShoppingBasket,
+  Sparkles,
+  Wine,
+  type LucideIcon,
+} from 'lucide-react';
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
 import type { AgentMode, ChatMessage, Product, ProductView } from '../types';
 import { ProductThumb } from './ProductBits';
@@ -61,26 +73,45 @@ export function ChatView({
 function Welcome({ onPick }: { onPick: (text: string) => void }) {
   return (
     <div className="welcome">
-      <span className="welcome-kicker">
-        <Sparkles size={14} /> Shopping assistant for Ocado
-      </span>
-      <h1>What are you shopping for?</h1>
-      <p className="muted">
-        Describe an occasion or ask about a product. I'll either line up options to swipe through or show you what
-        real shoppers think.
-      </p>
+      <div className="welcome-hero">
+        <Sticker icon={ShoppingBasket} tone="lime" className="float float-a" />
+        <Sticker icon={Wine} tone="lavender" className="float float-b" />
+        <Sticker icon={CakeSlice} tone="pink" className="float float-c" />
+        <Sticker icon={Popcorn} tone="sky" className="float float-d" />
+        <span className="welcome-kicker">Hi there</span>
+        <h1>What are you shopping for?</h1>
+        <p className="muted">
+          Tell me the occasion or ask about a product. I'll line up options to swipe through, or show you what real
+          shoppers think.
+        </p>
+      </div>
       <div className="starter-grid">
-        {STARTER_CARDS.map(({ icon: Icon, title, prompt }) => (
-          <button key={title} type="button" className="starter" onClick={() => onPick(prompt)}>
-            <span className="starter-icon">
-              <Icon size={18} />
-            </span>
-            <span>
-              <strong>{title}</strong>
-              <span className="muted small">{prompt}</span>
+        {STARTER_CARDS.map(({ icon, title, prompt }, i) => (
+          <button key={title} type="button" className={`starter starter-${i % 2 ? 'light' : 'lime'}`} onClick={() => onPick(prompt)}>
+            <Sticker icon={icon} tone={STARTER_TONES[i]} />
+            <strong>{title}</strong>
+            <span className="small">{prompt}</span>
+            <span className="starter-arrow" aria-hidden>
+              <ArrowUpRight size={16} />
             </span>
           </button>
         ))}
+      </div>
+      <div className="modes-band">
+        <div>
+          <span className="modes-icon">
+            <Layers size={18} />
+          </span>
+          <h3>Browsing? Swipe.</h3>
+          <p>Right to add, left to skip. The fastest way through a big range.</p>
+        </div>
+        <div>
+          <span className="modes-icon">
+            <MessageSquareQuote size={18} />
+          </span>
+          <h3>Deciding? Read real reviews.</h3>
+          <p>What shoppers actually liked and didn't, side by side.</p>
+        </div>
       </div>
     </div>
   );
@@ -238,6 +269,18 @@ function Avatar() {
   );
 }
 
+type Tone = 'lime' | 'pink' | 'lavender' | 'sky' | 'butter';
+
+const STARTER_TONES: Tone[] = ['pink', 'lavender', 'butter', 'sky'];
+
+function Sticker({ icon: Icon, tone, className = '' }: { icon: LucideIcon; tone: Tone; className?: string }) {
+  return (
+    <span className={`sticker tone-${tone} ${className}`} aria-hidden>
+      <Icon size={20} strokeWidth={2} />
+    </span>
+  );
+}
+
 function Composer({ disabled, onSend }: { disabled: boolean; onSend: (text: string) => void }) {
   const [value, setValue] = useState('');
   const ref = useRef<HTMLTextAreaElement>(null);
@@ -276,7 +319,7 @@ function Composer({ disabled, onSend }: { disabled: boolean; onSend: (text: stri
           aria-label="Message"
         />
         <button type="submit" className="send-btn" disabled={disabled || !value.trim()} aria-label="Send">
-          <ArrowUp size={18} />
+          <ArrowUpRight size={18} />
         </button>
       </div>
       <p className="composer-note muted">Prices and reviews are sample data for this prototype.</p>

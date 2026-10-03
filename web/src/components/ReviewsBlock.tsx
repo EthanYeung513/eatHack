@@ -1,4 +1,4 @@
-import { ChevronDown, ThumbsDown, ThumbsUp } from 'lucide-react';
+import { BadgeCheck, ChevronDown, ThumbsDown, ThumbsUp } from 'lucide-react';
 import { useState } from 'react';
 import { formatPrice } from '../state/basket';
 import type { Product } from '../types';
@@ -85,8 +85,12 @@ function ReviewCard({ product, rank }: { product: Product; rank: number }) {
           <blockquote key={rv.author + rv.date}>
             <p>“{rv.text}”</p>
             <footer>
-              <Stars rating={rv.rating} /> <span>
+              <Stars rating={rv.rating} />
+              <span>
                 {rv.author} · {rv.date}
+              </span>
+              <span className="verified">
+                <BadgeCheck size={13} /> Verified shopper
               </span>
             </footer>
           </blockquote>

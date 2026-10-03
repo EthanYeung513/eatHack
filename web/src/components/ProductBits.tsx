@@ -15,6 +15,18 @@ import {
 import { useBasket } from '../state/basket';
 import type { Category, Product } from '../types';
 
+// Pastel sticker backgrounds per category.
+const CATEGORY_TONE: Record<Category, string> = {
+  snacks: 'lime',
+  dips: 'butter',
+  drinks: 'lavender',
+  bakery: 'pink',
+  fresh: 'lime',
+  dairy: 'sky',
+  meat: 'pink',
+  partyware: 'sky',
+};
+
 const CATEGORY_ICON: Record<Category, LucideIcon> = {
   snacks: Cookie,
   dips: Soup,
@@ -29,8 +41,10 @@ const CATEGORY_ICON: Record<Category, LucideIcon> = {
 export function ProductThumb({ product, size = 'md' }: { product: Product; size?: 'sm' | 'md' | 'lg' }) {
   const Icon = CATEGORY_ICON[product.category];
   return (
-    <div className={`thumb thumb-${size}`} style={{ '--h': product.hue } as CSSProperties} aria-hidden>
-      <Icon strokeWidth={1.5} />
+    <div className={`thumb thumb-${size} tone-${CATEGORY_TONE[product.category]}`} aria-hidden>
+      <span className="thumb-icon">
+        <Icon strokeWidth={1.75} />
+      </span>
     </div>
   );
 }
