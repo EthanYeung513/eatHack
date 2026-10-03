@@ -172,7 +172,7 @@ export function OcadoCheckout({ onExit }: { onExit: (orderPlaced: boolean) => vo
                           <div>
                             <span className="oc-line-name">{product.name}</span>
                             <span className="muted small">
-                              {product.brand} · {product.size} · {product.unitPrice}
+                              {[product.brand, product.size, product.unitPrice].filter(Boolean).join(' · ')}
                             </span>
                           </div>
                           <QtyStepper id={product.id} qty={qty} compact />

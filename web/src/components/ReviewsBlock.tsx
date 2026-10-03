@@ -42,16 +42,19 @@ function ReviewCard({ product, rank }: { product: Product; rank: number }) {
             {rank === 1 && ' · Shoppers’ pick'}
           </span>
           <h4>{product.name}</h4>
-          <span className="muted">
-            {product.brand} · {product.size}
-          </span>
+          <span className="muted">{[product.brand, product.size].filter(Boolean).join(' · ')}</span>
         </div>
       </header>
 
       <div className="review-card-score">
         <Stars rating={product.rating} count={product.reviewCount} />
-        <span className="price">{formatPrice(product.price)}</span>
+        <span className="price">
+          {product.wasPrice && <s className="was">{formatPrice(product.wasPrice)}</s>}
+          {formatPrice(product.price)}
+        </span>
       </div>
+
+      {product.offer && <span className="offer-pill offer-inline">{product.offer}</span>}
 
       <div className="sentiment">
         {product.pros.length > 0 && (

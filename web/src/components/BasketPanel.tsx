@@ -94,8 +94,9 @@ export function BasketPanel({ onCheckout, onClose }: { onCheckout: () => void; o
                         <div className="basket-line-info">
                           <span className="basket-line-name">{product.name}</span>
                           <span className="muted small">
-                            {product.size} · {formatPrice(product.price)}
+                            {[product.size, formatPrice(product.price)].filter(Boolean).join(' · ')}
                           </span>
+                          {product.offer && <span className="basket-line-offer">{product.offer}</span>}
                           <div className="basket-line-controls">
                             <QtyStepper id={product.id} qty={qty} compact />
                             <button

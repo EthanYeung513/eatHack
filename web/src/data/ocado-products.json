@@ -1,0 +1,4582 @@
+[
+ {
+  "id": "349669011",
+  "name": "Tofoo & Co. Naked Organic Extra Firm Tofu",
+  "bio": "Simple, good and great value. The quiet hero of the weekly shop.",
+  "brand": "Tofoo & Co.",
+  "price": 1.7,
+  "size": "280g",
+  "unitPrice": "£8.21 per kilo",
+  "category": "dairy",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.7,
+  "reviewCount": 489,
+  "pros": [
+   "Creamy",
+   "Lasts well"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Isla",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Owen",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Emma",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/tofoo-co-naked-organic-extra-firm-tofu/349669011",
+  "image": "/products/349669011.jpg",
+  "badge": "Popular",
+  "wasPrice": 2.3
+ },
+ {
+  "id": "24581011",
+  "name": "Cravendale Filtered Fresh Semi Skimmed Milk Fresher for Longer",
+  "bio": "Fresh, wholesome and lasts longer than you'd think. Reliable is my love language.",
+  "brand": "Cravendale",
+  "price": 2.65,
+  "size": "2L",
+  "unitPrice": "£1.33 per litre",
+  "category": "dairy",
+  "tags": [
+   "breakfast",
+   "milk"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.5,
+  "reviewCount": 331,
+  "pros": [
+   "Great taste",
+   "Creamy"
+  ],
+  "cons": [
+   "Pricier than basics"
+  ],
+  "reviews": [
+   {
+    "author": "Dan",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Chloe",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Ali",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/cravendale-filtered-fresh-semi-skimmed-milk-fresher-for-longer/24581011",
+  "image": "/products/24581011.jpg",
+  "badge": "Popular"
+ },
+ {
+  "id": "306065011",
+  "name": "Plenish Organic Almond Unsweetened Drink Long Life",
+  "bio": "A little boost in a bottle. Great on the go.",
+  "brand": "Plenish",
+  "price": 2.0,
+  "size": "1L",
+  "unitPrice": "£2.50 per litre",
+  "category": "drinks",
+  "tags": [
+   "deals",
+   "drinks"
+  ],
+  "dietary": [
+   "gluten-free",
+   "vegetarian"
+  ],
+  "rating": 4.3,
+  "reviewCount": 383,
+  "pros": [
+   "Refreshing",
+   "Good flavour"
+  ],
+  "cons": [
+   "Quite sweet"
+  ],
+  "reviews": [
+   {
+    "author": "Dan",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Hannah",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Ruby",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/plenish-organic-almond-unsweetened-drink-long-life/306065011",
+  "badge": "Popular",
+  "offer": "Now £2, was £2.50",
+  "wasPrice": 2.5
+ },
+ {
+  "id": "315036011",
+  "name": "Arla BOB Skimmed Milk Tastes like Semi Skimmed",
+  "bio": "Simple, good and great value. The quiet hero of the weekly shop.",
+  "brand": "Arla",
+  "price": 2.5,
+  "size": "2L",
+  "unitPrice": "£1.25 per litre",
+  "category": "dairy",
+  "tags": [
+   "breakfast",
+   "milk"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.5,
+  "reviewCount": 294,
+  "pros": [
+   "Creamy",
+   "Lasts well"
+  ],
+  "cons": [
+   "Pricier than basics"
+  ],
+  "reviews": [
+   {
+    "author": "Ben",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Sarah",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Owen",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/arla-bob-skimmed-milk-tastes-like-semi-skimmed/315036011",
+  "image": "/products/315036011.jpg",
+  "badge": "Popular"
+ },
+ {
+  "id": "24577011",
+  "name": "Cravendale Filtered Fresh Whole Milk Fresher for Longer",
+  "bio": "A fridge essential that never lets you down. Breakfast, coffee, baking, done.",
+  "brand": "Cravendale",
+  "price": 2.65,
+  "size": "2L",
+  "unitPrice": "£1.33 per litre",
+  "category": "dairy",
+  "tags": [
+   "breakfast",
+   "milk"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.8,
+  "reviewCount": 147,
+  "pros": [
+   "Creamy",
+   "Lasts well"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Ruby",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Tom",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Chloe",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/cravendale-filtered-fresh-whole-milk-fresher-for-longer/24577011",
+  "image": "/products/24577011.jpg",
+  "badge": "Popular"
+ },
+ {
+  "id": "290110011",
+  "name": "Arla Big Milk Fresh Whole Milk Vitamin Enriched for kids 1+",
+  "bio": "Fresh, wholesome and lasts longer than you'd think. Reliable is my love language.",
+  "brand": "Arla",
+  "price": 2.75,
+  "size": "2L",
+  "unitPrice": "£1.38 per litre",
+  "category": "dairy",
+  "tags": [
+   "breakfast",
+   "kids",
+   "milk"
+  ],
+  "dietary": [],
+  "rating": 4.8,
+  "reviewCount": 114,
+  "pros": [
+   "Good value",
+   "Creamy"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Grace",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Owen",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Emma",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/arla-big-milk-fresh-whole-milk-vitamin-enriched-for-kids-1/290110011",
+  "image": "/products/290110011.jpg",
+  "badge": "Popular"
+ },
+ {
+  "id": "395152011",
+  "name": "Ocado Luxury Coconut Oil Toilet Tissue",
+  "bio": "Unglamorous but essential. You'll be glad you stocked up.",
+  "brand": "Ocado",
+  "price": 4.0,
+  "size": "9 per pack",
+  "unitPrice": "44.4p per item",
+  "category": "household",
+  "tags": [
+   "deals"
+  ],
+  "dietary": [],
+  "rating": 3.6,
+  "reviewCount": 416,
+  "pros": [
+   "Long lasting",
+   "Soft"
+  ],
+  "cons": [
+   "Pricier than others"
+  ],
+  "reviews": [
+   {
+    "author": "Zoe",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Mia",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Hannah",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/ocado-luxury-coconut-oil-toilet-tissue/395152011",
+  "badge": "Popular",
+  "offer": "Buy any 2 for £6.50"
+ },
+ {
+  "id": "606356011",
+  "name": "Arla BOB Semi-Skimmed Milk that Tastes like Whole",
+  "bio": "A fridge essential that never lets you down. Breakfast, coffee, baking, done.",
+  "brand": "Arla",
+  "price": 2.5,
+  "size": "2L",
+  "unitPrice": "£1.25 per litre",
+  "category": "dairy",
+  "tags": [
+   "breakfast",
+   "milk"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.5,
+  "reviewCount": 117,
+  "pros": [
+   "Lasts well",
+   "Great taste"
+  ],
+  "cons": [
+   "Pricier than basics"
+  ],
+  "reviews": [
+   {
+    "author": "Chloe",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Priya",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/arla-bob-semi-skimmed-milk-that-tastes-like-whole/606356011",
+  "image": "/products/606356011.jpg",
+  "badge": "Popular"
+ },
+ {
+  "id": "24579011",
+  "name": "Cravendale Filtered Fresh Skimmed Milk Fresher for Longer",
+  "bio": "A fridge essential that never lets you down. Breakfast, coffee, baking, done.",
+  "brand": "Cravendale",
+  "price": 2.65,
+  "size": "2L",
+  "unitPrice": "£1.33 per litre",
+  "category": "dairy",
+  "tags": [
+   "breakfast",
+   "milk"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.6,
+  "reviewCount": 105,
+  "pros": [
+   "Lasts well",
+   "Good value"
+  ],
+  "cons": [
+   "Pricier than basics"
+  ],
+  "reviews": [
+   {
+    "author": "Chloe",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Leo",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Isla",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/cravendale-filtered-fresh-skimmed-milk-fresher-for-longer/24579011",
+  "image": "/products/24579011.jpg",
+  "badge": "Popular"
+ },
+ {
+  "id": "313624011",
+  "name": "Heinz Seriously Good Mayonnaise",
+  "bio": "The secret ingredient behind a lot of good meals.",
+  "brand": "Heinz",
+  "price": 3.95,
+  "size": "775g",
+  "unitPrice": "£5.10 per kilo",
+  "category": "cupboard",
+  "tags": [
+   "deals"
+  ],
+  "dietary": [
+   "gluten-free",
+   "vegetarian"
+  ],
+  "rating": 4.4,
+  "reviewCount": 100,
+  "pros": [
+   "Great value",
+   "Good quality"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Sam",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Emma",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sarah",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/heinz-seriously-good-mayonnaise/313624011",
+  "image": "/products/313624011.jpg",
+  "badge": "Popular",
+  "offer": "Buy any 2 for £6"
+ },
+ {
+  "id": "661175011",
+  "name": "trufru Strawberries in White & Milk Chocolate",
+  "bio": "The treat everyone reaches for first. Bring me to movie night and I'll do the rest.",
+  "brand": "trufru",
+  "price": 4.5,
+  "size": "200g",
+  "unitPrice": "£30.00 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.5,
+  "reviewCount": 90,
+  "pros": [
+   "Kids love them",
+   "Good value"
+  ],
+  "cons": [
+   "Small portions"
+  ],
+  "reviews": [
+   {
+    "author": "Leo",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Dan",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Isla",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/trufru-strawberries-in-white-milk-chocolate/661175011",
+  "offer": "Now £4.50, was £6",
+  "wasPrice": 6.0
+ },
+ {
+  "id": "616039011",
+  "name": "Muller Frijj Chocolate Milkshake",
+  "bio": "Made for sharing, though nobody will blame you if you don't. The bowl will be empty before you know it.",
+  "brand": "Muller",
+  "price": 1.5,
+  "size": "330ml",
+  "unitPrice": "£4.55 per litre",
+  "category": "snacks",
+  "tags": [
+   "drinks",
+   "milk",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.6,
+  "reviewCount": 80,
+  "pros": [
+   "Good value",
+   "Kids love them"
+  ],
+  "cons": [
+   "Small portions"
+  ],
+  "reviews": [
+   {
+    "author": "Noah",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Dan",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sarah",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/muller-frijj-chocolate-milkshake/616039011",
+  "badge": "Top rated"
+ },
+ {
+  "id": "617208011",
+  "name": "Pasta Evangelists Tomato & Rosemary Focaccia",
+  "bio": "Freshly baked, golden and fragrant. Tear and share, or don't.",
+  "brand": "Pasta Evangelists",
+  "price": 3.85,
+  "size": "180g",
+  "unitPrice": "£21.39 per kilo",
+  "category": "bakery",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.2,
+  "reviewCount": 108,
+  "pros": [
+   "Fresh taste",
+   "Great texture"
+  ],
+  "cons": [
+   "Best eaten fresh"
+  ],
+  "reviews": [
+   {
+    "author": "Priya",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ruby",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/pasta-evangelists-tomato-rosemary-focaccia/617208011",
+  "image": "/products/617208011.jpg"
+ },
+ {
+  "id": "387022011",
+  "name": "Andrex Ultimate Quilts Toilet Roll",
+  "bio": "The everyday basic that just does its job, really well.",
+  "brand": "Andrex",
+  "price": 8.95,
+  "size": "16 per pack",
+  "unitPrice": "71.9p per item",
+  "category": "household",
+  "tags": [
+   "deals"
+  ],
+  "dietary": [],
+  "rating": 3.7,
+  "reviewCount": 176,
+  "pros": [
+   "Soft",
+   "Good quality"
+  ],
+  "cons": [
+   "Pricier than others"
+  ],
+  "reviews": [
+   {
+    "author": "Emma",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ben",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/andrex-ultimate-quilts-toilet-roll/387022011",
+  "offer": "Now £8.95, was £11.50",
+  "wasPrice": 11.5
+ },
+ {
+  "id": "617207011",
+  "name": "Pasta Evangelists Olive Focaccia",
+  "bio": "Freshly baked, golden and fragrant. Tear and share, or don't.",
+  "brand": "Pasta Evangelists",
+  "price": 3.85,
+  "size": "200g",
+  "unitPrice": "£19.25 per kilo",
+  "category": "bakery",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.1,
+  "reviewCount": 93,
+  "pros": [
+   "Great texture",
+   "Fresh taste"
+  ],
+  "cons": [
+   "Best eaten fresh"
+  ],
+  "reviews": [
+   {
+    "author": "Sam",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ali",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Emma",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/pasta-evangelists-olive-focaccia/617207011",
+  "image": "/products/617207011.jpg"
+ },
+ {
+  "id": "18287011",
+  "name": "Scott's Porage Original Porridge Cereal Oats",
+  "bio": "A cupboard staple that makes everything better. You'll wonder how you managed without me.",
+  "brand": "Scott's Porage",
+  "price": 2.95,
+  "size": "1kg",
+  "unitPrice": "£2.95 per kilo",
+  "category": "cupboard",
+  "tags": [
+   "breakfast"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.5,
+  "reviewCount": 63,
+  "pros": [
+   "Great value",
+   "Versatile"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Ben",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Owen",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/scott-s-porage-original-porridge-cereal-oats/18287011",
+  "image": "/products/18287011.jpg"
+ },
+ {
+  "id": "616042011",
+  "name": "Muller Frijj Fudge Brownie Milkshake",
+  "bio": "Fresh, wholesome and lasts longer than you'd think. Reliable is my love language.",
+  "brand": "Muller",
+  "price": 1.5,
+  "size": "330ml",
+  "unitPrice": "£4.55 per litre",
+  "category": "dairy",
+  "tags": [
+   "drinks",
+   "milk"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.7,
+  "reviewCount": 49,
+  "pros": [
+   "Lasts well",
+   "Creamy"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Sam",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ali",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Tom",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/muller-frijj-fudge-brownie-milkshake/616042011",
+  "badge": "Top rated"
+ },
+ {
+  "id": "616041011",
+  "name": "Muller Frijj Cookie Dough Milkshake",
+  "bio": "Fresh, wholesome and lasts longer than you'd think. Reliable is my love language.",
+  "brand": "Muller",
+  "price": 1.5,
+  "size": "330ml",
+  "unitPrice": "£4.55 per litre",
+  "category": "dairy",
+  "tags": [
+   "drinks",
+   "milk"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.1,
+  "reviewCount": 64,
+  "pros": [
+   "Creamy",
+   "Good value"
+  ],
+  "cons": [
+   "Pricier than basics"
+  ],
+  "reviews": [
+   {
+    "author": "Priya",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ruby",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Hannah",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/muller-frijj-cookie-dough-milkshake/616041011",
+  "image": "/products/616041011.jpg"
+ },
+ {
+  "id": "616040011",
+  "name": "Muller Frijj Strawberry Cheesecake Milkshake",
+  "bio": "A fridge essential that never lets you down. Breakfast, coffee, baking, done.",
+  "brand": "Muller",
+  "price": 1.5,
+  "size": "330ml",
+  "unitPrice": "£4.55 per litre",
+  "category": "dairy",
+  "tags": [
+   "drinks",
+   "milk"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.2,
+  "reviewCount": 59,
+  "pros": [
+   "Good value",
+   "Creamy"
+  ],
+  "cons": [
+   "Pricier than basics"
+  ],
+  "reviews": [
+   {
+    "author": "Emma",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Dan",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sarah",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/muller-frijj-strawberry-cheesecake-milkshake/616040011"
+ },
+ {
+  "id": "18047011",
+  "name": "Quaker Porridge Oats",
+  "bio": "A cupboard staple that makes everything better. You'll wonder how you managed without me.",
+  "brand": "Quaker",
+  "price": 2.95,
+  "size": "1kg",
+  "unitPrice": "£2.95 per kilo",
+  "category": "cupboard",
+  "tags": [
+   "breakfast"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.0,
+  "reviewCount": 66,
+  "pros": [
+   "Versatile",
+   "Good quality"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Dan",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Hannah",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/quaker-porridge-oats/18047011",
+  "image": "/products/18047011.jpg"
+ },
+ {
+  "id": "14192011",
+  "name": "Scott's Porage Old Fashioned Porridge Cereal Oats",
+  "bio": "Reliable, versatile and always there when you need me.",
+  "brand": "Scott's Porage",
+  "price": 3.45,
+  "size": "1kg",
+  "unitPrice": "£3.45 per kilo",
+  "category": "cupboard",
+  "tags": [
+   "breakfast"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.6,
+  "reviewCount": 40,
+  "pros": [
+   "Great value",
+   "Versatile"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Sam",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ruby",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sarah",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/scott-s-porage-old-fashioned-porridge-cereal-oats/14192011",
+  "image": "/products/14192011.jpg",
+  "badge": "Top rated"
+ },
+ {
+  "id": "656999011",
+  "name": "Zombie Fruit Bars Variety Multipack",
+  "bio": "Small but mighty. Keep a stash in the cupboard for emergencies.",
+  "brand": "Zombie",
+  "price": 2.6,
+  "size": "4 x 25g",
+  "unitPrice": "£26.00 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "gluten-free",
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.8,
+  "reviewCount": 36,
+  "pros": [
+   "Kids love them",
+   "Good value"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Ruby",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Zoe",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Emma",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/zombie-fruit-bars-variety-multipack/656999011",
+  "offer": "Back To School: Buy any 4 for 3"
+ },
+ {
+  "id": "200045011",
+  "name": "Birds Eye Garden Peas",
+  "bio": "Reliable, versatile and always there when you need me.",
+  "brand": "Birds Eye",
+  "price": 2.0,
+  "size": "800g",
+  "unitPrice": "£3.13 per kilo",
+  "category": "cupboard",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.2,
+  "reviewCount": 47,
+  "pros": [
+   "Good quality",
+   "Great value"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Owen",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Isla",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/birds-eye-garden-peas/200045011",
+  "image": "/products/200045011.jpg",
+  "wasPrice": 2.5
+ },
+ {
+  "id": "608584011",
+  "name": "Cheeky Panda Quilted Soft Bamboo Toilet Paper",
+  "bio": "The everyday basic that just does its job, really well.",
+  "brand": "Cheeky Panda",
+  "price": 5.0,
+  "size": "9 per pack",
+  "unitPrice": "80.6p per item",
+  "category": "household",
+  "tags": [
+   "deals"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.1,
+  "reviewCount": 47,
+  "pros": [
+   "Good quality",
+   "Long lasting"
+  ],
+  "cons": [
+   "Pricier than others"
+  ],
+  "reviews": [
+   {
+    "author": "Ali",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Leo",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Chloe",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/cheeky-panda-quilted-soft-bamboo-toilet-paper/608584011",
+  "image": "/products/608584011.jpg",
+  "offer": "Now £5, was £7.25",
+  "wasPrice": 7.25
+ },
+ {
+  "id": "654053011",
+  "name": "Pip & Nut Peanut Butter Stuffed Oat Bar Original",
+  "bio": "Sweet, fun and dangerously moreish. Basically the life of the party.",
+  "brand": "Pip & Nut",
+  "price": 2.25,
+  "size": "3 x 48g",
+  "unitPrice": "£22.57 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.4,
+  "reviewCount": 37,
+  "pros": [
+   "Moreish",
+   "Great for sharing"
+  ],
+  "cons": [
+   "Small portions"
+  ],
+  "reviews": [
+   {
+    "author": "Hannah",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Noah",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Isla",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/pip-nut-peanut-butter-stuffed-oat-bar-original/654053011",
+  "image": "/products/654053011.jpg",
+  "offer": "Now £2.25, was £3.25",
+  "wasPrice": 3.25
+ },
+ {
+  "id": "31661011",
+  "name": "New Covent Garden Tomato & Basil Soup",
+  "bio": "Comforting, filling and zero washing up. Perfect for busy weeknights.",
+  "brand": "New Covent Garden",
+  "price": 1.5,
+  "size": "560g",
+  "unitPrice": "£4.38 per kilo",
+  "category": "meals",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.7,
+  "reviewCount": 56,
+  "pros": [
+   "Tasty",
+   "Quick to cook"
+  ],
+  "cons": [
+   "Bit salty"
+  ],
+  "reviews": [
+   {
+    "author": "Isla",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Leo",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Dan",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/new-covent-garden-tomato-basil-soup/31661011",
+  "image": "/products/31661011.jpg",
+  "wasPrice": 2.45
+ },
+ {
+  "id": "555495011",
+  "name": "M&S Abertura Vinho Verde Rose",
+  "bio": "Strawberry notes, a light touch and very easy to like.",
+  "brand": "M&S",
+  "price": 8.0,
+  "size": "75cl",
+  "unitPrice": "£10.67 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "party",
+   "rose",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.3,
+  "reviewCount": 38,
+  "pros": [
+   "Good value",
+   "Crowd-pleaser"
+  ],
+  "cons": [
+   "Not for everyone"
+  ],
+  "reviews": [
+   {
+    "author": "Mia",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ben",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Emma",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-abertura-vinho-verde-rose/555495011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "644704011",
+  "name": "John West Tuna Chunks in Spring Water",
+  "bio": "Reliable, versatile and always there when you need me.",
+  "brand": "John West",
+  "price": 4.5,
+  "size": "4 x 125g",
+  "unitPrice": "£10.50 per kilo",
+  "category": "cupboard",
+  "tags": [
+   "deals",
+   "dinner"
+  ],
+  "dietary": [],
+  "rating": 3.1,
+  "reviewCount": 90,
+  "pros": [
+   "Good quality",
+   "Great value"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Sam",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Isla",
+    "rating": 2,
+    "text": "Not great. Expected more for the price.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "James",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/john-west-tuna-chunks-in-spring-water/644704011",
+  "offer": "Now £4.50, was £5.25",
+  "wasPrice": 5.25
+ },
+ {
+  "id": "326792011",
+  "name": "Simple Kind To Skin Micellar Cleansing Water",
+  "bio": "Unglamorous but essential. You'll be glad you stocked up.",
+  "brand": "Simple",
+  "price": 3.65,
+  "size": "400ml",
+  "unitPrice": "£13.75 per litre",
+  "category": "household",
+  "tags": [
+   "deals",
+   "halloween"
+  ],
+  "dietary": [],
+  "rating": 4.2,
+  "reviewCount": 37,
+  "pros": [
+   "Soft",
+   "Good quality"
+  ],
+  "cons": [
+   "Pricier than others"
+  ],
+  "reviews": [
+   {
+    "author": "Dan",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Isla",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/simple-kind-to-skin-micellar-cleansing-water/326792011",
+  "offer": "Now £3.65, was £5.50",
+  "wasPrice": 5.5
+ },
+ {
+  "id": "17959011",
+  "name": "Mars, Maltesers, M&M's, Twix and more Funsize Milk Chocolate Party Bag",
+  "bio": "The treat everyone reaches for first. Bring me to movie night and I'll do the rest.",
+  "brand": "Mars",
+  "price": 6.0,
+  "size": "540g",
+  "unitPrice": "£19.44 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [],
+  "rating": 4.1,
+  "reviewCount": 38,
+  "pros": [
+   "Kids love them",
+   "Moreish"
+  ],
+  "cons": [
+   "Gone too fast"
+  ],
+  "reviews": [
+   {
+    "author": "Priya",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Sarah",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Leo",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/mars-maltesers-m-m-s-twix-and-more-funsize-milk-chocolate-party-bag/17959011",
+  "offer": "Now £6, was £10.50",
+  "wasPrice": 10.5
+ },
+ {
+  "id": "306797011",
+  "name": "Coca-Cola Zero Sugar",
+  "bio": "A little boost in a bottle. Great on the go.",
+  "brand": "Coca-Cola",
+  "price": 10.5,
+  "size": "30 x 330ml",
+  "unitPrice": "£1.69 per litre",
+  "category": "drinks",
+  "tags": [
+   "deals",
+   "drinks"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.2,
+  "reviewCount": 75,
+  "pros": [
+   "Good flavour",
+   "Refreshing"
+  ],
+  "cons": [
+   "Quite sweet"
+  ],
+  "reviews": [
+   {
+    "author": "Isla",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Noah",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/coca-cola-zero-sugar/306797011",
+  "image": "/products/306797011.jpg",
+  "offer": "Now £10.50, was £16.75",
+  "wasPrice": 16.75
+ },
+ {
+  "id": "27107011",
+  "name": "New Covent Garden Classic Chicken Soup",
+  "bio": "Comforting, filling and zero washing up. Perfect for busy weeknights.",
+  "brand": "New Covent Garden",
+  "price": 1.5,
+  "size": "560g",
+  "unitPrice": "£4.38 per kilo",
+  "category": "meals",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [],
+  "rating": 2.7,
+  "reviewCount": 135,
+  "pros": [
+   "Tasty",
+   "Quick to cook"
+  ],
+  "cons": [
+   "Bit salty"
+  ],
+  "reviews": [
+   {
+    "author": "Priya",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Owen",
+    "rating": 2,
+    "text": "Disappointed, not as good as it used to be.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sarah",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/new-covent-garden-classic-chicken-soup/27107011",
+  "image": "/products/27107011.jpg",
+  "wasPrice": 2.45
+ },
+ {
+  "id": "52647011",
+  "name": "Quaker Oats Jumbo Rolled Oats Porridge Cereal",
+  "bio": "The secret ingredient behind a lot of good meals.",
+  "brand": "Quaker",
+  "price": 3.15,
+  "size": "1kg",
+  "unitPrice": "£3.15 per kilo",
+  "category": "cupboard",
+  "tags": [
+   "breakfast"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.1,
+  "reviewCount": 34,
+  "pros": [
+   "Good quality",
+   "Great value"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Leo",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Mia",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/quaker-oats-jumbo-rolled-oats-porridge-cereal/52647011",
+  "image": "/products/52647011.jpg"
+ },
+ {
+  "id": "527711011",
+  "name": "M&S Cotes Du Rhone Rose",
+  "bio": "Pale pink, dry and summery, whatever the weather. A crowd-pleaser on any table.",
+  "brand": "M&S",
+  "price": 8.5,
+  "size": "75cl",
+  "unitPrice": "£11.33 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "party",
+   "rose",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.4,
+  "reviewCount": 28,
+  "pros": [
+   "Crowd-pleaser",
+   "Good value"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Kai",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ben",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Zoe",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-cotes-du-rhone-rose/527711011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "15037011",
+  "name": "Mars Caramel, Nougat & Milk Chocolate Funsize Snack Bars Multipack",
+  "bio": "Made for sharing, though nobody will blame you if you don't. The bowl will be empty before you know it.",
+  "brand": "Mars",
+  "price": 3.25,
+  "size": "275g",
+  "unitPrice": "£11.82 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.4,
+  "reviewCount": 27,
+  "pros": [
+   "Good value",
+   "Kids love them"
+  ],
+  "cons": [
+   "Gone too fast"
+  ],
+  "reviews": [
+   {
+    "author": "Sarah",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Kai",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Isla",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/mars-caramel-nougat-milk-chocolate-funsize-snack-bars-multipack/15037011",
+  "offer": "Price Lock"
+ },
+ {
+  "id": "259279011",
+  "name": "Frubes Kids Banana & Strawberry Yoghurt Tubes",
+  "bio": "Fresh, wholesome and lasts longer than you'd think. Reliable is my love language.",
+  "brand": "Frubes",
+  "price": 2.25,
+  "size": "9 x 37g",
+  "unitPrice": "£6.76 per kilo",
+  "category": "dairy",
+  "tags": [
+   "breakfast",
+   "deals",
+   "kids"
+  ],
+  "dietary": [],
+  "rating": 4.7,
+  "reviewCount": 24,
+  "pros": [
+   "Good value",
+   "Great taste"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Mia",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Tom",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Ben",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/frubes-kids-banana-strawberry-yoghurt-tubes/259279011",
+  "offer": "Buy any 2 for £3"
+ },
+ {
+  "id": "17049011",
+  "name": "Maltesers Milk Chocolate & Honeycomb 11 Funsize Snack Bags Fairtrade",
+  "bio": "Sweet, fun and dangerously moreish. Basically the life of the party.",
+  "brand": "Maltesers",
+  "price": 3.25,
+  "size": "214g",
+  "unitPrice": "£15.19 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [],
+  "rating": 3.8,
+  "reviewCount": 35,
+  "pros": [
+   "Good value",
+   "Kids love them"
+  ],
+  "cons": [
+   "Small portions"
+  ],
+  "reviews": [
+   {
+    "author": "James",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ruby",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Mia",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/maltesers-milk-chocolate-honeycomb-11-funsize-snack-bags-fairtrade/17049011",
+  "offer": "Price Lock"
+ },
+ {
+  "id": "671236011",
+  "name": "M&S Roasted Mushroom Risotto Serves 1",
+  "bio": "Dinner sorted in minutes. Heat, eat and put your feet up.",
+  "brand": "M&S",
+  "price": 4.2,
+  "size": "400g",
+  "unitPrice": "£10.50 per kilo",
+  "category": "meals",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 3.0,
+  "reviewCount": 61,
+  "pros": [
+   "Filling",
+   "Tasty"
+  ],
+  "cons": [
+   "Portion could be bigger"
+  ],
+  "reviews": [
+   {
+    "author": "Ben",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ali",
+    "rating": 2,
+    "text": "Disappointed, not as good as it used to be.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Isla",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-roasted-mushroom-risotto-serves-1/671236011",
+  "image": "/products/671236011.jpg"
+ },
+ {
+  "id": "575343011",
+  "name": "M&S Bardolino Chiaretto Rose",
+  "bio": "Pale pink, dry and summery, whatever the weather. A crowd-pleaser on any table.",
+  "brand": "M&S",
+  "price": 8.5,
+  "size": "75cl",
+  "unitPrice": "£11.33 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "party",
+   "rose",
+   "wine"
+  ],
+  "dietary": [
+   "vegan"
+  ],
+  "rating": 4.2,
+  "reviewCount": 26,
+  "pros": [
+   "Easy drinking",
+   "Crowd-pleaser"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Tom",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Noah",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "James",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-bardolino-chiaretto-rose/575343011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "514640011",
+  "name": "M&S Spaghetti Bolognese Serves 1",
+  "bio": "Dinner sorted in minutes. Heat, eat and put your feet up.",
+  "brand": "M&S",
+  "price": 4.2,
+  "size": "400g",
+  "unitPrice": "£10.50 per kilo",
+  "category": "meals",
+  "tags": [
+   "deals",
+   "dinner"
+  ],
+  "dietary": [],
+  "rating": 3.4,
+  "reviewCount": 40,
+  "pros": [
+   "Quick to cook",
+   "Filling"
+  ],
+  "cons": [
+   "Portion could be bigger"
+  ],
+  "reviews": [
+   {
+    "author": "Hannah",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Mia",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-spaghetti-bolognese-serves-1/514640011",
+  "offer": "Buy any 3 for £10"
+ },
+ {
+  "id": "611727011",
+  "name": "Heinz Vegan Mayonnaise",
+  "bio": "The secret ingredient behind a lot of good meals.",
+  "brand": "Heinz",
+  "price": 3.95,
+  "size": "800g",
+  "unitPrice": "£4.94 per kilo",
+  "category": "cupboard",
+  "tags": [],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 3.5,
+  "reviewCount": 36,
+  "pros": [
+   "Great value",
+   "Versatile"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Owen",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Ben",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/heinz-vegan-mayonnaise/611727011",
+  "image": "/products/611727011.jpg"
+ },
+ {
+  "id": "75629011",
+  "name": "Pieminister Free Ranger Pie with Chicken, Ham & Leek",
+  "bio": "Comforting, filling and zero washing up. Perfect for busy weeknights.",
+  "brand": "Pieminister",
+  "price": 3.75,
+  "size": "255g",
+  "unitPrice": "£19.61 per kilo",
+  "category": "meals",
+  "tags": [
+   "deals",
+   "dinner"
+  ],
+  "dietary": [],
+  "rating": 3.2,
+  "reviewCount": 45,
+  "pros": [
+   "Quick to cook",
+   "Tasty"
+  ],
+  "cons": [
+   "Bit salty"
+  ],
+  "reviews": [
+   {
+    "author": "Tom",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Kai",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Mia",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/pieminister-free-ranger-pie-with-chicken-ham-leek/75629011",
+  "image": "/products/75629011.jpg",
+  "offer": "Now £3.75, was £5",
+  "wasPrice": 5.0
+ },
+ {
+  "id": "11992011",
+  "name": "Nescafe Original Instant Coffee",
+  "bio": "The secret ingredient behind a lot of good meals.",
+  "brand": "Nescafe",
+  "price": 5.0,
+  "size": "190g",
+  "unitPrice": "£42.11 per kilo",
+  "category": "cupboard",
+  "tags": [
+   "deals"
+  ],
+  "dietary": [],
+  "rating": 3.7,
+  "reviewCount": 31,
+  "pros": [
+   "Versatile",
+   "Good quality"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Mia",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Noah",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Leo",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/nescafe-original-instant-coffee/11992011",
+  "offer": "Now £5, was £8",
+  "wasPrice": 8.0
+ },
+ {
+  "id": "28945011",
+  "name": "New Covent Garden Vegetable Soup",
+  "bio": "Dinner sorted in minutes. Heat, eat and put your feet up.",
+  "brand": "New Covent Garden",
+  "price": 1.5,
+  "size": "560g",
+  "unitPrice": "£4.38 per kilo",
+  "category": "meals",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 3.0,
+  "reviewCount": 45,
+  "pros": [
+   "Filling",
+   "Quick to cook"
+  ],
+  "cons": [
+   "Bit salty"
+  ],
+  "reviews": [
+   {
+    "author": "Ruby",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Kai",
+    "rating": 2,
+    "text": "Wouldn't buy again, sadly.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Priya",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/new-covent-garden-vegetable-soup/28945011",
+  "image": "/products/28945011.jpg",
+  "wasPrice": 2.45
+ },
+ {
+  "id": "527798011",
+  "name": "M&S Classics Vinho Verde",
+  "bio": "Crisp, zesty and refreshing. Best served cold with good company.",
+  "brand": "M&S",
+  "price": 7.5,
+  "size": "75cl",
+  "unitPrice": "£10.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "white",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.1,
+  "reviewCount": 23,
+  "pros": [
+   "Easy drinking",
+   "Crowd-pleaser"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Chloe",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Dan",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-classics-vinho-verde/527798011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "21633011",
+  "name": "New Covent Garden Leek & Potato Soup",
+  "bio": "A proper warming meal for one. No effort required.",
+  "brand": "New Covent Garden",
+  "price": 1.5,
+  "size": "560g",
+  "unitPrice": "£4.38 per kilo",
+  "category": "meals",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 2.6,
+  "reviewCount": 65,
+  "pros": [
+   "Tasty",
+   "Filling"
+  ],
+  "cons": [
+   "Bit salty"
+  ],
+  "reviews": [
+   {
+    "author": "Isla",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Leo",
+    "rating": 2,
+    "text": "Wouldn't buy again, sadly.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Noah",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/new-covent-garden-leek-potato-soup/21633011",
+  "image": "/products/21633011.jpg",
+  "wasPrice": 2.45
+ },
+ {
+  "id": "373063011",
+  "name": "Heinz Classic BBQ Sauce",
+  "bio": "A cupboard staple that makes everything better. You'll wonder how you managed without me.",
+  "brand": "Heinz",
+  "price": 3.9,
+  "size": "665g",
+  "unitPrice": "£5.86 per kilo",
+  "category": "cupboard",
+  "tags": [],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.4,
+  "reviewCount": 18,
+  "pros": [
+   "Good quality",
+   "Great value"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Dan",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Chloe",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Hannah",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/heinz-classic-bbq-sauce/373063011",
+  "image": "/products/373063011.jpg"
+ },
+ {
+  "id": "529230011",
+  "name": "M&S Classics Marlborough Sauvignon Blanc",
+  "bio": "Bright citrus and a clean finish. Pairs with fish, salads and long chats.",
+  "brand": "M&S",
+  "price": 10.0,
+  "size": "75cl",
+  "unitPrice": "£13.33 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "white",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.9,
+  "reviewCount": 18,
+  "pros": [
+   "Crowd-pleaser",
+   "Good value"
+  ],
+  "cons": [
+   "Not for everyone"
+  ],
+  "reviews": [
+   {
+    "author": "Hannah",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Noah",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "James",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-classics-marlborough-sauvignon-blanc/529230011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "527788011",
+  "name": "M&S Primitivo Puglia",
+  "bio": "Bold without being loud. A dependable red for dinner parties and quiet nights alike.",
+  "brand": "M&S",
+  "price": 8.0,
+  "size": "75cl",
+  "unitPrice": "£10.67 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "red",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.7,
+  "reviewCount": 18,
+  "pros": [
+   "Crowd-pleaser",
+   "Easy drinking"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Mia",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ruby",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Noah",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-primitivo-puglia/527788011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "612699011",
+  "name": "M&S Found Saperavi",
+  "bio": "Bold without being loud. A dependable red for dinner parties and quiet nights alike.",
+  "brand": "M&S",
+  "price": 12.0,
+  "size": "75cl",
+  "unitPrice": "£16.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "red",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.8,
+  "reviewCount": 17,
+  "pros": [
+   "Easy drinking",
+   "Good value"
+  ],
+  "cons": [
+   "Not for everyone"
+  ],
+  "reviews": [
+   {
+    "author": "James",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ben",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-found-saperavi/612699011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "512198011",
+  "name": "M&S Cotes Du Rhone Villages Plan De Dieu",
+  "bio": "Bold without being loud. A dependable red for dinner parties and quiet nights alike.",
+  "brand": "M&S",
+  "price": 12.0,
+  "size": "75cl",
+  "unitPrice": "£16.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "red",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.6,
+  "reviewCount": 13,
+  "pros": [
+   "Good value",
+   "Easy drinking"
+  ],
+  "cons": [
+   "Not for everyone"
+  ],
+  "reviews": [
+   {
+    "author": "Ben",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Chloe",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "James",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-cotes-du-rhone-villages-plan-de-dieu/512198011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "512247011",
+  "name": "M&S Conte Priuli Veneto Blush",
+  "bio": "Pale pink, dry and summery, whatever the weather. A crowd-pleaser on any table.",
+  "brand": "M&S",
+  "price": 8.0,
+  "size": "75cl",
+  "unitPrice": "£10.67 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "party",
+   "rose",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.7,
+  "reviewCount": 16,
+  "pros": [
+   "Good value",
+   "Great with food"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Dan",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Kai",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "James",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-conte-priuli-veneto-blush/512247011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "518979011",
+  "name": "M&S Chicken Tagliatelle Serves 1",
+  "bio": "Dinner sorted in minutes. Heat, eat and put your feet up.",
+  "brand": "M&S",
+  "price": 4.2,
+  "size": "400g",
+  "unitPrice": "£10.50 per kilo",
+  "category": "meals",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [],
+  "rating": 3.7,
+  "reviewCount": 16,
+  "pros": [
+   "Tasty",
+   "Quick to cook"
+  ],
+  "cons": [
+   "Bit salty"
+  ],
+  "reviews": [
+   {
+    "author": "Ben",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "James",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Ali",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-chicken-tagliatelle-serves-1/518979011",
+  "image": "/products/518979011.jpg"
+ },
+ {
+  "id": "514458011",
+  "name": "M&S Roasted Vegetable Lasagne Serves 1",
+  "bio": "A proper warming meal for one. No effort required.",
+  "brand": "M&S",
+  "price": 4.2,
+  "size": "400g",
+  "unitPrice": "£10.50 per kilo",
+  "category": "meals",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 2.8,
+  "reviewCount": 24,
+  "pros": [
+   "Tasty",
+   "Filling"
+  ],
+  "cons": [
+   "Bit salty"
+  ],
+  "reviews": [
+   {
+    "author": "Tom",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "James",
+    "rating": 2,
+    "text": "Disappointed, not as good as it used to be.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-roasted-vegetable-lasagne-serves-1/514458011",
+  "image": "/products/514458011.jpg"
+ },
+ {
+  "id": "529410011",
+  "name": "M&S Classics Malbec",
+  "bio": "Bold without being loud. A dependable red for dinner parties and quiet nights alike.",
+  "brand": "M&S",
+  "price": 9.0,
+  "size": "75cl",
+  "unitPrice": "£12.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "red",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.6,
+  "reviewCount": 16,
+  "pros": [
+   "Good value",
+   "Easy drinking"
+  ],
+  "cons": [
+   "Not for everyone"
+  ],
+  "reviews": [
+   {
+    "author": "Ali",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "James",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Leo",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-classics-malbec/529410011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "513103011",
+  "name": "M&S Graham Beck Cap Classique Rose",
+  "bio": "Elegant fizz for toasts, birthdays or just because it's Friday.",
+  "brand": "M&S",
+  "price": 15.0,
+  "size": "75cl",
+  "unitPrice": "£20.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "party",
+   "sparkling",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.2,
+  "reviewCount": 13,
+  "pros": [
+   "Great with food",
+   "Crowd-pleaser"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Noah",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "James",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Emma",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-graham-beck-cap-classique-rose/513103011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "531007011",
+  "name": "Mars, Twix, Bounty, Snickers, Milky Way Funsize Chocolate  Bars Party Bag",
+  "bio": "Small but mighty. Keep a stash in the cupboard for emergencies.",
+  "brand": "Mars",
+  "price": 12.0,
+  "size": "1.4kg",
+  "unitPrice": "£12.68 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 5.0,
+  "reviewCount": 10,
+  "pros": [
+   "Good value",
+   "Great for sharing"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Leo",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Zoe",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/mars-twix-bounty-snickers-milky-way-funsize-chocolate-bars-party-bag/531007011",
+  "offer": "Now £12, was £17.75",
+  "wasPrice": 17.75
+ },
+ {
+  "id": "14771011",
+  "name": "Adnams Broadside Ale",
+  "bio": "Malty, rich and full of character. A proper British ale for colder evenings.",
+  "brand": "Adnams",
+  "price": 2.4,
+  "size": "500ml",
+  "unitPrice": "£4.80 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "beer",
+   "deals",
+   "drinks",
+   "halloween",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 4.5,
+  "reviewCount": 11,
+  "pros": [
+   "Good value",
+   "Great with food"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Leo",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Emma",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Owen",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/adnams-broadside-ale/14771011",
+  "image": "/products/14771011.jpg",
+  "offer": "Buy Any 4 for £8"
+ },
+ {
+  "id": "484037011",
+  "name": "Skittles Vegan Chewy Sweets Fruit Flavoured Funsize Bags",
+  "bio": "Small but mighty. Keep a stash in the cupboard for emergencies.",
+  "brand": "Skittles",
+  "price": 3.25,
+  "size": "324g",
+  "unitPrice": "£10.03 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.2,
+  "reviewCount": 16,
+  "pros": [
+   "Great for sharing",
+   "Moreish"
+  ],
+  "cons": [
+   "Small portions"
+  ],
+  "reviews": [
+   {
+    "author": "James",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Noah",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Zoe",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/skittles-vegan-chewy-sweets-fruit-flavoured-funsize-bags/484037011",
+  "offer": "Price Lock"
+ },
+ {
+  "id": "513119011",
+  "name": "M&S Gibo Asti D.O.C.G Dolce",
+  "bio": "Elegant fizz for toasts, birthdays or just because it's Friday.",
+  "brand": "M&S",
+  "price": 7.5,
+  "size": "75cl",
+  "unitPrice": "£10.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "party",
+   "sparkling",
+   "wine"
+  ],
+  "dietary": [
+   "vegan"
+  ],
+  "rating": 3.5,
+  "reviewCount": 14,
+  "pros": [
+   "Good value",
+   "Great with food"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Isla",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Noah",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-gibo-asti-d-o-c-g-dolce/513119011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "686161011",
+  "name": "Ocado Organic 12 Medium Eggs",
+  "bio": "A fridge essential that never lets you down. Breakfast, coffee, baking, done.",
+  "brand": "Ocado",
+  "price": 5.35,
+  "size": "12 per pack",
+  "unitPrice": "44.6p per item",
+  "category": "dairy",
+  "tags": [
+   "breakfast"
+  ],
+  "dietary": [],
+  "rating": 2.0,
+  "reviewCount": 22,
+  "pros": [
+   "Creamy",
+   "Great taste"
+  ],
+  "cons": [
+   "Pricier than basics"
+  ],
+  "reviews": [
+   {
+    "author": "Ruby",
+    "rating": 2,
+    "text": "Not great. Expected more for the price.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Noah",
+    "rating": 1,
+    "text": "Wouldn't buy again, sadly.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "James",
+    "rating": 2,
+    "text": "Disappointed, not as good as it used to be.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/ocado-organic-12-medium-eggs/686161011"
+ },
+ {
+  "id": "665167011",
+  "name": "Plenish Ginger Dosing Bottle 7x Shots",
+  "bio": "A little boost in a bottle. Great on the go.",
+  "brand": "Plenish",
+  "price": 3.95,
+  "size": "420ml",
+  "unitPrice": "£14.29 per litre",
+  "category": "drinks",
+  "tags": [
+   "deals",
+   "drinks"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 3.5,
+  "reviewCount": 10,
+  "pros": [
+   "Handy size",
+   "Refreshing"
+  ],
+  "cons": [
+   "Quite sweet"
+  ],
+  "reviews": [
+   {
+    "author": "Ben",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Ali",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/plenish-ginger-dosing-bottle-7x-shots/665167011",
+  "image": "/products/665167011.jpg",
+  "offer": "Now £3.95, was £6",
+  "wasPrice": 6.0
+ },
+ {
+  "id": "529401011",
+  "name": "M&S Collection Gavi di Gavi",
+  "bio": "Bright citrus and a clean finish. Pairs with fish, salads and long chats.",
+  "brand": "M&S",
+  "price": 14.0,
+  "size": "75cl",
+  "unitPrice": "£18.67 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "white",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.4,
+  "reviewCount": 10,
+  "pros": [
+   "Great with food",
+   "Crowd-pleaser"
+  ],
+  "cons": [
+   "Not for everyone"
+  ],
+  "reviews": [
+   {
+    "author": "James",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Tom",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sarah",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-collection-gavi-di-gavi/529401011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "394437011",
+  "name": "Felix Goody Bag Original Chicken Liver and Turkey Cat Treats",
+  "bio": "A treat your four-legged friend will go wild for. Spooky season, sorted.",
+  "brand": "Felix",
+  "price": 3.0,
+  "size": "200g",
+  "unitPrice": "£15.00 per kilo",
+  "category": "pets",
+  "tags": [
+   "halloween",
+   "pets"
+  ],
+  "dietary": [],
+  "rating": 5.0,
+  "reviewCount": 7,
+  "pros": [
+   "Pets love them",
+   "Fun packaging"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Grace",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Chloe",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Kai",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/felix-goody-bag-original-chicken-liver-and-turkey-cat-treats/394437011"
+ },
+ {
+  "id": "527801011",
+  "name": "M&S Classics White Burgundy",
+  "bio": "Crisp, zesty and refreshing. Best served cold with good company.",
+  "brand": "M&S",
+  "price": 12.0,
+  "size": "75cl",
+  "unitPrice": "£16.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "white",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.5,
+  "reviewCount": 8,
+  "pros": [
+   "Good value",
+   "Crowd-pleaser"
+  ],
+  "cons": [
+   "Not for everyone"
+  ],
+  "reviews": [
+   {
+    "author": "Leo",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Zoe",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Ben",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-classics-white-burgundy/527801011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "512308011",
+  "name": "M&S Collection Sancerre Domaine Chevreau",
+  "bio": "Crisp, zesty and refreshing. Best served cold with good company.",
+  "brand": "M&S",
+  "price": 25.0,
+  "size": "75cl",
+  "unitPrice": "£33.33 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "white",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.4,
+  "reviewCount": 8,
+  "pros": [
+   "Easy drinking",
+   "Great with food"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Kai",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ruby",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Dan",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-collection-sancerre-domaine-chevreau/512308011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "514884011",
+  "name": "M&S Ham & Mushroom Tagliatelle Serves 1",
+  "bio": "A proper warming meal for one. No effort required.",
+  "brand": "M&S",
+  "price": 4.2,
+  "size": "400g",
+  "unitPrice": "£10.50 per kilo",
+  "category": "meals",
+  "tags": [
+   "dinner"
+  ],
+  "dietary": [],
+  "rating": 2.9,
+  "reviewCount": 9,
+  "pros": [
+   "Quick to cook",
+   "Filling"
+  ],
+  "cons": [
+   "Portion could be bigger"
+  ],
+  "reviews": [
+   {
+    "author": "Ali",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Mia",
+    "rating": 2,
+    "text": "Not great. Expected more for the price.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Owen",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-ham-mushroom-tagliatelle-serves-1/514884011",
+  "image": "/products/514884011.jpg"
+ },
+ {
+  "id": "659647011",
+  "name": "Colgate Total Active Prevention Original Toothpaste",
+  "bio": "The everyday basic that just does its job, really well.",
+  "brand": "Colgate",
+  "price": 3.5,
+  "size": "125ml",
+  "unitPrice": "£56.00 per litre",
+  "category": "household",
+  "tags": [
+   "deals"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 2.6,
+  "reviewCount": 9,
+  "pros": [
+   "Long lasting",
+   "Good quality"
+  ],
+  "cons": [
+   "Pricier than others"
+  ],
+  "reviews": [
+   {
+    "author": "Emma",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Dan",
+    "rating": 2,
+    "text": "Wouldn't buy again, sadly.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Chloe",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/colgate-total-active-prevention-original-toothpaste/659647011",
+  "image": "/products/659647011.jpg",
+  "offer": "Half Price, was £7",
+  "wasPrice": 7.0
+ },
+ {
+  "id": "11858011",
+  "name": "Heinz Light Salad Cream 30% Less Fat",
+  "bio": "Reliable, versatile and always there when you need me.",
+  "brand": "Heinz",
+  "price": 3.95,
+  "size": "605g",
+  "unitPrice": "£6.53 per kilo",
+  "category": "cupboard",
+  "tags": [],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 3.6,
+  "reviewCount": 7,
+  "pros": [
+   "Great value",
+   "Versatile"
+  ],
+  "cons": [
+   "Packaging could be better"
+  ],
+  "reviews": [
+   {
+    "author": "Leo",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Mia",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Chloe",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/heinz-light-salad-cream-30-less-fat/11858011",
+  "image": "/products/11858011.jpg"
+ },
+ {
+  "id": "531989011",
+  "name": "Ocado Culinary Pumpkin min 600g",
+  "bio": "Seasonal and full of character. Carve me, cook me or put me on the doorstep.",
+  "brand": "Ocado",
+  "price": 2.25,
+  "size": "",
+  "unitPrice": "£2.25 per item",
+  "category": "fresh",
+  "tags": [
+   "halloween",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 1.8,
+  "reviewCount": 12,
+  "pros": [
+   "Good size"
+  ],
+  "cons": [
+   "Size varies"
+  ],
+  "reviews": [
+   {
+    "author": "Isla",
+    "rating": 2,
+    "text": "Disappointed, not as good as it used to be.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "James",
+    "rating": 1,
+    "text": "Wouldn't buy again, sadly.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Chloe",
+    "rating": 2,
+    "text": "Not great. Expected more for the price.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/ocado-culinary-pumpkin-min-600g/531989011"
+ },
+ {
+  "id": "702883011",
+  "name": "Wotsits Bag of Bones Really Cheesy Sharing Snacks",
+  "bio": "Small but mighty. Keep a stash in the cupboard for emergencies.",
+  "brand": "Wotsits",
+  "price": 1.75,
+  "size": "120g",
+  "unitPrice": "£18.75 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 4.3,
+  "reviewCount": 6,
+  "pros": [
+   "Kids love them",
+   "Good value"
+  ],
+  "cons": [
+   "Small portions"
+  ],
+  "reviews": [
+   {
+    "author": "Dan",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Owen",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Priya",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/wotsits-bag-of-bones-really-cheesy-sharing-snacks/702883011",
+  "offer": "Intro Offer: Now £1.75, will be £2.25",
+  "wasPrice": 2.25
+ },
+ {
+  "id": "512246011",
+  "name": "M&S Graham Beck Cap Classique Brut",
+  "bio": "Fine bubbles and a celebratory pop. Every occasion is an occasion with me.",
+  "brand": "M&S",
+  "price": 15.0,
+  "size": "75cl",
+  "unitPrice": "£20.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "party",
+   "sparkling",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.0,
+  "reviewCount": 6,
+  "pros": [
+   "Crowd-pleaser",
+   "Good value"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Ali",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Zoe",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Hannah",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-graham-beck-cap-classique-brut/512246011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "513117011",
+  "name": "M&S Collection Prosecco DOCG",
+  "bio": "Elegant fizz for toasts, birthdays or just because it's Friday.",
+  "brand": "M&S",
+  "price": 13.0,
+  "size": "75cl",
+  "unitPrice": "£17.33 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "party",
+   "sparkling",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.7,
+  "reviewCount": 6,
+  "pros": [
+   "Great with food",
+   "Good value"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Chloe",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Emma",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Priya",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-collection-prosecco-docg/513117011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "531702011",
+  "name": "Cadbury Dairy Milk Freddo & Friends Chocolate Pouch",
+  "bio": "The treat everyone reaches for first. Bring me to movie night and I'll do the rest.",
+  "brand": "Cadbury",
+  "price": 4.0,
+  "size": "191g",
+  "unitPrice": "£20.94 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 5.0,
+  "reviewCount": 5,
+  "pros": [
+   "Great for sharing",
+   "Good value"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Emma",
+    "rating": 5,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Dan",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Zoe",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/cadbury-dairy-milk-freddo-friends-chocolate-pouch/531702011",
+  "offer": "Price Lock"
+ },
+ {
+  "id": "529248011",
+  "name": "M&S Collection Chianti Classico Riserva Castellani",
+  "bio": "Smooth, rich and full of dark fruit. Pour me with something hearty and get comfy.",
+  "brand": "M&S",
+  "price": 15.0,
+  "size": "75cl",
+  "unitPrice": "£20.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "red",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.8,
+  "reviewCount": 5,
+  "pros": [
+   "Good value",
+   "Great with food"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Emma",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 3,
+    "text": "Pretty good overall, does the job.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Isla",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-collection-chianti-classico-riserva-castellani/529248011",
+  "image": "/products/529248011.jpg",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "658025011",
+  "name": "M&S Myrtia Assyrtiko",
+  "bio": "Crisp, zesty and refreshing. Best served cold with good company.",
+  "brand": "M&S",
+  "price": 12.0,
+  "size": "75cl",
+  "unitPrice": "£16.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "white",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.8,
+  "reviewCount": 4,
+  "pros": [
+   "Good value",
+   "Great with food"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Tom",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "James",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-myrtia-assyrtiko/658025011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "513110011",
+  "name": "M&S Balfour Cuvee Rose",
+  "bio": "Fine bubbles and a celebratory pop. Every occasion is an occasion with me.",
+  "brand": "M&S",
+  "price": 24.0,
+  "size": "75cl",
+  "unitPrice": "£32.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "party",
+   "sparkling",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.5,
+  "reviewCount": 4,
+  "pros": [
+   "Good value",
+   "Crowd-pleaser"
+  ],
+  "cons": [
+   "Not for everyone"
+  ],
+  "reviews": [
+   {
+    "author": "Grace",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Mia",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Dan",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-balfour-cuvee-rose/513110011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "580907011",
+  "name": "Denzel's Halloween Toffee Apple Soft-Baked Dog Chews",
+  "bio": "A treat your four-legged friend will go wild for. Spooky season, sorted.",
+  "brand": "Denzel's",
+  "price": 2.5,
+  "size": "75g",
+  "unitPrice": "£33.33 per kilo",
+  "category": "pets",
+  "tags": [
+   "halloween",
+   "pets"
+  ],
+  "dietary": [],
+  "rating": 4.0,
+  "reviewCount": 4,
+  "pros": [
+   "Fun packaging",
+   "Pets love them"
+  ],
+  "cons": [
+   "Small bag"
+  ],
+  "reviews": [
+   {
+    "author": "Tom",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Priya",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/denzel-s-halloween-toffee-apple-soft-baked-dog-chews/580907011"
+ },
+ {
+  "id": "621993011",
+  "name": "M&S Monti Pallidi Pinot Grigio",
+  "bio": "Crisp, zesty and refreshing. Best served cold with good company.",
+  "brand": "M&S",
+  "price": 10.0,
+  "size": "75cl",
+  "unitPrice": "£13.33 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "white",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.8,
+  "reviewCount": 4,
+  "pros": [
+   "Easy drinking",
+   "Crowd-pleaser"
+  ],
+  "cons": [
+   "A little pricey"
+  ],
+  "reviews": [
+   {
+    "author": "Sam",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Sarah",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Ben",
+    "rating": 4,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-monti-pallidi-pinot-grigio/621993011",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "606662011",
+  "name": "M&S Percy Pig Petrifying Party Fruit Juice Sweets",
+  "bio": "The treat everyone reaches for first. Bring me to movie night and I'll do the rest.",
+  "brand": "M&S",
+  "price": 2.0,
+  "size": "150g",
+  "unitPrice": "£13.33 per kilo",
+  "category": "snacks",
+  "tags": [
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 3.0,
+  "reviewCount": 4,
+  "pros": [
+   "Great for sharing",
+   "Kids love them"
+  ],
+  "cons": [
+   "Small portions"
+  ],
+  "reviews": [
+   {
+    "author": "Ben",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Ruby",
+    "rating": 2,
+    "text": "Not great. Expected more for the price.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "James",
+    "rating": 3,
+    "text": "Decent for the price. Would buy again on offer.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-percy-pig-petrifying-party-fruit-juice-sweets/606662011"
+ },
+ {
+  "id": "701577011",
+  "name": "PEACHIES Premium Nappies Size 04 (10-17 kg), Single Pack",
+  "bio": "Unglamorous but essential. You'll be glad you stocked up.",
+  "brand": "PEACHIES",
+  "price": 11.25,
+  "size": "25 per pack",
+  "unitPrice": "59.8p per item",
+  "category": "household",
+  "tags": [
+   "deals"
+  ],
+  "dietary": [],
+  "rating": 5.0,
+  "reviewCount": 3,
+  "pros": [
+   "Soft",
+   "Good quality"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Priya",
+    "rating": 5,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Grace",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Ali",
+    "rating": 5,
+    "text": "Exactly what I wanted. Great value too.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/peachies-premium-nappies-size-04-10-17-kg-single-pack/701577011",
+  "image": "/products/701577011.jpg",
+  "offer": "Intro Offer: Now £11.25, will be £14.95",
+  "wasPrice": 14.95
+ },
+ {
+  "id": "527640011",
+  "name": "M&S Chez Michel Cahors Malbec",
+  "bio": "Bold without being loud. A dependable red for dinner parties and quiet nights alike.",
+  "brand": "M&S",
+  "price": 9.0,
+  "size": "75cl",
+  "unitPrice": "£12.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "red",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 4.0,
+  "reviewCount": 3,
+  "pros": [
+   "Easy drinking",
+   "Great with food"
+  ],
+  "cons": [
+   "Not for everyone"
+  ],
+  "reviews": [
+   {
+    "author": "Leo",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Dan",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Chloe",
+    "rating": 4,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-chez-michel-cahors-malbec/527640011",
+  "image": "/products/527640011.jpg",
+  "offer": "Buy any 4 for 3"
+ },
+ {
+  "id": "528865011",
+  "name": "M&S Ghost Pumpkin",
+  "bio": "The treat everyone reaches for first. Bring me to movie night and I'll do the rest.",
+  "brand": "M&S",
+  "price": 3.0,
+  "size": "",
+  "unitPrice": "£3.00 per item",
+  "category": "snacks",
+  "tags": [
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [],
+  "rating": 3.7,
+  "reviewCount": 3,
+  "pros": [
+   "Kids love them",
+   "Great for sharing"
+  ],
+  "cons": [
+   "Gone too fast"
+  ],
+  "reviews": [
+   {
+    "author": "Ali",
+    "rating": 4,
+    "text": "Absolutely love this, buy it every week.",
+    "date": "Sep 2026"
+   },
+   {
+    "author": "Mia",
+    "rating": 3,
+    "text": "Nice enough, but I've had better.",
+    "date": "Aug 2026"
+   },
+   {
+    "author": "Sam",
+    "rating": 4,
+    "text": "Excellent quality, would definitely recommend.",
+    "date": "Jul 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/m-s-ghost-pumpkin/528865011"
+ },
+ {
+  "id": "664805011",
+  "name": "Denzel's Tomb of Treats Gift Box For Dogs",
+  "bio": "Because pets deserve treats too. Guaranteed tail wags.",
+  "brand": "Denzel's",
+  "price": 5.0,
+  "size": "140g",
+  "unitPrice": "£35.71 per kilo",
+  "category": "pets",
+  "tags": [
+   "halloween",
+   "pets"
+  ],
+  "dietary": [],
+  "rating": 5.0,
+  "reviewCount": 1,
+  "pros": [
+   "Pets love them",
+   "Fun packaging"
+  ],
+  "cons": [],
+  "reviews": [
+   {
+    "author": "Grace",
+    "rating": 5,
+    "text": "Can't fault it. Always a hit at home.",
+    "date": "Sep 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/denzel-s-tomb-of-treats-gift-box-for-dogs/664805011"
+ },
+ {
+  "id": "671163011",
+  "name": "Cadbury Family TreatSize",
+  "bio": "The treat everyone reaches for first. Bring me to movie night and I'll do the rest.",
+  "brand": "Cadbury",
+  "price": 3.5,
+  "size": "223g",
+  "unitPrice": "£15.70 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 2.0,
+  "reviewCount": 1,
+  "pros": [
+   "Good value",
+   "Kids love them"
+  ],
+  "cons": [
+   "Small portions"
+  ],
+  "reviews": [
+   {
+    "author": "Chloe",
+    "rating": 2,
+    "text": "Disappointed, not as good as it used to be.",
+    "date": "Sep 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/cadbury-family-treatsize/671163011",
+  "offer": "Price Lock"
+ },
+ {
+  "id": "701885011",
+  "name": "Denzel's Magic Lickies - Halloween Lickable Cat Treats & Toppers",
+  "bio": "A treat your four-legged friend will go wild for. Spooky season, sorted.",
+  "brand": "Denzel's",
+  "price": 3.0,
+  "size": "4 x 10g",
+  "unitPrice": "£75.00 per kilo",
+  "category": "pets",
+  "tags": [
+   "halloween",
+   "pets"
+  ],
+  "dietary": [],
+  "rating": 2.0,
+  "reviewCount": 1,
+  "pros": [
+   "Pets love them",
+   "Fun packaging"
+  ],
+  "cons": [
+   "Small bag"
+  ],
+  "reviews": [
+   {
+    "author": "Chloe",
+    "rating": 2,
+    "text": "Wouldn't buy again, sadly.",
+    "date": "Sep 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/denzel-s-magic-lickies-halloween-lickable-cat-treats-toppers/701885011"
+ },
+ {
+  "id": "700325011",
+  "name": "Maynards Bassetts Spooky Gums",
+  "bio": "Small but mighty. Keep a stash in the cupboard for emergencies.",
+  "brand": "Maynards Bassetts",
+  "price": 1.25,
+  "size": "110g",
+  "unitPrice": "£11.36 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [],
+  "rating": 2.0,
+  "reviewCount": 1,
+  "pros": [
+   "Good value",
+   "Kids love them"
+  ],
+  "cons": [
+   "Gone too fast"
+  ],
+  "reviews": [
+   {
+    "author": "Ali",
+    "rating": 2,
+    "text": "Not great. Expected more for the price.",
+    "date": "Sep 2026"
+   }
+  ],
+  "url": "https://www.ocado.com/products/maynards-bassetts-spooky-gums/700325011",
+  "image": "/products/700325011.jpg",
+  "offer": "Price Lock"
+ },
+ {
+  "id": "376495011",
+  "name": "Devil Halloween Costume Set",
+  "bio": "Instant spooky vibes, minimal effort. Your Halloween party needs me.",
+  "brand": "Ocado",
+  "price": 3.0,
+  "size": "",
+  "unitPrice": "£3.00 per item",
+  "category": "partyware",
+  "tags": [
+   "halloween",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/devil-halloween-costume-set/376495011"
+ },
+ {
+  "id": "693574011",
+  "name": "Halloween Orange Bucket",
+  "bio": "Instant spooky vibes, minimal effort. Your Halloween party needs me.",
+  "brand": "Ocado",
+  "price": 2.5,
+  "size": "",
+  "unitPrice": "£2.50 per item",
+  "category": "partyware",
+  "tags": [
+   "halloween",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/halloween-orange-bucket/693574011"
+ },
+ {
+  "id": "698282011",
+  "name": "M&S Colin Trick or Treat Box",
+  "bio": "Small but mighty. Keep a stash in the cupboard for emergencies.",
+  "brand": "M&S",
+  "price": 5.0,
+  "size": "185g",
+  "unitPrice": "£27.03 per kilo",
+  "category": "snacks",
+  "tags": [
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [
+   "vegetarian"
+  ],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/m-s-colin-trick-or-treat-box/698282011"
+ },
+ {
+  "id": "693017011",
+  "name": "M&S Halloween Pumpkin Bodysuit with Hat, 0-3 Months, Orange",
+  "bio": "Instant spooky vibes, minimal effort. Your Halloween party needs me.",
+  "brand": "M&S",
+  "price": 10.0,
+  "size": "",
+  "unitPrice": "£10.00 per item",
+  "category": "partyware",
+  "tags": [
+   "halloween",
+   "kids",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/m-s-halloween-pumpkin-bodysuit-with-hat-0-3-months-orange/693017011"
+ },
+ {
+  "id": "699487011",
+  "name": "M&S Witches' Fingers",
+  "bio": "Sweet, fun and dangerously moreish. Basically the life of the party.",
+  "brand": "M&S",
+  "price": 5.25,
+  "size": "260g",
+  "unitPrice": "£20.19 per kilo",
+  "category": "snacks",
+  "tags": [
+   "deals",
+   "halloween",
+   "party",
+   "snacks"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/m-s-witches-fingers/699487011",
+  "offer": "Buy any 3 for £12"
+ },
+ {
+  "id": "689731011",
+  "name": "Rex London Glow in the Dark Spooky Stick-on Shapes",
+  "bio": "Instant spooky vibes, minimal effort. Your Halloween party needs me.",
+  "brand": "Rex London",
+  "price": 6.95,
+  "size": "",
+  "unitPrice": "£6.95 per item",
+  "category": "partyware",
+  "tags": [
+   "halloween",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/rex-london-glow-in-the-dark-spooky-stick-on-shapes/689731011"
+ },
+ {
+  "id": "660450011",
+  "name": "Fang-Tastic Paint Your Own Pumpkin Halloween Decoration",
+  "bio": "Fun, festive and guaranteed to get a reaction from the guests.",
+  "brand": "Fang-Tastic",
+  "price": 4.0,
+  "size": "",
+  "unitPrice": "£4.00 per item",
+  "category": "partyware",
+  "tags": [
+   "halloween",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/fang-tastic-paint-your-own-pumpkin-halloween-decoration/660450011"
+ },
+ {
+  "id": "662153011",
+  "name": "Halloween Pumpkin LED lights",
+  "bio": "Fun, festive and guaranteed to get a reaction from the guests.",
+  "brand": "Ocado",
+  "price": 9.0,
+  "size": "",
+  "unitPrice": "£9.00 per item",
+  "category": "partyware",
+  "tags": [
+   "halloween",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/halloween-pumpkin-led-lights/662153011"
+ },
+ {
+  "id": "690096011",
+  "name": "Witch Fingers Set of 10",
+  "bio": "Instant spooky vibes, minimal effort. Your Halloween party needs me.",
+  "brand": "Ocado",
+  "price": 3.0,
+  "size": "10 per pack",
+  "unitPrice": "30.0p per item",
+  "category": "partyware",
+  "tags": [
+   "halloween",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/witch-fingers-set-of-10/690096011"
+ },
+ {
+  "id": "692133011",
+  "name": "M&S Halloween Kids Skeleton Pyjamas, 4-5 Y, Black Mix",
+  "bio": "Instant spooky vibes, minimal effort. Your Halloween party needs me.",
+  "brand": "M&S",
+  "price": 14.0,
+  "size": "",
+  "unitPrice": "£14.00 per item",
+  "category": "partyware",
+  "tags": [
+   "halloween",
+   "kids",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/m-s-halloween-kids-skeleton-pyjamas-4-5-y-black-mix/692133011"
+ },
+ {
+  "id": "665145011",
+  "name": "Rosewood Victor Von Vampire",
+  "bio": "Because pets deserve treats too. Guaranteed tail wags.",
+  "brand": "Rosewood",
+  "price": 8.1,
+  "size": "",
+  "unitPrice": "£9.00 per item",
+  "category": "pets",
+  "tags": [
+   "deals",
+   "halloween",
+   "pets"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/rosewood-victor-von-vampire/665145011",
+  "offer": "Now £8.10, was £9",
+  "wasPrice": 9.0
+ },
+ {
+  "id": "665146011",
+  "name": "Rosewood Dewey Dog",
+  "bio": "A treat your four-legged friend will go wild for. Spooky season, sorted.",
+  "brand": "Rosewood",
+  "price": 5.4,
+  "size": "",
+  "unitPrice": "£6.00 per item",
+  "category": "pets",
+  "tags": [
+   "deals",
+   "halloween",
+   "pets"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/rosewood-dewey-dog/665146011",
+  "offer": "Now £5.40, was £6",
+  "wasPrice": 6.0
+ },
+ {
+  "id": "701888011",
+  "name": "Denzel's Spooky Bones - Duck & Pumpkin Dog Treats",
+  "bio": "Because pets deserve treats too. Guaranteed tail wags.",
+  "brand": "Denzel's",
+  "price": 3.0,
+  "size": "90g",
+  "unitPrice": "£33.33 per kilo",
+  "category": "pets",
+  "tags": [
+   "halloween",
+   "pets"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/denzel-s-spooky-bones-duck-pumpkin-dog-treats/701888011"
+ },
+ {
+  "id": "701886011",
+  "name": "Denzel's Halloween Toppers for Dogs",
+  "bio": "A treat your four-legged friend will go wild for. Spooky season, sorted.",
+  "brand": "Denzel's",
+  "price": 3.5,
+  "size": "4 x 15g",
+  "unitPrice": "£58.33 per kilo",
+  "category": "pets",
+  "tags": [
+   "halloween",
+   "pets"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/denzel-s-halloween-toppers-for-dogs/701886011"
+ },
+ {
+  "id": "621246011",
+  "name": "Halloween Tube of Fake Blood",
+  "bio": "Fun, festive and guaranteed to get a reaction from the guests.",
+  "brand": "Ocado",
+  "price": 3.0,
+  "size": "",
+  "unitPrice": "£3.00 per item",
+  "category": "partyware",
+  "tags": [
+   "halloween",
+   "party"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/halloween-tube-of-fake-blood/621246011"
+ },
+ {
+  "id": "669920011",
+  "name": "Essie Gel Couture Nail Polish, Like It Loud",
+  "bio": "The everyday basic that just does its job, really well.",
+  "brand": "Essie",
+  "price": 12.0,
+  "size": "13.5ml",
+  "unitPrice": "£888.89 per litre",
+  "category": "household",
+  "tags": [
+   "deals",
+   "halloween"
+  ],
+  "dietary": [],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/essie-gel-couture-nail-polish-like-it-loud/669920011",
+  "offer": "Buy any 3 for 2"
+ },
+ {
+  "id": "673218011",
+  "name": "M&S Maison Riveraine Chablis",
+  "bio": "Bright citrus and a clean finish. Pairs with fish, salads and long chats.",
+  "brand": "M&S",
+  "price": 18.0,
+  "size": "75cl",
+  "unitPrice": "£24.00 per litre",
+  "category": "wine",
+  "tags": [
+   "alcohol",
+   "deals",
+   "drinks",
+   "white",
+   "wine"
+  ],
+  "dietary": [
+   "vegan",
+   "vegetarian"
+  ],
+  "rating": 0.0,
+  "reviewCount": 0,
+  "pros": [],
+  "cons": [],
+  "reviews": [],
+  "url": "https://www.ocado.com/products/m-s-maison-riveraine-chablis/673218011",
+  "image": "/products/673218011.jpg",
+  "offer": "Buy any 4 for 3"
+ }
+]

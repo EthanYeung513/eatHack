@@ -245,14 +245,14 @@ export function SwipeDeck({
 }
 
 const GREAT_FOR: Record<string, string> = {
+  halloween: 'Halloween',
   party: 'Parties',
-  bbq: 'BBQs',
-  movie: 'Movie nights',
-  breakfast: 'Brunch',
-  dessert: 'Sweet tooth',
-  snacks: 'Snacking',
-  dips: 'Dipping',
   sparkling: 'Celebrations',
+  breakfast: 'Breakfast',
+  dinner: 'Easy dinners',
+  kids: 'Kids',
+  pets: 'Pets',
+  snacks: 'Snacking',
 };
 
 function SwipeCardBody({ product }: { product: Product }) {
@@ -262,15 +262,17 @@ function SwipeCardBody({ product }: { product: Product }) {
       <div className="swipe-media">
         <Packshot product={product} />
         {product.badge && <span className="badge-pill">{product.badge}</span>}
-        <span className="swipe-price">{formatPrice(product.price)}</span>
+        {product.offer && <span className="offer-pill">{product.offer}</span>}
+        <span className="swipe-price">
+          {product.wasPrice && <s>{formatPrice(product.wasPrice)}</s>}
+          {formatPrice(product.price)}
+        </span>
       </div>
       <div className="swipe-body">
         <div>
           <h3>{product.name}</h3>
           <div className="swipe-meta">
-            <span className="muted small">
-              {product.brand} · {product.size}
-            </span>
+            <span className="muted small">{[product.brand, product.size].filter(Boolean).join(' · ')}</span>
             <Stars rating={product.rating} count={product.reviewCount} />
           </div>
         </div>

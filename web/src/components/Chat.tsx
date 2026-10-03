@@ -1,13 +1,14 @@
 import {
   ArrowUpRight,
-  Beer,
-  CakeSlice,
+  Candy,
+  Ghost,
   Layers,
   Lightbulb,
   MessageSquareQuote,
-  Popcorn,
   ShoppingBasket,
+  Soup,
   Sparkles,
+  Tag,
   Wine,
   type LucideIcon,
 } from 'lucide-react';
@@ -17,10 +18,10 @@ import { ReviewsBlock } from './ReviewsBlock';
 import { SwipeDeck } from './SwipeDeck';
 
 const STARTER_CARDS = [
-  { icon: CakeSlice, title: 'Hosting a party', prompt: 'Hosting a party for 12 on Saturday' },
-  { icon: Wine, title: 'Compare prosecco', prompt: 'Which prosecco is best?' },
-  { icon: Popcorn, title: 'Movie night', prompt: 'Snacks for a movie night' },
-  { icon: Beer, title: 'Weekend BBQ', prompt: 'BBQ for 10 people, some are vegetarian' },
+  { icon: Ghost, title: 'Halloween party', prompt: 'Throwing a Halloween party for 12' },
+  { icon: Wine, title: 'Compare rosé', prompt: 'Which rosé is best?' },
+  { icon: Soup, title: 'Easy dinners', prompt: 'Easy dinners for one this week' },
+  { icon: Tag, title: 'Deals right now', prompt: "What's on offer right now?" },
 ];
 
 export function ChatView({
@@ -78,8 +79,8 @@ function Welcome({ onPick }: { onPick: (text: string) => void }) {
       <div className="welcome-hero">
         <Sticker icon={ShoppingBasket} tone="lime" className="float float-a" />
         <Sticker icon={Wine} tone="lavender" className="float float-b" />
-        <Sticker icon={CakeSlice} tone="pink" className="float float-c" />
-        <Sticker icon={Popcorn} tone="sky" className="float float-d" />
+        <Sticker icon={Ghost} tone="pink" className="float float-c" />
+        <Sticker icon={Candy} tone="sky" className="float float-d" />
         <span className="welcome-kicker">Hi there</span>
         <h1>What are you shopping for?</h1>
         <p className="muted">

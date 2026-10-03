@@ -28,18 +28,26 @@ interface Topic {
   occasion?: boolean;
 }
 
-// Ordered most specific first: reviews use the first match, swipe decks the last.
+// Ordered most specific first: reviews use the first match.
 const TOPICS: Topic[] = [
-  { id: 'sparkling', re: /\b(prosecco|champagne|fizz|sparkling|cr[eé]mant|cava)\b/i, tag: 'sparkling', title: 'Sparkling drinks' },
-  { id: 'dips', re: /\b(dips?|houmous|hummus|salsa)\b/i, tag: 'dips', title: 'Dips' },
-  { id: 'dessert', re: /\b(cakes?|desserts?|sweet|treats?|brownies?|chocolate)\b/i, tag: 'dessert', title: 'Sweet treats' },
-  { id: 'snacks', re: /\b(snacks?|crisps|nibbles|chips|popcorn)\b/i, tag: 'snacks', title: 'Snacks' },
-  { id: 'drinks', re: /\b(drinks?|wine|beers?|lager|juice|cocktails?)\b/i, tag: 'drinks', title: 'Drinks' },
-  { id: 'breakfast', re: /\b(breakfast|brunch)\b/i, tag: 'breakfast', title: 'Breakfast & brunch', occasion: true },
-  { id: 'movie', re: /\b(movie|film|netflix|night in)\b/i, tag: 'movie', title: 'Movie night', occasion: true },
-  { id: 'bbq', re: /\b(bbq|barbecue|barbeque|grill\w*|burgers?)\b/i, tag: 'bbq', title: 'BBQ essentials', occasion: true },
+  { id: 'sparkling', re: /\b(prosecco|champagne|fizz|sparkling|bubbly|cava|asti)\b/i, tag: 'sparkling', title: 'Sparkling wine' },
+  { id: 'rose', re: /\b(ros[eé]|blush)(?![a-z])/i, tag: 'rose', title: 'Rosé' },
+  { id: 'red', re: /\b(red wines?|reds?|malbec|chianti|merlot|rioja|primitivo)\b/i, tag: 'red', title: 'Red wine' },
+  { id: 'white', re: /\b(white wines?|whites?|sauvignon|pinot|chablis|sancerre|chardonnay)\b/i, tag: 'white', title: 'White wine' },
+  { id: 'beer', re: /\b(beers?|ales?|lager)\b/i, tag: 'beer', title: 'Beer' },
+  { id: 'wine', re: /\b(wines?|vino)\b/i, tag: 'wine', title: 'Wine' },
+  { id: 'milk', re: /\b(milk|milkshakes?|dairy)\b/i, tag: 'milk', title: 'Milk & milkshakes' },
+  { id: 'pets', re: /\b(pets?|dogs?|cats?|puppy|kitten)\b/i, tag: 'pets', title: 'Pet treats' },
+  { id: 'sweets', re: /\b(sweets|chocolate|candy|treats?|snacks?|crisps|nibbles)\b/i, tag: 'snacks', title: 'Sweets & snacks' },
+  { id: 'drinks', re: /\b(drinks?|juice|cola|coke)\b/i, tag: 'drinks', title: 'Drinks' },
+  { id: 'deals', re: /\b(offers?|deals?|discounts?|sale|bargains?|savings?|cheap|promotions?)\b/i, tag: 'deals', title: "Today's deals" },
+  { id: 'breakfast', re: /\b(breakfast|brunch|porridge|oats)\b/i, tag: 'breakfast', title: 'Breakfast', occasion: true },
+  { id: 'dinner', re: /\b(dinners?|lunch|ready meals?|soups?|quick meals?|for one|weeknights?)\b/i, tag: 'dinner', title: 'Easy dinners', occasion: true },
+  { id: 'halloween', re: /\b(halloween|spooky|trick[- ]or[- ]treat\w*|pumpkins?|costumes?)\b/i, tag: 'halloween', title: 'Halloween', occasion: true },
   { id: 'party', re: /\b(party|parties|birthday|celebrat\w*|hosting|host|guests|gathering)\b/i, tag: 'party', title: 'Party picks', occasion: true },
 ];
+
+const MAX_DECK = 15;
 
 const REVIEW_INTENT =
   /\b(best|compare|comparison|vs|versus|which|worth|reviews?|top[- ]rated|better|rating|ratings|what do people think)\b/i;
@@ -51,31 +59,42 @@ const DIETARY: [RegExp, Dietary][] = [
   [/\bgluten[- ]?free\b/i, 'gluten-free'],
 ];
 
+const WINE_FOLLOW_UPS = ['Which red wine is best?', 'Best white wine under £10', 'Sweets for a party'];
+
 const FOLLOW_UPS: Record<string, string[]> = {
-  party: ['Which prosecco is best?', 'Compare dips by reviews', 'Party desserts'],
-  bbq: ['Drinks for a BBQ', 'Which dips are best?', 'Something sweet for after'],
-  movie: ['Best popcorn?', 'Drinks for a night in', 'Sweet treats'],
-  breakfast: ['Best granola?', 'Juice for brunch', 'Party food for 8'],
-  sparkling: ['Party food for 12', 'Alcohol-free drinks', 'Party desserts'],
-  drinks: ['Snacks for a party', 'Which prosecco is best?', 'BBQ for 10'],
-  dips: ['Crisps for dipping', 'Party food for 12', 'Best prosecco under £12'],
-  snacks: ['Compare dips by reviews', 'Drinks for a party', 'Movie night snacks'],
-  dessert: ['Party food for 12', 'Which prosecco is best?', 'Movie night snacks'],
+  party: ['Which rosé is best?', 'Sparkling wine for a toast', "What's on offer?"],
+  halloween: ['Spooky sweets for trick or treaters', 'Halloween treats for my dog', 'Which red wine is best?'],
+  dinner: ['Which soup is best?', 'Wine to go with dinner', "What's on offer?"],
+  breakfast: ['Which milk is best?', 'Best porridge oats?', 'Easy dinners for one'],
+  sparkling: WINE_FOLLOW_UPS,
+  rose: WINE_FOLLOW_UPS,
+  red: ['Best white wine under £10', 'Which rosé is best?', 'Easy dinners for one'],
+  white: ['Which red wine is best?', 'Sparkling wine for a toast', 'Easy dinners for one'],
+  beer: ['Throwing a Halloween party', 'Sweets for a party', "What's on offer?"],
+  wine: WINE_FOLLOW_UPS,
+  milk: ['Best porridge oats?', 'Easy dinners for one', "What's on offer?"],
+  sweets: ['Throwing a Halloween party', 'Which red wine is best?', "What's on offer?"],
+  drinks: ['Sweets for a party', 'Which rosé is best?', "What's on offer?"],
+  pets: ['Throwing a Halloween party', 'Spooky sweets for trick or treaters', "What's on offer?"],
+  deals: ['Which wine is best?', 'Easy dinners for one', 'Throwing a Halloween party'],
 };
 
 const STARTERS = [
-  'Hosting a party for 12 on Saturday',
-  'Which prosecco is best?',
-  'Snacks for a movie night',
-  'BBQ for the weekend',
+  'Throwing a Halloween party for 12',
+  'Which rosé is best?',
+  'Easy dinners for one this week',
+  "What's on offer right now?",
 ];
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const money = (n: number) => `£${n.toFixed(2)}`;
 
+// Bayesian average so a single 5★ review doesn't outrank hundreds of 4.7s.
+const confidence = (p: Product) => (p.rating * p.reviewCount + 3.8 * 15) / (p.reviewCount + 15);
+
 function byRating(a: Product, b: Product) {
-  return b.rating - a.rating || b.reviewCount - a.reviewCount;
+  return confidence(b) - confidence(a);
 }
 
 function applyFilters(products: Product[], input: string) {
@@ -98,8 +117,14 @@ function guestCount(input: string) {
   return m ? Number(m[1]) : undefined;
 }
 
+const STOP_WORDS = new Set(
+  ('best which what good with this that week some from have want need about tell right show find like more your ' +
+    'them they there should would could something anything please compare better worth reviews review rated rating ' +
+    'really under over between versus tonight people guests friends throwing hosting').split(' '),
+);
+
 function nameMatches(input: string) {
-  const words = input.toLowerCase().match(/[a-zé]{5,}/g) ?? [];
+  const words = (input.toLowerCase().match(/[a-zé]{4,}/g) ?? []).filter((w) => !STOP_WORDS.has(w));
   if (!words.length) return [];
   return PRODUCTS.filter((p) => {
     const name = p.name.toLowerCase();
@@ -124,19 +149,23 @@ function decide(input: string): AgentReply {
 
   if (wantsReviews) {
     const topic = matched[0];
-    const pool = topic
-      ? PRODUCTS.filter((p) => p.tags.includes(topic.tag))
-      : nameMatches(input);
-    const products = applyFilters(pool, input).sort(byRating).slice(0, 8);
+    // "Which soup is best?" is about soup, not every easy dinner.
+    const byName = nameMatches(input);
+    const useNames = byName.length > 0 && (!topic || topic.occasion);
+    const pool = useNames ? byName : topic ? PRODUCTS.filter((p) => p.tags.includes(topic.tag)) : [];
+    const products = applyFilters(pool, input)
+      .filter((p) => p.reviewCount > 0)
+      .sort(byRating)
+      .slice(0, 8);
     if (products.length) {
       const [top] = products;
-      const label = topic ? topic.title.toLowerCase() : 'options';
+      const label = topic && !useNames ? topic.title.toLowerCase() : 'closest matches';
       return {
         mode: 'reviews',
         topicId: topic?.id,
-        deckTitle: topic?.title,
+        deckTitle: useNames ? 'Top matches' : topic?.title,
         products,
-        text: `Here are the top ${label} on Ocado, ranked by what shoppers say. ${top.name} leads with ${top.rating.toFixed(1)}★ across ${top.reviewCount.toLocaleString()} reviews.`,
+        text: `Ranked by shopper ratings on Ocado: ${top.name} leads the ${label} with ${top.rating.toFixed(1)}★ across ${top.reviewCount.toLocaleString()} reviews.`,
         rationale:
           "You're choosing between products, so I'm showing real shopper reviews side by side rather than a long list.",
         suggestions: FOLLOW_UPS[topic?.id ?? 'party'],
@@ -145,28 +174,42 @@ function decide(input: string): AgentReply {
   }
 
   if (matched.length) {
-    // Specific product types narrow the deck; an occasion sets the framing.
+    // Specific product types narrow the deck; occasions set the framing.
     const specific = matched.filter((t) => !t.occasion);
-    const occasion = matched.find((t) => t.occasion);
-    const topic = specific[0] ?? occasion!;
-    const tags = new Set((specific.length ? specific : matched).map((t) => t.tag));
+    const occasions = matched.filter((t) => t.occasion);
+    const party = occasions.find((t) => t.id === 'party');
+    const occasion = occasions.find((t) => t.id !== 'party') ?? party;
+    // "Halloween party" means party-friendly things, not every Halloween product.
+    // The most specific product type wins ("treats for my dog" is pets, not sweets).
+    const filterTags = specific.length ? [specific[0]] : party ? [party] : occasions;
+    const tags = new Set(filterTags.map((t) => t.tag));
+    // "Wine deals": deals narrows another product type rather than replacing it.
+    const dealsOnly = specific.length > 1 && specific.some((t) => t.id === 'deals');
+    const boost = new Set(matched.map((t) => t.tag));
+    const relevance = (p: Product) => p.tags.filter((t) => boost.has(t)).length;
+    // Catalogue is already in popularity order; the sort is stable.
     const products = applyFilters(
-      PRODUCTS.filter((p) => p.tags.some((tag) => tags.has(tag))),
+      PRODUCTS.filter((p) => p.tags.some((tag) => tags.has(tag)) && (!dealsOnly || !!p.offer)),
       input,
-    ).sort(byRating);
+    )
+      .sort((a, b) => relevance(b) - relevance(a))
+      .slice(0, MAX_DECK);
+    const topic = specific[0] ?? occasion!;
+    const title =
+      !specific.length && party && occasion && occasion !== party ? `${occasion.title} party` : topic.title;
 
     if (products.length) {
       const guests = guestCount(input);
       const plan =
         guests && occasion
-          ? `For ${guests} people, plan on roughly ${Math.ceil(guests / 4)} sharing snacks, ${Math.max(2, Math.ceil(guests / 6))} dips and around ${Math.ceil(guests / 3)} bottles of something to drink. `
+          ? `For ${guests} people, plan on roughly ${Math.ceil(guests / 4)} sharing bags of sweets or snacks and around ${Math.ceil(guests / 3)} bottles to drink. `
           : '';
       return {
         mode: 'swipe',
         topicId: occasion?.id ?? topic.id,
-        deckTitle: topic.title,
+        deckTitle: title,
         products,
-        text: `${plan}I've pulled together ${products.length} ${topic.title.toLowerCase()} from Ocado. Swipe right on anything you want and left to skip.`,
+        text: `${plan}I've lined up ${products.length} products from Ocado, most popular first. Swipe right to add, left to skip.`,
         rationale:
           "You're exploring a wide range, so quick yes/no decisions will get you to a basket faster than comparing lists.",
       };
@@ -191,7 +234,7 @@ function decide(input: string): AgentReply {
   if (byName.length) {
     return {
       mode: 'reviews',
-      products: byName.sort(byRating).slice(0, 8),
+      products: byName.filter((p) => p.reviewCount > 0).sort(byRating).slice(0, 8),
       text: 'Here’s what shoppers are saying about the closest matches I found.',
       rationale: 'You asked about specific products, so reviews are the most useful view.',
       suggestions: STARTERS,

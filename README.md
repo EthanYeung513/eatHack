@@ -9,7 +9,7 @@ The basket then hands off to an Ocado-style checkout shell (trolley → delivery
 
 ## Web app (`web/`)
 
-React + TypeScript + Vite. Frontend only for now: products, reviews and the agent are mocked on the client.
+React + TypeScript + Vite. Frontend only: the catalogue is a one-off Ocado export bundled as JSON, and the agent runs on the client.
 
 ```bash
 cd web
@@ -19,7 +19,7 @@ npm run dev
 
 | Path | What it is |
 | --- | --- |
-| `src/data/products.ts` | Fake catalogue standing in for scraped Ocado data (fictional brands) |
+| `src/data/ocado-products.json` | 104 real Ocado products (prices, ratings, offers, labels, 39 photos in `public/products/`). Bios, pros/cons and review quotes are placeholder copy |
 | `src/services/agent.ts` | Mock agent: picks `swipe`, `reviews` or `text` mode. Swap for a Supabase edge function later |
 | `src/state/` | Basket context and chat hook |
 | `src/components/` | Chat, swipe deck, review cards, basket, Ocado checkout shell |

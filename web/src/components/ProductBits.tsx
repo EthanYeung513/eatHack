@@ -1,14 +1,17 @@
 import type { CSSProperties } from 'react';
 import {
-  Apple,
-  Beef,
-  Cookie,
+  Candy,
+  CupSoda,
   Croissant,
+  Ghost,
   Milk,
   Minus,
-  PartyPopper,
+  PawPrint,
   Plus,
   Soup,
+  Sparkles,
+  Sprout,
+  Utensils,
   Wine,
   type LucideIcon,
 } from 'lucide-react';
@@ -17,31 +20,45 @@ import type { Category, Product } from '../types';
 
 // Pastel sticker backgrounds per category.
 const CATEGORY_TONE: Record<Category, string> = {
-  snacks: 'lime',
-  dips: 'butter',
-  drinks: 'lavender',
+  snacks: 'butter',
+  drinks: 'sky',
+  wine: 'lavender',
   bakery: 'pink',
   fresh: 'lime',
   dairy: 'sky',
-  meat: 'pink',
-  partyware: 'sky',
+  meals: 'pink',
+  cupboard: 'butter',
+  pets: 'lime',
+  household: 'lavender',
+  partyware: 'pink',
 };
 
 const CATEGORY_ICON: Record<Category, LucideIcon> = {
-  snacks: Cookie,
-  dips: Soup,
-  drinks: Wine,
+  snacks: Candy,
+  drinks: CupSoda,
+  wine: Wine,
   bakery: Croissant,
-  fresh: Apple,
+  fresh: Sprout,
   dairy: Milk,
-  meat: Beef,
-  partyware: PartyPopper,
+  meals: Soup,
+  cupboard: Utensils,
+  pets: PawPrint,
+  household: Sparkles,
+  partyware: Ghost,
 };
 
-export function ProductThumb({ product, size = 'md' }: { product: Product; size?: 'sm' | 'md' | 'lg' }) {
+export function ProductThumb({ product, size = 'md' }: { product: Product; size?: 'sm' | 'md' }) {
+  const tone = CATEGORY_TONE[product.category];
+  if (product.image) {
+    return (
+      <div className={`thumb thumb-${size} thumb-photo`} aria-hidden>
+        <img src={product.image} alt="" draggable={false} />
+      </div>
+    );
+  }
   const Icon = CATEGORY_ICON[product.category];
   return (
-    <div className={`thumb thumb-${size} tone-${CATEGORY_TONE[product.category]}`} aria-hidden>
+    <div className={`thumb thumb-${size} tone-${tone}`} aria-hidden>
       <span className="thumb-icon">
         <Icon strokeWidth={1.75} />
       </span>
@@ -51,12 +68,15 @@ export function ProductThumb({ product, size = 'md' }: { product: Product; size?
 
 const PACK_SHAPE: Record<Category, 'bag' | 'bottle' | 'tub' | 'box'> = {
   snacks: 'bag',
-  dips: 'tub',
-  dairy: 'tub',
   drinks: 'bottle',
+  wine: 'bottle',
   bakery: 'box',
   fresh: 'box',
-  meat: 'box',
+  dairy: 'tub',
+  meals: 'tub',
+  cupboard: 'box',
+  pets: 'bag',
+  household: 'box',
   partyware: 'box',
 };
 
@@ -76,13 +96,14 @@ export function Packshot({ product }: { product: Product }) {
       <div className={`pack pack-${PACK_SHAPE[product.category]}`}>
         <span className="pack-brand">{product.brand}</span>
         <Icon className="pack-icon" strokeWidth={1.75} />
-        <span className="pack-size">{product.size}</span>
+        {product.size && <span className="pack-size">{product.size}</span>}
       </div>
     </div>
   );
 }
 
 export function Stars({ rating, count }: { rating: number; count?: number }) {
+  if (count === 0) return <span className="rating rating-count">No reviews yet</span>;
   return (
     <span className="rating" aria-label={`${rating.toFixed(1)} out of 5 stars`}>
       <span className="stars" style={{ '--pct': `${(rating / 5) * 100}%` } as CSSProperties} />

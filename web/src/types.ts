@@ -1,11 +1,14 @@
 export type Category =
   | 'snacks'
-  | 'dips'
   | 'drinks'
+  | 'wine'
   | 'bakery'
   | 'fresh'
   | 'dairy'
-  | 'meat'
+  | 'meals'
+  | 'cupboard'
+  | 'pets'
+  | 'household'
   | 'partyware';
 
 export type Dietary = 'vegan' | 'vegetarian' | 'gluten-free';
@@ -36,8 +39,12 @@ export interface Product {
   pros: string[];
   cons: string[];
   reviews: Review[];
-  hue: number;
   badge?: string;
+  /** Current Ocado promotion, e.g. "Buy any 4 for 3". */
+  offer?: string;
+  wasPrice?: number;
+  /** Product page on ocado.com. */
+  url?: string;
 }
 
 export type AgentMode = 'text' | 'swipe' | 'reviews';
