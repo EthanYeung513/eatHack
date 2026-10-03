@@ -1327,6 +1327,70 @@ kbd {
   padding: 0 22px;
 }
 
+.basket-group + .basket-group {
+  margin-top: 6px;
+}
+
+.basket-group-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 0;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: none;
+  text-align: left;
+}
+
+.basket-group:first-child .basket-group-head {
+  border-top: 0;
+}
+
+.basket-group-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 46% 54% 42% 58% / 54% 44% 56% 46%;
+  background: var(--tone);
+  color: var(--charcoal);
+  transform: rotate(-6deg);
+}
+
+.basket-group-label {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.basket-group-head .price {
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.basket-group-chevron {
+  flex-shrink: 0;
+  color: var(--ink-3);
+  transition: transform 0.2s;
+}
+
+.basket-group-chevron.collapsed {
+  transform: rotate(-90deg);
+}
+
+.basket-group ul {
+  list-style: none;
+  margin: 0 0 4px;
+  padding: 0;
+}
+
 .basket-lines li {
   display: flex;
   align-items: flex-start;
