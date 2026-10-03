@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowLeft, ArrowUp, Bot, Dumbbell, Handshake, Minus, ShoppingBag, Tag, User } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowUp, ChevronDown, Bot, Dumbbell, Handshake, Minus, ShoppingBag, Tag, User } from 'lucide-react';
 import { useMemo, useState, type FocusEvent, type MouseEvent, type ReactNode } from 'react';
 import { Logo } from '../components/Header';
 import { ProductThumb } from '../components/ProductBits';
@@ -169,14 +169,6 @@ export function Dashboard() {
         <Experiments productIds={new Set(rows.map((r) => r.product.id))} period={period} />
 
         <Card
-          title="Which nudge works best for each product"
-          subtitle="Nine behavioural nudges, each tested against the same product shown without one. Use it to decide what to run on each launch."
-        >
-          <NudgeLab rows={lab} bind={bind} />
-          <NudgePlaybook />
-        </Card>
-
-        <Card
           title="Your range on Shelf"
           subtitle="Every product this brand sells through Ocado, with how each one performed."
         >
@@ -193,17 +185,28 @@ export function Dashboard() {
         </div>
 
         <Card
-          title="Agent decisions vs human buys"
-          subtitle="Each product’s share of agent picks compared with its share of actual purchases. Big gaps are where the agent and shoppers disagree."
-        >
-          <AgentVsHuman rows={rows} bind={bind} />
-        </Card>
-
-        <Card
           title="Launched products"
           subtitle="Click a column to sort. This table is also the accessible view of the charts above."
         >
           <ProductTable rows={rows} />
+        </Card>
+
+        {/* Deeper analysis: at the end, closed until a brand opens it. */}
+        <Card
+          collapsible
+          title="Which nudge works best for each product"
+          subtitle="Nine behavioural nudges, each tested against the same product shown without one. Use it to decide what to run on each launch."
+        >
+          <NudgeLab rows={lab} bind={bind} />
+          <NudgePlaybook />
+        </Card>
+
+        <Card
+          collapsible
+          title="Agent decisions vs human buys"
+          subtitle="Each product’s share of agent picks compared with its share of actual purchases. Big gaps are where the agent and shoppers disagree."
+        >
+          <AgentVsHuman rows={rows} bind={bind} />
         </Card>
       </main>
       {node}
@@ -211,14 +214,36 @@ export function Dashboard() {
   );
 }
 
-function Card({ title, subtitle, children }: { title: string; subtitle?: string; children: ReactNode }) {
+function Card({
+  title,
+  subtitle,
+  collapsible,
+  children,
+}: {
+  title: string;
+  subtitle?: string;
+  /** Starts closed; the header toggles it. */
+  collapsible?: boolean;
+  children: ReactNode;
+}) {
+  const [open, setOpen] = useState(!collapsible);
+  const heading = (
+    <>
+      <h2>{title}</h2>
+      {subtitle && <p className="muted small">{subtitle}</p>}
+    </>
+  );
   return (
-    <section className="dash-card">
-      <header>
-        <h2>{title}</h2>
-        {subtitle && <p className="muted small">{subtitle}</p>}
-      </header>
-      {children}
+    <section className={`dash-card${collapsible && !open ? ' collapsed' : ''}`}>
+      {collapsible ? (
+        <button type="button" className="dash-card-toggle" onClick={() => setOpen((o) => !o)} aria-expanded={open}>
+          <span>{heading}</span>
+          <ChevronDown size={20} className={open ? 'flip' : ''} />
+        </button>
+      ) : (
+        <header>{heading}</header>
+      )}
+      {open && children}
     </section>
   );
 }

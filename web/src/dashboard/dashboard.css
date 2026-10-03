@@ -1201,3 +1201,37 @@
   font-size: 12px;
   font-weight: 600;
 }
+
+/* Collapsible cards */
+.dash-card.collapsed {
+  gap: 0;
+}
+
+.dash-card-toggle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-align: left;
+  color: var(--ink);
+}
+
+.dash-card-toggle > span {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dash-card-toggle svg {
+  flex-shrink: 0;
+  margin-top: 4px;
+  transition: transform 0.2s;
+}
+
+.dash-card-toggle .flip {
+  transform: rotate(180deg);
+}

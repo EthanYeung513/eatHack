@@ -1,36 +1,14 @@
-# eatHack — Shelf
+# Shelf
 
-A conversational shopping assistant for Ocado. Shoppers chat about what they need, and the agent decides how to show results:
+A conversational shopping assistant for Ocado, built for eatHack.
 
-- a **swipe deck** when they're exploring a wide range
-- **shopper review cards** (with video reviews) when they're choosing between products (e.g. "which gin is best?")
+Shoppers tell Shelf what they're shopping for, and it shows products as **swipe decks** that start wide and narrow down as they swipe, or as **shopper reviews** with real video reviews. Behavioural nudges (deals, social proof, loss aversion and more) are tested along the way. The basket then hands off to an Ocado checkout that's regenerated for the occasion, e.g. "Saturday's party, laid out".
 
-The basket then hands off to an Ocado-style checkout shell (trolley → delivery slot → payment → confirmation).
+Brands get a **dashboard** at `/dashboard` showing their products, which nudges the agent used, what shoppers actually bought, and which nudge works best for each product.
 
-## The "Host a party" journey
+## Run it
 
-1. **Goal:** "Host a party" asks how many guests (or reads "for 12"), which sets targets for savoury snacks, party food, sweets and drinks.
-2. **Discovery deck:** 5 broad cards (crisps, sweets, soft drinks, fizz, party food) to learn what this basket is for.
-3. **Narrowing decks:** every swipe deck serves 5 cards at a time, starting wide (one product per family) and getting narrower each set based on the swipes so far: the areas the shopper liked, then their favourite families (`src/services/narrowing.ts`).
-4. **Targeted deck:** "That's a good start, you'll probably also need…", then specific products. Each card carries one nudge: a **deal**, a **nutrition** claim (high protein/fibre), a **partner brand** with its video review playing on the card, or **none** as a control. Every swipe is timed.
-5. **Wrap-up:** when swipes slow down (latest three take ~2× as long as the first three), the deck ends and the shopper sees goal progress, what they're looking for, and which nudges they responded to.
-6. **Checkout, regenerated for the intent:** the Ocado trolley becomes "Saturday's party, laid out": the basket placed in an illustrated room (the bar, cheese board, by the sofa, sweet spot), how far each product goes for the guest count (e.g. a 75cl bottle = 6 glasses), what's "sorted" or "a bit light", and a last-minute shelf of picks based on the basket, the party goal and every swipe (liked-then-removed items come back, skipped products never appear, liked families rank higher). Non-party trolleys get the same picks without the goal. Logic in `src/services/partyUsage.ts`.
-
-## Brand dashboard (`/dashboard`)
-
-An enterprise view for brands (e.g. https://eat-hack.vercel.app/dashboard): their launched products, how many behavioural nudges were delivered, how many the agent picked up, how many converted into a buy, and where agent decisions and human buys diverge. Metrics are placeholder data generated per product (`src/dashboard/metrics.ts`); the real version would aggregate the swipe logs.
-
-**Nudge experiments** (`src/dashboard/Experiments.tsx`): each behavioural nudge runs on one product and is compared with a control.
-- *Social proof*: Watch Humans videos on the swipe cards for OOM, Well & Truly and Flow.
-- *Loss aversion*: one product on the checkout's last-minute shelf (the first pick not already in the trolley, £5 or under) gets ~20% off with "The special offer for this product will go in 10s". The countdown starts when the card is on screen; taking it in time applies the saving to the basket.
-
-**Which nudge works best** (`src/dashboard/nudgeData.ts`, `NudgeLab.tsx`): nine behavioural nudges (social proof, loss aversion, scarcity, anchoring, price framing, health halo, authority, complements, novelty) against a no-nudge control, as a ranking across the brand's range and a product × nudge heatmap with each product's best nudge starred, plus a playbook of the research behind each one. These numbers are placeholders shaped by each product's attributes.
-
-The "This shopper" panel reads real outcomes from the shopper app in the same browser (`src/state/nudgeLog.ts`, localStorage), so you can try a nudge and see your own response on the dashboard.
-
-## Web app (`web/`)
-
-React + TypeScript + Vite. Frontend only: the catalogue is a one-off Ocado export bundled as JSON, and the agent runs on the client.
+Requires Node 18+.
 
 ```bash
 cd web
@@ -38,23 +16,24 @@ npm install
 npm run dev
 ```
 
-| Path | What it is |
-| --- | --- |
-| `src/data/ocado-products.json` | 250 real Ocado products, each with its real photo in `public/products/` (prices, ratings, offers, labels). Category, party role, nutrition and partner flags are derived from names |
-| `src/data/placeholderCopy.ts` | Placeholder bios, pros/cons and review quotes (not in the export) |
-| `src/data/videoReviews.ts` | Real video reviews (currently the Flow latte, `public/videos/`). Products without one show no video options |
-| `src/services/partyPlanner.ts` | The party journey: decks, nudges, slowdown wrap-up, goal and checkout recommendations |
-| `src/services/agent.ts` | Mock agent for everything else: picks `swipe`, `reviews` or `text`. Swap for a Supabase edge function later |
-| `src/state/` | Basket context and chat hook (orchestrates the party journey) |
-| `src/components/` | Chat, swipe deck, review cards, wrap-up card, basket, Ocado checkout shell |
+Then open:
 
-Placeholder data to know about for demos: bios and review quotes are fake, and a few nutrition claims (nuts, popcorn) are assumed. All products themselves are real.
+- http://localhost:5173: the shopper app
+- http://localhost:5173/dashboard: the brand dashboard
 
-### Deploying on Vercel
+To try the main flow, tap **Host a party**, swipe the decks, then press **Checkout on Ocado**.
 
-Framework preset **Vite**, root directory **`web`**. Defaults for build (`npm run build`) and output (`dist`) work as-is. `web/vercel.json` rewrites all routes to `index.html` so `/dashboard` works on refresh.
+## Build and deploy
 
-## Not built yet
+```bash
+cd web
+npm run build   # outputs web/dist
+```
 
-- Supabase backend, real agent/LLM
-- Real retailer handoff and other e-commerce integrations
+On Vercel, use framework preset **Vite** with root directory **`web`**.
+
+## Notes
+
+- Frontend only (React + TypeScript + Vite). The agent runs in the browser, with no backend yet.
+- Products, prices, ratings, offers and photos come from an Ocado export. The video reviews are real (Watch Humans).
+- Product bios, review quotes and most dashboard metrics are placeholders. The dashboard's "This shopper" panels are real: they show your own responses from the shopper app in the same browser.
