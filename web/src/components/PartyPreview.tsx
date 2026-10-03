@@ -124,12 +124,14 @@ function IsoBox({
 
 const BUNTING = ['#c6e27a', '#f8c4d8', '#bfe0f8', '#f3e8a8', '#d9cbfa'];
 
-// Where each zone's products sit (top of its furniture) and where its label floats.
-const ZONE_ANCHOR: Record<ZoneId, { at: [number, number, number]; label: [number, number] }> = {
-  bar: { at: [1.1, 3.3, 3.2], label: [-36, -92] },
-  sweet: { at: [2.9, 0.7, 2.4], label: [10, -86] },
-  board: { at: [5.6, 5.8, 1.4], label: [0, -96] },
-  sofa: { at: [8.4, 3.6, 1.2], label: [16, -88] },
+// Where each zone's products sit (top of its furniture) and where its label goes.
+// Label slots are fixed in room coordinates (centre x, top y) and chosen so no two
+// labels, and no label and product stack, overlap; everything scales with the room.
+const ZONE_LAYOUT: Record<ZoneId, { at: [number, number, number]; label: [number, number] }> = {
+  bar: { at: [1.1, 3.3, 3.2], label: [112, 54] },
+  sweet: { at: [2.9, 0.7, 2.4], label: [430, 16] },
+  sofa: { at: [8.4, 3.6, 1.2], label: [516, 156] },
+  board: { at: [5.6, 5.8, 1.4], label: [132, 298] },
 };
 
 const pos = (x: number, y: number): CSSProperties => ({
@@ -148,10 +150,25 @@ function Room({
   active: ZoneId | null;
   onZone: (z: ZoneId | null) => void;
 }) {
-  const zones = Object.keys(ZONE_ANCHOR) as ZoneId[];
+  const info = (Object.keys(ZONE_LAYOUT) as ZoneId[]).map((z) => {
+    const zoneGroups = groups.filter((g) => g.zone === z);
+    const [ax, ay] = pt(...ZONE_LAYOUT[z].at);
+    const status: Coverage = zoneGroups.some((g) => g.status === 'missing')
+      ? 'missing'
+      : zoneGroups.some((g) => g.status === 'light')
+        ? 'light'
+        : 'sorted';
+    const zoneLines = lines.filter((l) => {
+      const g = groupOf(l.product);
+      return g && GROUPS.find((x) => x.id === g)?.zone === z;
+    });
+    return { z, ax, ay, zoneGroups, zoneLines, status };
+  });
+  const current = info.find((i) => i.z === active);
+
   return (
     <section className="pp-room" aria-label="Your party, laid out">
-      <span className="pp-room-hint">hover anything to see how it gets used ↓</span>
+      <p className="pp-room-hint">hover anything to see how it gets used ↓</p>
       <div className="pp-room-stage">
         <svg viewBox={`0 0 ${VIEW.w} ${VIEW.h}`} aria-hidden>
           {/* walls */}
@@ -228,13 +245,13 @@ function Room({
               })}
             </g>
           ))}
-          {/* chalkboard on the right wall */}
-          <polygon points={poly([5.2, 0, 4.6], [8.4, 0, 4.6], [8.4, 0, 7.2], [5.2, 0, 7.2])} fill="#2a2e30" />
+          {/* chalkboard at the front of the left wall, clear of every label and product */}
+          <polygon points={poly([0, 7.4, 4.4], [0, 9.6, 4.4], [0, 9.6, 6.6], [0, 7.4, 6.6])} fill="#2a2e30" />
           <text
-            transform={`matrix(0.894,0.447,0,1,${pt(5.6, 0, 6.3).join(',')})`}
+            transform={`matrix(0.894,-0.447,0,1,${pt(0, 9.25, 5.1).join(',')})`}
             fill="#fdfcf9"
             fontFamily="Caveat, cursive"
-            fontSize="15"
+            fontSize="14"
           >
             party · 8pm
           </text>
@@ -248,73 +265,96 @@ function Room({
           <IsoBox x={7.7} y={2.9} w={1.5} d={1.5} h={1.2} top="#7a5a3e" a="#5e432c" b="#6c4e35" />
         </svg>
 
-        {zones.map((z) => {
-          const zoneLines = lines.filter((l) => {
-            const g = groupOf(l.product);
-            return g && GROUPS.find((x) => x.id === g)?.zone === z;
-          });
-          const zoneGroups = groups.filter((g) => g.zone === z);
-          const [ax, ay] = pt(...ZONE_ANCHOR[z].at);
-          const [lx, ly] = ZONE_ANCHOR[z].label;
-          const status: Coverage = zoneGroups.some((g) => g.status === 'missing')
-            ? 'missing'
-            : zoneGroups.some((g) => g.status === 'light')
-              ? 'light'
-              : 'sorted';
-          const dim = active && active !== z;
-          return (
-            <div
-              key={z}
-              className={`pp-zone${active === z ? ' active' : ''}${dim ? ' dim' : ''}`}
-              onMouseEnter={() => onZone(z)}
-              onMouseLeave={() => onZone(null)}
-              onFocus={() => onZone(z)}
-              onBlur={() => onZone(null)}
-              tabIndex={0}
-            >
-              <div className="pp-items" style={pos(ax, ay)}>
-                {zoneLines.slice(0, 3).map((l, i) => (
-                  <span
-                    key={l.product.id}
-                    className="pp-item"
-                    style={{ '--i': i - (Math.min(3, zoneLines.length) - 1) / 2 } as CSSProperties}
-                  >
-                    <ProductThumb product={l.product} size="sm" />
-                    {l.qty > 1 && <em>×{l.qty}</em>}
-                  </span>
-                ))}
-                {zoneLines.length === 0 && <span className="pp-empty">empty</span>}
-              </div>
-              <div className="pp-label" style={pos(ax + lx, ay + ly)}>
-                <span className="pp-label-zone">{ZONES[z]}</span>
-                <span className="pp-label-sum">
-                  {zoneGroups.map((g) => `${g.label} · ${g.have} ${g.unit}`).join(' / ')}
+        <svg className="pp-leaders" viewBox={`0 0 ${VIEW.w} ${VIEW.h}`} aria-hidden>
+          {info.map(({ z, ax, ay }) => {
+            const [lx, ly] = ZONE_LAYOUT[z].label;
+            return <line key={z} x1={lx} y1={ly + 24} x2={ax} y2={ay - 30} className={active === z ? 'active' : ''} />;
+          })}
+        </svg>
+
+        {info.map(({ z, ax, ay, zoneLines, zoneGroups, status }) => (
+          <div
+            key={z}
+            className={`pp-zone${active === z ? ' active' : ''}${active && active !== z ? ' dim' : ''}`}
+            onMouseEnter={() => onZone(z)}
+            onMouseLeave={() => onZone(null)}
+            onFocus={() => onZone(z)}
+            onBlur={() => onZone(null)}
+            tabIndex={0}
+            aria-label={`${ZONES[z]}: ${zoneGroups.map((g) => `${g.label} ${g.have} ${g.unit}`).join(', ')}`}
+          >
+            <div className="pp-items" style={pos(ax, ay)}>
+              {zoneLines.slice(0, 3).map((l, i) => (
+                <span
+                  key={l.product.id}
+                  className="pp-item"
+                  style={{ '--i': i - (Math.min(3, zoneLines.length) - 1) / 2 } as CSSProperties}
+                >
+                  <ProductThumb product={l.product} size="sm" />
+                  {l.qty > 1 && <em>×{l.qty}</em>}
                 </span>
-                <span className={`pp-chip ${status}`}>
-                  {status === 'sorted' && <Check size={10} strokeWidth={3} />}
-                  {STATUS_LABEL[status]}
-                </span>
-              </div>
-              {active === z && (
-                <div className="pp-pop" style={pos(ax, ay)} role="tooltip">
-                  <strong>How {ZONES[z]} gets used</strong>
-                  {zoneLines.length ? (
-                    zoneLines.map((l) => (
-                      <span key={l.product.id}>
-                        {l.qty} × {l.product.name} → {servings(l.product).units * l.qty} ({servings(l.product).how}
-                        {l.qty > 1 ? ' each' : ''})
-                      </span>
-                    ))
-                  ) : (
-                    <span>Nothing here yet. See the last-minute shelf below.</span>
-                  )}
-                </div>
-              )}
+              ))}
+              {zoneLines.length === 0 && <span className="pp-empty">empty</span>}
             </div>
-          );
-        })}
+            <div className="pp-label" style={pos(...ZONE_LAYOUT[z].label)}>
+              <ZoneSummary zone={z} groups={zoneGroups} status={status} />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Narrow screens: labels move out of the room into a list. */}
+      <ul className="pp-zone-list">
+        {info.map(({ z, zoneGroups, status }) => (
+          <li key={z}>
+            <button
+              type="button"
+              className={active === z ? 'active' : ''}
+              onClick={() => onZone(active === z ? null : z)}
+            >
+              <ZoneSummary zone={z} groups={zoneGroups} status={status} />
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      <div className="pp-caption" aria-live="polite">
+        {current ? (
+          <>
+            <strong>How {ZONES[current.z]} gets used</strong>
+            {current.zoneLines.length ? (
+              current.zoneLines.map((l) => (
+                <span key={l.product.id}>
+                  {l.qty} × {l.product.name} → {servings(l.product).units * l.qty} ({servings(l.product).how}
+                  {l.qty > 1 ? ' each' : ''})
+                </span>
+              ))
+            ) : (
+              <span>Nothing here yet. See the last-minute shelf below.</span>
+            )}
+          </>
+        ) : (
+          <span className="muted">Hover or tap a spot in the room to see how each product gets used.</span>
+        )}
       </div>
     </section>
+  );
+}
+
+function ZoneSummary({ zone, groups, status }: { zone: ZoneId; groups: GroupCoverage[]; status: Coverage }) {
+  return (
+    <>
+      <span className="pp-label-zone">{ZONES[zone]}</span>
+      {groups.map((g) => (
+        <span key={g.id} className="pp-label-sum">
+          {g.label} · {g.have} {g.unit}
+        </span>
+      ))}
+      <span className={`pp-chip ${status}`}>
+        {status === 'sorted' && <Check size={10} strokeWidth={3} />}
+        {STATUS_LABEL[status]}
+      </span>
+    </>
   );
 }
 

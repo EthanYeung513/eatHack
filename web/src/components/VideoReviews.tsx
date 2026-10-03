@@ -192,7 +192,7 @@ function VideoPlayer({ product, index: startIndex, onClose }: PlayerState & { on
           <p className="player-caption">{video.caption}</p>
           <div className="player-product">
             <ProductThumb product={product} size="sm" />
-            <div>
+            <div className="player-product-info">
               <span className="player-product-name">{product.name}</span>
               <span className="player-product-price">{formatPrice(product.price)}</span>
             </div>

@@ -89,26 +89,26 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Room */
+/* Room. Everything inside scales with the room's width (container units), so the
+   label slots chosen in room coordinates never collide, whatever the screen size. */
 
 .pp-room {
-  position: relative;
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .pp-room-hint {
-  position: absolute;
-  z-index: 3;
-  top: 6px;
-  right: 2%;
-  max-width: 150px;
+  align-self: flex-end;
+  margin: 0;
   font-family: var(--hand);
   font-size: 19px;
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0;
   color: var(--oc-primary);
-  text-align: right;
-  transform: rotate(4deg);
+  transform: rotate(2deg);
 }
 
 .pp-room-stage {
@@ -124,7 +124,6 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  overflow: visible;
 }
 
 .pp-room-stage .iso-box polygon {
@@ -133,9 +132,25 @@
   stroke-linejoin: round;
 }
 
+.pp-leaders line {
+  stroke: #2a2e30;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 4;
+  opacity: 0.55;
+}
+
+.pp-leaders line.active {
+  opacity: 1;
+}
+
 .pp-zone {
   outline: none;
   transition: opacity 0.2s;
+}
+
+.pp-zone:focus-visible .pp-label {
+  outline: 2px solid var(--oc-primary);
+  outline-offset: 2px;
 }
 
 .pp-zone.dim {
@@ -151,21 +166,21 @@
 
 .pp-item {
   position: absolute;
-  bottom: -6px;
-  left: calc(var(--i) * 34px);
+  bottom: -1cqw;
+  left: calc(var(--i) * min(5.4cqw, 36px));
   transform: translateX(-50%) rotate(calc(var(--i) * 5deg));
   transition: transform 0.2s;
 }
 
 .pp-zone.active .pp-item {
-  transform: translateX(-50%) translateY(-6px) rotate(calc(var(--i) * 5deg)) scale(1.12);
+  transform: translateX(-50%) translateY(-1cqw) rotate(calc(var(--i) * 5deg)) scale(1.1);
 }
 
 .pp-item .thumb {
-  width: clamp(30px, 7vw, 46px);
-  height: clamp(30px, 7vw, 46px);
-  border-radius: 10px;
-  box-shadow: 0 0 0 2px var(--charcoal), 0 6px 12px rgba(42, 46, 48, 0.2);
+  width: min(6.6cqw, 44px);
+  height: min(6.6cqw, 44px);
+  border-radius: 20%;
+  box-shadow: 0 0 0 2px var(--charcoal), 0 4px 10px rgba(42, 46, 48, 0.2);
 }
 
 .pp-item em {
@@ -188,8 +203,8 @@
   padding: 2px 8px;
   border-radius: 999px;
   border: 1.5px dashed var(--charcoal);
-  background: rgba(255, 255, 255, 0.8);
-  font-size: 11px;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: min(1.8cqw, 11px);
   font-weight: 600;
   white-space: nowrap;
 }
@@ -200,15 +215,27 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 2px;
-  padding: 6px 10px 7px;
+  gap: 0.3cqw;
+  max-width: 24cqw;
+  padding: min(1cqw, 7px) min(1.6cqw, 10px);
   border-radius: 12px;
   border: 2px solid var(--charcoal);
   background: var(--surface);
   box-shadow: 3px 3px 0 var(--charcoal);
   transform: translateX(-50%);
-  white-space: nowrap;
   cursor: default;
+}
+
+.pp-label .pp-label-zone {
+  font-size: min(2.9cqw, 19px);
+}
+
+.pp-label .pp-label-sum {
+  font-size: min(1.9cqw, 12px);
+}
+
+.pp-label .pp-chip {
+  font-size: min(1.75cqw, 11px);
 }
 
 .pp-label-zone {
@@ -220,8 +247,9 @@
 }
 
 .pp-label-sum {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .pp-chip {
@@ -248,41 +276,59 @@
   background: var(--pink);
 }
 
-.pp-pop {
-  position: absolute;
-  z-index: 4;
+/* Hover details sit under the room rather than on top of it. */
+.pp-caption {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  width: max-content;
-  max-width: 280px;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: var(--charcoal);
-  color: #fff;
-  font-size: 12px;
-  line-height: 1.35;
-  transform: translate(-50%, 18px);
-  box-shadow: var(--shadow-lg);
-  pointer-events: none;
-}
-
-.pp-pop strong {
+  gap: 3px;
+  min-height: 64px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  border: 1.5px dashed var(--line-strong);
   font-size: 13px;
-  color: var(--lime);
+  line-height: 1.4;
 }
 
-@media (max-width: 560px) {
-  .pp-label {
-    padding: 4px 7px 5px;
+.pp-caption strong {
+  font-size: 14px;
+}
+
+.pp-zone-list {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.pp-zone-list button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  width: 100%;
+  height: 100%;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 2px solid var(--charcoal);
+  background: var(--surface);
+  text-align: left;
+}
+
+.pp-zone-list button.active {
+  background: var(--lime);
+}
+
+/* Too narrow for labels inside the room: show them as a list instead. */
+@container (max-width: 520px) {
+  .pp-label,
+  .pp-leaders {
+    display: none;
   }
 
-  .pp-label-zone {
-    font-size: 14px;
-  }
-
-  .pp-label-sum {
-    font-size: 9.5px;
+  .pp-zone-list {
+    display: grid;
   }
 
   .pp-room-hint {
@@ -398,9 +444,14 @@
 }
 
 @media (max-width: 760px) {
-  .pp-cards,
-  .pp-shelf-board {
+  .pp-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* The shelf stays one row (one plank); products just get smaller. */
+  .pp-shelf-item .thumb {
+    width: 56px;
+    height: 56px;
   }
 }
 

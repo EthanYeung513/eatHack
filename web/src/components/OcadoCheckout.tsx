@@ -183,7 +183,7 @@ export function OcadoCheckout({
                       {lines.map(({ product, qty }) => (
                         <li key={product.id}>
                           <ProductThumb product={product} size="sm" />
-                          <div>
+                          <div className="oc-line-info">
                             <span className="oc-line-name">{product.name}</span>
                             <span className="muted small">
                               {[product.brand, product.size, product.unitPrice].filter(Boolean).join(' · ')}
