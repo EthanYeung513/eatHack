@@ -1,4 +1,4 @@
-import { PRODUCTS } from '../data/products';
+import { FEATURED, PRODUCTS } from '../data/products';
 import { getVideoReviews } from '../data/videoReviews';
 import type { BasketLine } from '../state/basket';
 import type {
@@ -80,10 +80,15 @@ const DISCOVERY: [PartyRole, RegExp][] = [
 ];
 
 export function discoveryReply(guests: number): AgentReply {
-  const products = DISCOVERY.map(([role, archetype]) => {
+  const picks = DISCOVERY.map(([role, archetype]) => {
+    // A featured launch takes its area's slot.
+    const featured = FEATURED.find((p) => p.partyRole === role);
+    if (featured) return featured;
     const items = pool(role).filter((p) => p.reviewCount > 0);
     return items.find((p) => archetype.test(p.name) && p.image) ?? items.find((p) => archetype.test(p.name)) ?? items[0];
   }).filter(Boolean) as Product[];
+  // ...and opens the deck.
+  const products = [...picks.filter((p) => p.featured), ...picks.filter((p) => !p.featured)];
 
   return {
     mode: 'swipe',

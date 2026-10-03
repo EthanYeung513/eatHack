@@ -8,6 +8,7 @@ import {
   bestNudge,
   byNudge,
   COMPANIES,
+  DEFAULT_COMPANY,
   isNewLaunch,
   productMetrics,
   totals,
@@ -62,8 +63,20 @@ type Bind = ReturnType<typeof useTooltip>['bind'];
 
 // ---------- Page ----------
 
+// Each brand has its own link: /dashboard?brand=Pip%20%26%20Nut
+function initialCompany() {
+  const brand = new URLSearchParams(window.location.search).get('brand');
+  return COMPANIES.some((c) => c.id === brand) ? brand! : DEFAULT_COMPANY;
+}
+
 export function Dashboard() {
-  const [companyId, setCompanyId] = useState(COMPANIES[0].id);
+  const [companyId, setCompanyIdState] = useState(initialCompany);
+  const setCompanyId = (id: string) => {
+    setCompanyIdState(id);
+    const url = new URL(window.location.href);
+    url.searchParams.set('brand', id);
+    window.history.replaceState(null, '', url);
+  };
   const [period, setPeriod] = useState<Period>(30);
   const { bind, node } = useTooltip();
 
@@ -90,13 +103,14 @@ export function Dashboard() {
           <span className="dash-kicker">Behavioural nudge report</span>
           <h1>{company.label}</h1>
           <p className="muted">
-            How Shelf’s agent surfaced your products, which nudges it used, and what shoppers actually bought.
+            {rows.length} product{rows.length === 1 ? '' : 's'} on Ocado. How Shelf’s agent surfaced them, which nudges
+            it used, and what shoppers actually bought.
           </p>
         </section>
 
         <div className="dash-filters" role="group" aria-label="Filters">
           <label className="dash-select">
-            <span>Company</span>
+            <span>Brand</span>
             <select value={companyId} onChange={(e) => setCompanyId(e.target.value)}>
               {COMPANIES.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -128,6 +142,10 @@ export function Dashboard() {
           <Kpi label="Picked by agent" value={num(total.picked)} note={`${pct(ratio(total.picked, total.delivered))} of nudges`} />
           <Kpi label="Successful buys" value={num(total.bought)} note={`${pct(ratio(total.bought, total.picked), 1)} of agent picks`} />
         </section>
+
+        <Card title="Your range on Shelf" subtitle="Every product this brand sells through Ocado, with how each one performed.">
+          <ProductRange rows={rows} />
+        </Card>
 
         <div className="dash-grid">
           <Card title="From nudge to purchase" subtitle="All products, all nudges">
@@ -328,6 +346,46 @@ function AgentVsHuman({ rows, bind }: { rows: ProductMetrics[]; bind: Bind }) {
         })}
       </ul>
     </div>
+  );
+}
+
+// ---------- Product range ----------
+
+function ProductRange({ rows }: { rows: ProductMetrics[] }) {
+  return (
+    <ul className="dash-range">
+      {rows.map((r) => {
+        const best = bestNudge(r);
+        const Icon = NUDGE[best].icon;
+        return (
+          <li key={r.product.id}>
+            <span className="dash-range-img">
+              <ProductThumb product={r.product} size="md" />
+              {isNewLaunch(r.launched) && <span className="dash-new">New</span>}
+            </span>
+            <strong>{r.product.name}</strong>
+            <span className="muted small">
+              {[r.product.size, formatPrice(r.product.price)].filter(Boolean).join(' · ')}
+            </span>
+            {r.product.offer && <span className="dash-range-offer">{r.product.offer}</span>}
+            <span className="dash-range-stats">
+              <span>
+                <b>{num(r.picked)}</b> agent picks
+              </span>
+              <span>
+                <b>{num(r.bought)}</b> bought
+              </span>
+            </span>
+            <span className="dash-best">
+              <span className={`swatch swatch-${best}`}>
+                <Icon size={11} />
+              </span>
+              Best: {NUDGE[best].label}
+            </span>
+          </li>
+        );
+      })}
+    </ul>
   );
 }
 

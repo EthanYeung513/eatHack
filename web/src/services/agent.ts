@@ -1,4 +1,4 @@
-import { PRODUCTS } from '../data/products';
+import { featuredFirst, PRODUCTS } from '../data/products';
 import type { AgentMode, DeckConfig, Dietary, Product, SwipeResult, WrapUp } from '../types';
 
 // Client-side stand-in for the agent. The real version will live behind a
@@ -43,7 +43,7 @@ const TOPICS: Topic[] = [
   { id: 'milk', re: /\b(milk|milkshakes?|dairy)\b/i, tag: 'milk', title: 'Milk & milkshakes' },
   { id: 'pets', re: /\b(pets?|dogs?|cats?|puppy|kitten)\b/i, tag: 'pets', title: 'Pet treats' },
   { id: 'sweets', re: /\b(sweets|chocolate|candy|treats?|snacks?|crisps|nibbles)\b/i, tag: 'snacks', title: 'Sweets & snacks' },
-  { id: 'drinks', re: /\b(drinks?|juice|cola|coke)\b/i, tag: 'drinks', title: 'Drinks' },
+  { id: 'drinks', re: /\b(drinks?|juice|cola|coke|latte|iced coffee)\b/i, tag: 'drinks', title: 'Drinks' },
   { id: 'deals', re: /\b(offers?|deals?|discounts?|sale|bargains?|savings?|cheap|promotions?)\b/i, tag: 'deals', title: "Today's deals" },
   { id: 'breakfast', re: /\b(breakfast|brunch|porridge|oats)\b/i, tag: 'breakfast', title: 'Breakfast', occasion: true },
   { id: 'dinner', re: /\b(dinners?|lunch|ready meals?|soups?|quick meals?|for one|weeknights?)\b/i, tag: 'dinner', title: 'Easy dinners', occasion: true },
@@ -199,12 +199,11 @@ function decide(input: string): AgentReply {
     const boost = new Set(matched.map((t) => t.tag));
     const relevance = (p: Product) => p.tags.filter((t) => boost.has(t)).length;
     // Catalogue is already in popularity order; the sort is stable.
-    const products = applyFilters(
-      PRODUCTS.filter((p) => p.tags.some((tag) => tags.has(tag)) && (!dealsOnly || !!p.offer)),
-      input,
-    )
-      .sort((a, b) => relevance(b) - relevance(a))
-      .slice(0, MAX_DECK);
+    const inDeck = (p: Product) => p.tags.some((tag) => tags.has(tag)) && (!dealsOnly || !!p.offer);
+    const products = featuredFirst(
+      applyFilters(PRODUCTS.filter(inDeck), input).sort((a, b) => relevance(b) - relevance(a)),
+      (p) => inDeck(p) && applyFilters([p], input).length > 0,
+    ).slice(0, MAX_DECK);
     const topic = specific[0] ?? occasion!;
     const title =
       !specific.length && party && occasion && occasion !== party ? `${occasion.title} party` : topic.title;

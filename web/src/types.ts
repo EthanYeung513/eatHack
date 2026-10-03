@@ -69,6 +69,8 @@ export interface Product {
   partner?: boolean;
   /** Not from the Ocado export (e.g. placeholder tableware). */
   placeholder?: boolean;
+  /** Spotlighted launch: shown first in relevant swipe decks. */
+  featured?: boolean;
 }
 
 export type AgentMode = 'text' | 'swipe' | 'reviews';

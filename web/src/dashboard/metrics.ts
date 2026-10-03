@@ -13,14 +13,22 @@ export interface Company {
   match: (p: Product) => boolean;
 }
 
+// One dashboard per brand, with every product that brand sells. Brands with the
+// biggest ranges first; partner brands can also be viewed together.
+const BRANDS = [...new Set(PRODUCTS.map((p) => p.brand))].sort(
+  (a, b) =>
+    PRODUCTS.filter((p) => p.brand === b).length - PRODUCTS.filter((p) => p.brand === a).length || a.localeCompare(b),
+);
+
 export const COMPANIES: Company[] = [
-  { id: 'partners', label: 'Shelf partner brands', match: (p) => !!p.partner },
-  ...['M&S', 'Muller', 'Heinz', 'Lindt', 'Coca-Cola', 'Pieminister', 'Pip & Nut', 'trufru'].map((brand) => ({
-    id: brand,
-    label: brand,
-    match: (p: Product) => p.brand === brand,
-  })),
+  ...BRANDS.map((brand) => ({ id: brand, label: brand, match: (p: Product) => p.brand === brand })),
+  { id: 'partners', label: 'All Shelf partner brands', match: (p) => !!p.partner },
 ];
+
+export const DEFAULT_COMPANY = 'Pip & Nut';
+
+export const brandProducts = (companyId: string) =>
+  PRODUCTS.filter((p) => (COMPANIES.find((c) => c.id === companyId) ?? COMPANIES[0]).match(p));
 
 export interface FunnelCounts {
   delivered: number;

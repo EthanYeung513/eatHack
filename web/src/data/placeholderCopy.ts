@@ -3,7 +3,8 @@ import type { Category, Product, Review } from '../types';
 // Placeholder copy for fields the Ocado export doesn't have (bios, pros/cons,
 // review quotes). Deterministic per product so it doesn't change between renders.
 
-type RawProduct = Omit<Product, 'bio' | 'pros' | 'cons' | 'reviews'>;
+/** A product as stored: copy fields are optional and filled in with placeholders. */
+export type RawProduct = Omit<Product, 'bio' | 'pros' | 'cons' | 'reviews'> & { bio?: string };
 
 const BIOS: Record<Category, string[]> = {
   fresh: [
@@ -94,7 +95,7 @@ export function withPlaceholderCopy(p: RawProduct): Product {
   const cons = CONS[p.category] ?? CONS.default;
   return {
     ...p,
-    bio: pick(BIOS[p.category], seed),
+    bio: p.bio ?? pick(BIOS[p.category], seed),
     pros: p.reviewCount ? [pick(pros, seed), pick(pros, seed + 1)].filter((x, i, a) => a.indexOf(x) === i) : [],
     cons: p.reviewCount && p.rating < 4.7 ? [pick(cons, seed)] : [],
     reviews: reviewsFor(p),
