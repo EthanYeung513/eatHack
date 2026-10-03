@@ -15,6 +15,10 @@ The basket then hands off to an Ocado-style checkout shell (trolley → delivery
 4. **Wrap-up:** when swipes slow down (latest three take ~2× as long as the first three), the deck ends and the shopper sees goal progress, what they're looking for, and which nudges they responded to.
 5. **Checkout:** if the basket still misses the goal, a one-time recommendation appears inside the Ocado trolley.
 
+## Brand dashboard (`/dashboard`)
+
+An enterprise view for brands (e.g. https://eat-hack.vercel.app/dashboard): their launched products, how many behavioural nudges were delivered, how many the agent picked up, how many converted into a buy, and where agent decisions and human buys diverge. Metrics are placeholder data generated per product (`src/dashboard/metrics.ts`); the real version would aggregate the swipe logs.
+
 ## Web app (`web/`)
 
 React + TypeScript + Vite. Frontend only: the catalogue is a one-off Ocado export bundled as JSON, and the agent runs on the client.
@@ -39,7 +43,7 @@ Placeholder data to know about for demos: bios, review quotes and video reviews 
 
 ### Deploying on Vercel
 
-Framework preset **Vite**, root directory **`web`**. Defaults for build (`npm run build`) and output (`dist`) work as-is.
+Framework preset **Vite**, root directory **`web`**. Defaults for build (`npm run build`) and output (`dist`) work as-is. `web/vercel.json` rewrites all routes to `index.html` so `/dashboard` works on refresh.
 
 ## Not built yet
 

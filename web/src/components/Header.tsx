@@ -27,6 +27,9 @@ export function Header({
         Shopping at <strong>Ocado</strong>
       </span>
       <div className="topbar-actions">
+        <a href="/dashboard" className="topbar-link hide-sm">
+          For brands
+        </a>
         <button type="button" className="btn btn-ghost btn-sm" onClick={onNewChat} disabled={!canReset}>
           <SquarePen size={15} />
           <span className="hide-sm">New chat</span>
