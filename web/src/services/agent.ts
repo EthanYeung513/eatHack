@@ -219,7 +219,7 @@ function decide(input: string): AgentReply {
         topicId: occasion?.id ?? topic.id,
         deckTitle: title,
         products,
-        text: `${plan}I've lined up ${products.length} products from Ocado, most popular first. Swipe right to add, left to skip.`,
+        text: `${plan}I've lined up ${products.length} products from Ocado, 5 at a time, most popular first. Swipe right to add, left to skip.`,
         rationale:
           "You're exploring a wide range, so quick yes/no decisions will get you to a basket faster than comparing lists.",
       };

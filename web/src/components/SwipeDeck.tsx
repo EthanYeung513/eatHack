@@ -1,4 +1,4 @@
-import { Check, Dumbbell, Handshake, Heart, RotateCcw, Tag, X } from 'lucide-react';
+import { Check, Dumbbell, Handshake, Heart, Layers, RotateCcw, Tag, X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react';
 import { getVideoReviews } from '../data/videoReviews';
 import { formatPrice, useBasket } from '../state/basket';
@@ -10,6 +10,8 @@ type Decision = SwipeLogEntry;
 
 const THRESHOLD = 90;
 const EXIT_MS = 260;
+/** Cards are served in sets of this size, with a checkpoint between sets. */
+const BATCH = 5;
 
 // Slowdown: after a few swipes, the latest decisions take much longer than the first ones.
 const SLOW_MIN_SWIPES = 6;
@@ -52,6 +54,8 @@ export function SwipeDeck({
   const [endReason, setEndReason] = useState<DeckEndReason | null>(null);
   const [drag, setDrag] = useState({ x: 0, active: false });
   const [exiting, setExiting] = useState<Direction | null>(null);
+  // Between sets of five: the next set waits until the shopper asks for it.
+  const [paused, setPaused] = useState(false);
   const origin = useRef<{ x: number; y: number } | null>(null);
   const shownAt = useRef(performance.now());
 
@@ -59,6 +63,11 @@ export function SwipeDeck({
   const current = products[index];
   const done = endReason !== null || index >= products.length;
   const added = decisions.filter((d) => d.dir === 'right').map((d) => d.product);
+  const sets = Math.ceil(products.length / BATCH);
+  // While paused, the set just finished is still the one on show.
+  const batchStart = paused ? index - BATCH : Math.floor(index / BATCH) * BATCH;
+  const batchLen = Math.min(BATCH, products.length - batchStart);
+  const setNo = batchStart / BATCH + 1;
 
   // Response time is measured from when each card reaches the top of the stack.
   useEffect(() => {
@@ -80,7 +89,7 @@ export function SwipeDeck({
 
   const decide = useCallback(
     (dir: Direction) => {
-      if (exiting || !current || done) return;
+      if (exiting || !current || done || paused) return;
       const ms = performance.now() - shownAt.current;
       setExiting(dir);
       if (dir === 'right') add(current.id);
@@ -92,28 +101,38 @@ export function SwipeDeck({
         if (config.stopAfter && next.length >= config.stopAfter) finish(next, 'checkpoint');
         else if (next.length >= products.length) finish(next, 'complete');
         else if (config.detectSlowdown && slowedDown(next)) finish(next, 'slowdown');
+        else if (next.length % BATCH === 0) setPaused(true);
       }, EXIT_MS);
     },
-    [add, config, current, decisions, done, exiting, finish, products.length],
+    [add, config, current, decisions, done, exiting, finish, paused, products.length],
   );
 
   const undo = useCallback(() => {
     const last = decisions[decisions.length - 1];
     if (!last || exiting || done) return;
     if (last.dir === 'right') setQty(last.product.id, qtyOf(last.product.id) - 1);
+    setPaused(false);
     setDecisions((d) => d.slice(0, -1));
   }, [decisions, done, exiting, qtyOf, setQty]);
 
   const restart = () => {
     setDecisions([]);
     setEndReason(null);
+    setPaused(false);
+  };
+
+  const nextSet = () => {
+    setPaused(false);
+    // Time spent on the checkpoint doesn't count towards the next card's response time.
+    shownAt.current = performance.now();
   };
 
   useEffect(() => {
     if (!keyboardActive || done) return;
     const onKey = (e: KeyboardEvent) => {
       if (isTyping()) return;
-      if (e.key === 'ArrowRight') decide('right');
+      if (paused && e.key === 'Enter') nextSet();
+      else if (e.key === 'ArrowRight') decide('right');
       else if (e.key === 'ArrowLeft') decide('left');
       else if (e.key === 'z' && (e.metaKey || e.ctrlKey)) undo();
       else return;
@@ -121,7 +140,7 @@ export function SwipeDeck({
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [keyboardActive, done, decide, undo]);
+  }, [keyboardActive, done, paused, decide, undo]);
 
   const onPointerDown = (e: PointerEvent) => {
     if (exiting) return;
@@ -152,8 +171,12 @@ export function SwipeDeck({
         <div className="deck-title">
           <strong>{title}</strong>
           <span className="muted small">
-            {done ? `${index} of ${products.length} reviewed` : `${index + 1} of ${products.length}`} ·{' '}
-            {added.length} added
+            {done
+              ? `${index} reviewed`
+              : paused
+                ? `Set ${setNo} done`
+                : `${index - batchStart + 1} of ${batchLen}${sets > 1 ? ` · set ${setNo}/${sets}` : ''}`}{' '}
+            · {added.length} added
           </span>
         </div>
         {!done && (
@@ -181,7 +204,7 @@ export function SwipeDeck({
       </header>
 
       <div className="deck-progress">
-        <span style={{ width: `${(done ? 1 : index / products.length) * 100}%` }} />
+        <span style={{ width: `${(done || paused ? 1 : (index - batchStart) / batchLen) * 100}%` }} />
       </div>
 
       {done ? (
@@ -215,11 +238,29 @@ export function SwipeDeck({
             </button>
           )}
         </div>
+      ) : paused ? (
+        <div className="deck-summary">
+          <div className="summary-icon">
+            <Check size={24} />
+          </div>
+          <h3>That’s {BATCH}</h3>
+          <p className="muted">
+            {decisions.slice(-BATCH).filter((d) => d.dir === 'right').length} added from this set ·{' '}
+            {products.length - index} more to go.
+          </p>
+          <button type="button" className="btn btn-primary btn-sm" onClick={nextSet}>
+            <Layers size={15} /> Show {Math.min(BATCH, products.length - index)} more
+          </button>
+          <button type="button" className="link-btn" onClick={() => finish(decisions, 'manual')}>
+            That’s enough
+          </button>
+        </div>
       ) : (
         <>
           <div className="deck-stack">
             {products
-              .slice(index, index + 3)
+              // Only this set's cards are stacked; the next set doesn't peek through.
+              .slice(index, Math.min(index + 3, batchStart + BATCH))
               .map((p, i) => {
                 const isTop = i === 0;
                 const style = isTop
@@ -287,7 +328,10 @@ const GREAT_FOR: Record<string, string> = {
 };
 
 function SwipeCardBody({ product, nudge, isTop }: { product: Product; nudge?: NudgeType; isTop: boolean }) {
-  const greatFor = product.tags.map((t) => GREAT_FOR[t]).filter(Boolean).slice(0, 3);
+  const greatFor = product.tags
+    .map((t) => GREAT_FOR[t])
+    .filter(Boolean)
+    .slice(0, 3);
   const video = nudge === 'partner' ? getVideoReviews(product)[0] : undefined;
   return (
     <>
