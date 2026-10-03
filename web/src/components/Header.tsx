@@ -35,10 +35,6 @@ export function Header({
       >
         <Logo />
       </a>
-      <span className="retailer-pill">
-        <span className="retailer-dot" />
-        Shopping at <strong>Ocado</strong>
-      </span>
       <div className="topbar-actions">
         <a href="/dashboard" className="topbar-link hide-sm">
           For brands
