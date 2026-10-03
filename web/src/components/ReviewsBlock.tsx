@@ -4,12 +4,26 @@ import { formatPrice } from '../state/basket';
 import type { Product } from '../types';
 import { AddToBasket, ProductThumb, Stars } from './ProductBits';
 
+const INITIAL_COUNT = 3;
+
 export function ReviewsBlock({ products }: { products: Product[] }) {
+  const [showAll, setShowAll] = useState(false);
+  const hidden = products.length - INITIAL_COUNT;
+  const visible = showAll ? products : products.slice(0, INITIAL_COUNT);
+
   return (
-    <div className="reviews-grid">
-      {products.map((p, i) => (
-        <ReviewCard key={p.id} product={p} rank={i + 1} />
-      ))}
+    <div className="reviews">
+      <div className="reviews-grid">
+        {visible.map((p, i) => (
+          <ReviewCard key={p.id} product={p} rank={i + 1} />
+        ))}
+      </div>
+      {hidden > 0 && (
+        <button type="button" className="btn btn-ghost btn-sm reviews-more" onClick={() => setShowAll((s) => !s)}>
+          {showAll ? 'Show top 3 only' : `Show ${hidden} more`}
+          <ChevronDown size={14} className={showAll ? 'flip' : ''} />
+        </button>
+      )}
     </div>
   );
 }

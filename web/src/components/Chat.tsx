@@ -1,6 +1,6 @@
-import { ArrowUp, Beer, CakeSlice, Layers, Lightbulb, Popcorn, Sparkles, Wine } from 'lucide-react';
+import { ArrowUp, Beer, CakeSlice, Layers, Lightbulb, MessageSquareQuote, Popcorn, Sparkles, Wine } from 'lucide-react';
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react';
-import type { ChatMessage, Product } from '../types';
+import type { AgentMode, ChatMessage, Product, ProductView } from '../types';
 import { ProductThumb } from './ProductBits';
 import { ReviewsBlock } from './ReviewsBlock';
 
@@ -16,11 +16,13 @@ export function ChatView({
   thinking,
   onSend,
   onOpenDeck,
+  onViewChange,
 }: {
   messages: ChatMessage[];
   thinking: string | null;
   onSend: (text: string) => void;
   onOpenDeck: (message: ChatMessage) => void;
+  onViewChange: (messageId: string, view: ProductView) => void;
 }) {
   const endRef = useRef<HTMLDivElement>(null);
   const lastId = messages[messages.length - 1]?.id;
@@ -43,6 +45,7 @@ export function ChatView({
                 isLast={m.id === lastId && thinking === null}
                 onSuggestion={onSend}
                 onOpenDeck={() => onOpenDeck(m)}
+                onViewChange={(view) => onViewChange(m.id, view)}
               />
             ))
           )}
@@ -88,12 +91,17 @@ function Message({
   isLast,
   onSuggestion,
   onOpenDeck,
+  onViewChange,
 }: {
   message: ChatMessage;
   isLast: boolean;
   onSuggestion: (text: string) => void;
   onOpenDeck: () => void;
+  onViewChange: (view: ProductView) => void;
 }) {
+  const hasProducts = (message.mode === 'swipe' || message.mode === 'reviews') && !!message.products?.length;
+  const view = message.view ?? message.mode;
+
   if (message.role === 'user') {
     return (
       <div className="msg msg-user">
@@ -108,12 +116,15 @@ function Message({
       <div className="msg-body">
         <p>{message.text}</p>
 
-        {message.mode === 'swipe' && message.products && (
-          <SwipeLauncher message={message} products={message.products} onOpen={onOpenDeck} />
+        {hasProducts && (
+          <ViewToggle value={view} suggested={message.mode as ProductView} onChange={onViewChange} />
         )}
-        {message.mode === 'reviews' && message.products && <ReviewsBlock products={message.products} />}
+        {hasProducts && view === 'swipe' && (
+          <SwipeLauncher message={message} products={message.products!} onOpen={onOpenDeck} />
+        )}
+        {hasProducts && view === 'reviews' && <ReviewsBlock products={message.products!} />}
 
-        {message.rationale && (
+        {message.rationale && view === message.mode && (
           <p className="rationale">
             <Lightbulb size={13} />
             <span>{message.rationale}</span>
@@ -130,6 +141,40 @@ function Message({
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+const VIEW_OPTIONS: { id: ProductView; label: string; icon: typeof Layers }[] = [
+  { id: 'swipe', label: 'Swipe', icon: Layers },
+  { id: 'reviews', label: 'Shopper reviews', icon: MessageSquareQuote },
+];
+
+function ViewToggle({
+  value,
+  suggested,
+  onChange,
+}: {
+  value?: ProductView | AgentMode;
+  suggested: ProductView;
+  onChange: (view: ProductView) => void;
+}) {
+  return (
+    <div className="view-toggle" role="radiogroup" aria-label="How to browse these products">
+      {VIEW_OPTIONS.map(({ id, label, icon: Icon }) => (
+        <button
+          key={id}
+          type="button"
+          role="radio"
+          aria-checked={value === id}
+          className={value === id ? 'active' : ''}
+          onClick={() => onChange(id)}
+        >
+          <Icon size={14} />
+          {label}
+          {id === suggested && <span className="view-toggle-tag">Suggested</span>}
+        </button>
+      ))}
     </div>
   );
 }
@@ -154,7 +199,7 @@ function SwipeLauncher({
         ))}
       </div>
       <div className="launcher-text">
-        <strong>{message.deckTitle}</strong>
+        <strong>{message.deckTitle ?? 'Top matches'}</strong>
         <span className="muted small">
           {result
             ? `${result.added.length} added · ${result.added.length + result.skipped.length} of ${products.length} reviewed`

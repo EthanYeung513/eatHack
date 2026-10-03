@@ -38,6 +38,8 @@ export interface Product {
 
 export type AgentMode = 'text' | 'swipe' | 'reviews';
 
+export type ProductView = Exclude<AgentMode, 'text'>;
+
 export interface SwipeResult {
   added: Product[];
   skipped: Product[];
@@ -48,6 +50,8 @@ export interface ChatMessage {
   role: 'user' | 'assistant';
   text: string;
   mode?: AgentMode;
+  /** View the shopper switched to; falls back to the agent's `mode`. */
+  view?: ProductView;
   products?: Product[];
   rationale?: string;
   suggestions?: string[];

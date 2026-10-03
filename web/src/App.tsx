@@ -9,7 +9,7 @@ import { useChat } from './state/useChat';
 import type { ChatMessage, SwipeResult } from './types';
 
 export default function App() {
-  const { messages, thinking, send, completeSwipe, reset } = useChat();
+  const { messages, thinking, send, completeSwipe, setView: setMessageView, reset } = useChat();
   const { clear } = useBasket();
   const [view, setView] = useState<'shop' | 'checkout'>('shop');
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -50,7 +50,13 @@ export default function App() {
     <div className="app">
       <Header onNewChat={reset} onOpenBasket={() => setSheetOpen(true)} canReset={messages.length > 0} />
       <div className="app-body">
-        <ChatView messages={messages} thinking={thinking} onSend={send} onOpenDeck={setDeck} />
+        <ChatView
+          messages={messages}
+          thinking={thinking}
+          onSend={send}
+          onOpenDeck={setDeck}
+          onViewChange={setMessageView}
+        />
         <aside className="basket-aside">
           <BasketPanel onCheckout={checkout} />
         </aside>

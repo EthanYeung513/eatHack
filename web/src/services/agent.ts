@@ -127,13 +127,14 @@ function decide(input: string): AgentReply {
     const pool = topic
       ? PRODUCTS.filter((p) => p.tags.includes(topic.tag))
       : nameMatches(input);
-    const products = applyFilters(pool, input).sort(byRating).slice(0, 3);
+    const products = applyFilters(pool, input).sort(byRating).slice(0, 8);
     if (products.length) {
       const [top] = products;
       const label = topic ? topic.title.toLowerCase() : 'options';
       return {
         mode: 'reviews',
         topicId: topic?.id,
+        deckTitle: topic?.title,
         products,
         text: `Here are the top ${label} on Ocado, ranked by what shoppers say. ${top.name} leads with ${top.rating.toFixed(1)}★ across ${top.reviewCount.toLocaleString()} reviews.`,
         rationale:
@@ -190,7 +191,7 @@ function decide(input: string): AgentReply {
   if (byName.length) {
     return {
       mode: 'reviews',
-      products: byName.sort(byRating).slice(0, 3),
+      products: byName.sort(byRating).slice(0, 8),
       text: 'Here’s what shoppers are saying about the closest matches I found.',
       rationale: 'You asked about specific products, so reviews are the most useful view.',
       suggestions: STARTERS,

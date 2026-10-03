@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { askAgent, swipeFollowUp, type AgentReply } from '../services/agent';
-import type { ChatMessage, SwipeResult } from '../types';
+import type { ChatMessage, ProductView, SwipeResult } from '../types';
 
 let nextId = 0;
 const uid = () => `m${Date.now().toString(36)}${(nextId++).toString(36)}`;
@@ -33,11 +33,15 @@ export function useChat() {
     });
   }, []);
 
+  const setView = useCallback((messageId: string, view: ProductView) => {
+    setMessages((m) => m.map((msg) => (msg.id === messageId ? { ...msg, view } : msg)));
+  }, []);
+
   const reset = useCallback(() => {
     session.current += 1;
     setThinking(null);
     setMessages([]);
   }, []);
 
-  return { messages, thinking, send, completeSwipe, reset };
+  return { messages, thinking, send, completeSwipe, setView, reset };
 }
