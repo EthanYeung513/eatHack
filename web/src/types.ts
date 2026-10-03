@@ -20,6 +20,16 @@ export interface Review {
   date: string;
 }
 
+export interface VideoReview {
+  id: string;
+  author: string;
+  handle: string;
+  rating: number;
+  caption: string;
+  src: string;
+  duration: string;
+}
+
 export interface Product {
   id: string;
   name: string;

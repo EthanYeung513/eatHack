@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { formatPrice } from '../state/basket';
 import type { Product } from '../types';
 import { AddToBasket, ProductThumb, Stars } from './ProductBits';
+import { VideoStrip } from './VideoReviews';
 
 const INITIAL_COUNT = 3;
 
@@ -105,6 +106,8 @@ function ReviewCard({ product, rank }: { product: Product; rank: number }) {
           </button>
         )}
       </div>
+
+      <VideoStrip product={product} />
 
       <footer className="review-card-foot">
         <span className="muted small">{product.unitPrice}</span>

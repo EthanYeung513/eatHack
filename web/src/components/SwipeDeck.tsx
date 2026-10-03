@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'rea
 import { formatPrice, useBasket } from '../state/basket';
 import type { Product, SwipeResult } from '../types';
 import { Packshot, ProductThumb, Stars } from './ProductBits';
+import { VideoPill } from './VideoReviews';
 
 type Direction = 'left' | 'right';
 
@@ -263,6 +264,7 @@ function SwipeCardBody({ product }: { product: Product }) {
         <Packshot product={product} />
         {product.badge && <span className="badge-pill">{product.badge}</span>}
         {product.offer && <span className="offer-pill">{product.offer}</span>}
+        <VideoPill product={product} />
         <span className="swipe-price">
           {product.wasPrice && <s>{formatPrice(product.wasPrice)}</s>}
           {formatPrice(product.price)}
